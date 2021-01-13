@@ -1,6 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  
+  config.hosts << 'f726d0cb30cc4cd4874f1c91edb1bd1c.vfs.cloud9.us-east-2.amazonaws.com'
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
