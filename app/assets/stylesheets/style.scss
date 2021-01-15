@@ -1,0 +1,174 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Poppins:wght@700&display=swap');
+
+$color-pink: #f7c3bf;
+$color-blue: #8ac8cf;
+$color-yellow:#fae06a;
+$baseColor:#efebe0;
+.btn-pink{
+  background:$color-pink;
+  color:#fff;
+  &:hover{
+    background:#f59890;
+    color:#fff;
+  }
+}
+
+.btn-blue{
+  background:$color-blue;
+  color:#fff;
+  &:hover{
+  background:#5291c4;
+  color:#fff;
+  }
+}
+
+.btn-yellow{
+  background:$color-yellow;
+  color:#fff;
+  &:hover{
+  background:#ffeb04;
+  color:#fff;
+  }
+}
+
+
+.logo-title{
+  display:flex;
+  h1{
+    margin-left: 10px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .Editlink{
+    color: #666;
+    text-decoration: none;
+  }
+}
+
+    
+header{
+    
+    .nav-menu{
+        display:flex;
+        align-items: center;
+        // justify-content:space-between;
+    }
+    
+    ul{
+      margin-left: auto;
+      display:flex;
+     li{
+        list-style: none;
+        margin-left: 20px;
+      }
+     }
+      
+}
+
+
+footer{
+  background:$baseColor;
+  padding: 40px 0px 30px;
+  .footer-contents{
+    display:flex;
+    justify-content:space-evenly;
+    margin-bottom: 90px;
+  }
+  
+  .logo-title{
+    margin-bottom: 30px;
+  }
+  
+  .footerCenter, .footerRight{
+    p{
+      text-align: center;
+      margin-bottom:20px;
+    }
+  }
+  
+  .copylight{
+    margin-top: 30px;
+    text-align: center;
+    color:#666;
+  }
+}
+
+
+body{
+  .toppng{
+    margin-bottom: 80px;
+  }
+  
+  h2{
+    text-align: center;
+  }
+  
+  .top{
+    margin-bottom: 30px;
+  }
+  
+  section{
+    padding: 60px 30px 60px;
+    line-height: 20px;
+    &:nth-of-type(2){
+      background:$baseColor;
+      padding: 80px 30px 80px;
+    }
+    
+  }
+  
+  
+  .blogs{
+    display:flex;
+    justify-content:space-evenly;
+    .Explanation{
+      p:first-child{
+       text-align: center; 
+       font-size: 1.5em;
+       margin-bottom: 30px;
+      }
+      .btn{
+        display: block;
+        margin-top: 30px;
+      }
+    }
+  }
+
+  .skill{
+    display:flex;
+    flex-direction: row-reverse;
+    justify-content:space-evenly;
+    .Explanation{
+      p:first-child{
+       text-align: center; 
+       font-size: 1.5em;
+       margin-bottom: 30px;
+      }
+      .btn{
+        display: block;
+        margin-top: 30px;
+      }
+    }
+  }
+  
+  
+  .introduction{
+    text-align: center;
+    h2{
+      margin-bottom: 30px;
+    }
+    
+    p{
+      margin-bottom: 20px;
+    }
+    .btn{
+      width:300px;
+      margin-top: 30px;
+    }    
+    
+  }
+  
+  
+}
+
