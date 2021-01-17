@@ -40,9 +40,14 @@ $baseColor:#efebe0;
     margin-left: 10px;
     font-family: 'Poppins', sans-serif;
   }
-  .Editlink{
-    color: #666;
-    text-decoration: none;
+}
+
+.Editlink{
+  color: #666;
+  text-decoration: none;
+  &:hover{
+  text-decoration: none;
+  color:#666;
   }
 }
 

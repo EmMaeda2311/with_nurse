@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja" >
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%=yield(:title ) %> | With Nurse ナース専用のソーシャルメディア</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -8,29 +10,13 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     
-    <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
-      </script>
-    <![endif]-->
+    <%= render 'layouts/shim'%>
   </head>
-
-  <header>
-    <div class="container">
-      <nav class="nav-menu">
-        <div class="logo-title">
-          <%= link_to image_tag("logo2.png",alt: "With Nurse logo" ,width: "80px"), root_path %>
-          <h1><%= link_to "With Nurse", root_path , class: "Editlink"%></h1>
-        </div>
-        <ul>
-          <li><%= link_to "ログイン", '#', class: "nav-link btn btn btn-pink" %></li>
-          <li><%= link_to '無料会員登録' , '#', class: "nav-link btn btn btn-blue"%></li>
-        </ul> 
-        
-      </nav>
-    </div>
-  </header>
     
   <body>
+    <%= render 'layouts/header' %>
     <%= yield %>
+    
+    <%= render 'layouts/footer' %>
   </body>
 </html>
