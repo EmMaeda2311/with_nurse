@@ -1,0 +1,21 @@
+  <header>
+    <div class="container">
+      <nav class="nav-menu">
+        <div class="logo-title">
+          <%= link_to image_tag("logo2.png",alt: "With Nurse logo" ,width: "80px"), root_path %>
+          <h1><%= link_to "With Nurse", root_path , class: "Editlink"%></h1>
+        </div>
+        <% if user_signed_in? %>
+          --ユーザーアイコン--
+          <strong><%= link_to current_user.username, pages_show_path %></strong>
+          --ベルの通知マーク--
+        <% else %>
+          <ul>
+            <li><%= link_to "ログイン", new_user_session_path , class: "nav-link btn btn btn-pink" %></li>
+            <li><%= link_to '無料会員登録' , new_user_registration_path , class: "nav-link btn btn btn-blue" %></li>
+          </ul> 
+        <% end %>
+        
+      </nav>
+    </div>
+  </header>
