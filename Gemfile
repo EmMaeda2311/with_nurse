@@ -34,6 +34,8 @@ gem 'dotenv-rails'
 
 #Devise
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 #SocialMedia Log_in
 gem 'omniauth-line'
