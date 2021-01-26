@@ -6,9 +6,12 @@
           <h1><%= link_to "With Nurse", root_path , class: "Editlink"%></h1>
         </div>
         <% if user_signed_in? %>
-          --ユーザーアイコン--
-          <strong><%= link_to current_user.username, pages_show_path %></strong>
-          --ベルの通知マーク--
+          <!----ユーザーアイコン---->
+          <strong><%= link_to current_user.username, user_path(id: current_user.id) %></strong>
+          <strong><%= link_to "ログアウト", sign_out_path %></strong>
+          <strong><%= link_to "プロフィール変更", edit_user_registration_path %></strong>
+          
+          <!----ベルの通知マーク---->
         <% else %>
           <ul>
             <li><%= link_to "ログイン", new_user_session_path , class: "nav-link btn btn btn-pink" %></li>
