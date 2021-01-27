@@ -3,5 +3,6 @@ FactoryBot.define do
         username { "tester" }
         email { "tester@example.com" }
         password { "foobar" }
+        accepted {true}
   end
 end

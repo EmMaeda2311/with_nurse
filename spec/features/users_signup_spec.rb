@@ -7,7 +7,7 @@ feature 'signup test' do
     fill_in "user[username]", with: "Example User"
     fill_in "user[email]", with: "tester@example.com"
     fill_in "user[password]", with: "password"
-    
+    check   'user[accepted]'
     expect{
       click_button "新規登録"
     }.to change(User, :count).by(1)
