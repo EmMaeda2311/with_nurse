@@ -227,6 +227,19 @@ body{
   }
 }
 
+.boxcheck{
+  padding-left: 110px;
+    .accepted{
+    width: 320px;
+    margin-left: 10px;
+    color: #666;
+  }
+  
+  #user_accepted{
+    margin: 10px 0px 0px;
+  }
+}
+
 .actions{
   margin: 30px auto 30px;
   text-align: center;

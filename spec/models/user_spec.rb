@@ -93,6 +93,14 @@ RSpec.describe User, type: :model do
         it { is_expected.to be_invalid }
       end
     end
+    
+    
+    describe "accepted check box" do
+      describe "check accepted" do
+      let(:tester){ build(:tester, accepted: false)}
+      it {is_expected.to be_invalid}
+      end
+    end
   end
   
 end
