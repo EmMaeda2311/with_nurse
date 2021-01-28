@@ -4,23 +4,45 @@
     <h2 class="mb5">すべてのナースのためのWEBサービス</h2>
   </div>
   
+  <% if signed_in? %>
   <section>
     <div class="container">
-      <div class="blogs">
-        <div>
-          <%= image_tag 'like.png',width: "250px"%>
-        </div>
-        <div class="Explanation">
-          <p>ナース専用のソーシャルメディア<p>
-          <p>あなただけの看護が誰かの看護を色づけます。<br>
-          あなたの看護をアウトプットしませんか？<br>
-          あなたしか発信できないことがあります。<br></p>
-      
-          <p>色鮮やかなナースたちの看護・情報・知識が集まる<br>
-          場所を作ろう</p>
-          <div class="btn btn-lg btn-pink">みんなの看護を見る</div>
-        </div>  
+      <ul class="game">
+        <li>
+          <%= link_to image_tag("typing.png",alt: "With Nurse logo" ,width: "100%"), "#" %>
+          <p>タイピングゲーム</p>
+        </li>
+        <li>
+          <%= link_to image_tag("book.png",alt: "With Nurse logo" ,width: "100%"), "#" %>
+          <p>Comming soon</p>
+        </li>
+        <li>
+          <%= link_to image_tag("run.png",alt: "With Nurse logo" ,width: "100%"), "#" %>
+          <p>Comming soon</p>
+        </li>
+      </ul>
+    </div>
+    
+  </section>
+  
+  <% else %>
+ 
+  
+  <section>
+    <div class="container blogs">
+      <div>
+        <%= image_tag 'like.png',width: "250px"%>
       </div>
+      <div class="Explanation">
+        <p>ナース専用のソーシャルメディア<p>
+        <p>あなただけの看護が誰かの看護を色づけます。<br>
+        あなたの看護をアウトプットしませんか？<br>
+        あなたしか発信できないことがあります。<br></p>
+    
+        <p>色鮮やかなナースたちの看護・情報・知識が集まる<br>
+        場所を作ろう</p>
+        <div class="btn btn-lg btn-pink">みんなの看護を見る</div>
+      </div>  
     </div>  
  </section>
   
@@ -56,3 +78,4 @@
    </div>
   </section>
 
+<% end %>

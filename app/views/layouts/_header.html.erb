@@ -7,9 +7,11 @@
         </div>
         <% if user_signed_in? %>
           <!----ユーザーアイコン---->
-          <strong><%= link_to current_user.username, user_path(id: current_user.id) %></strong>
-          <strong><%= link_to "ログアウト", sign_out_path %></strong>
-          <strong><%= link_to "プロフィール変更", edit_user_registration_path %></strong>
+          <div class= "login_user_menu">
+            <strong><%= link_to current_user.username, user_path(id: current_user.id) %></strong>
+            <strong><%= link_to "ログアウト", sign_out_path %></strong>
+            <strong><%= link_to "プロフィール変更", edit_user_registration_path %></strong>
+          </div>
           
           <!----ベルの通知マーク---->
         <% else %>
