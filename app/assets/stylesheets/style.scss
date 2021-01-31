@@ -52,6 +52,25 @@ $baseColor:#efebe0;
 }
 
 
+
+.flash {
+  width: 80%;
+  margin: 20px auto 40px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+  
+  &__alert{
+    background: $color-pink;
+    
+  }
+  
+  &__notice{
+    background: $color-blue;
+  }
+}
+
 body{
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   color: #444;

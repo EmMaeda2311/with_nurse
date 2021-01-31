@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'signup test' do
+RSpec.feature 'signup test' do
   scenario "valid signup information" do
     visit new_user_registration_path
     
