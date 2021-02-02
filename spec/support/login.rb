@@ -13,8 +13,9 @@ module LoginHelper
   
     #ログインする(request)
   def login_as(tester)
-    post user_session_path, params: { session: { email: tester.email,
-                                                password: tester.password } }
+    post user_session_path, params: { session: { emial: tester.email,
+                                                password: tester.password,
+                                                remember_me: '1'} }
   end
 
 end

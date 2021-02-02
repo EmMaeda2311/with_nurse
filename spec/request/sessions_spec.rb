@@ -4,7 +4,7 @@ RSpec.describe "Sessions" ,type: :request do
   let(:tester) { FactoryBot.create(:tester)}
   let(:tester_params) { attributes_for(:tester) }
   let(:guest_user_params) { attributes_for(:user, name: "") }
-  let(:another_teser){FactoryBot.create(:another_teser)}
+  let(:another_tester){FactoryBot.create(:another_tester)}
   
   describe "get new page" do  
     it "sign_in returns a 200 request" do
@@ -34,14 +34,30 @@ RSpec.describe "Sessions" ,type: :request do
       expect(response).to have_http_status (200)
     end
     
-    
-    
     it "log_out_test" do 
       sign_out tester
       get edit_user_registration_path
       expect(response).to have_http_status (302)
     end
+
   end
+  
+  # describe "rememberable test" do
+    
+  #   it "remember_created_at is nil" do
+  #     sign_in tester
+  #     expect(tester.remember_created_at).to eq nil
+  #     # sign_out tester
+  #     # expect(tester.rememberable_value).to eq nil
+  #     # expect(another_tester.rememberable_value).to eq nil
+  #   end
+    
+  #   it "login with remembering" do
+  #     sign_in tester
+  #     tester.remember_created_at = DateTime.now
+  #     expect(tester.rememberable_value).not_to eq nil
+  #   end
+  # end
   
   
   describe "as a guest" do 
@@ -61,7 +77,7 @@ RSpec.describe "Sessions" ,type: :request do
   
   describe "another_user not access mypage" do
     before do
-      sign_in another_teser
+      sign_in another_tester
     end
     
     
@@ -72,4 +88,5 @@ RSpec.describe "Sessions" ,type: :request do
     # end
     
   end
+  
 end

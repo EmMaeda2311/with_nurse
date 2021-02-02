@@ -9,7 +9,7 @@ FactoryBot.define do
   end
   
   
-  factory :another_teser , class: User do
+  factory :another_tester , class: User do
         username{ "teser2" }
         sequence(:email,"tester1@example.com") 
         # { |n| "#{n}tester@example.com" }
