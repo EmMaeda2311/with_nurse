@@ -34,6 +34,17 @@ RSpec.describe "Sessions" ,type: :request do
       expect(response).to have_http_status (200)
     end
     
+    
+    it "can`t access another_tester_page" do
+      get "/users/#{another_tester.id}"
+      expect(response).to redirect_to( root_url )
+    end
+    
+    it "is not exist user" do
+      get "/users/100000"
+      expect(response).to redirect_to( root_url )
+    end
+    
     it "log_out_test" do 
       sign_out tester
       get edit_user_registration_path
@@ -72,21 +83,25 @@ RSpec.describe "Sessions" ,type: :request do
       # expect(response).to have_http_status (302)
       expect(response).to redirect_to new_user_session_path
     end
-  end
-  
-  
-  describe "another_user not access mypage" do
-    before do
-      sign_in another_tester
+    
+    it "unless loginn user redirect_to login_page" do
+      get edit_user_registration_path
+      expect(response).to redirect_to new_user_session_path
     end
     
-    
-    #他のユーザーの編集ページにアクセスできないテスト→できちゃう
-    # it "dont access tester edit page " do
-    #   get edit_user_registration_path(tester)
-    #   expect(response).to have_http_status (302)
-    # end
-    
   end
+  
+  
+  # describe "show form root page redirect test" do
+    
+    
+    
+  #   #他のユーザーの編集ページにアクセスできないテスト→できちゃう
+  #   # it "dont access tester edit page " do
+  #   #   get edit_user_registration_path(tester)
+  #   #   expect(response).to have_http_status (302)
+  #   # end
+    
+  # end
   
 end

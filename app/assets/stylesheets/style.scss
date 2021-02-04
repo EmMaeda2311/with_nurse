@@ -252,6 +252,10 @@ body{
     width: 400px;
     margin: 0px 20px 20px;
   }
+  
+  .form-control-comment{
+    margin-bottom: 10px;
+  }
 }
 
 .boxcheck{
@@ -269,6 +273,17 @@ body{
   #user_accepted , #user_remember_me{
     margin: 10px 0px 0px;
   }
+}
+
+.comment{
+  text-align:center;
+  margin-bottom: 20px;
+  padding-left: 90px;
+}
+
+.delete_link{
+  text-align: end;
+  margin-bottom: 30px;
 }
 
 .actions{
