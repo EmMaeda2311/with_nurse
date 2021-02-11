@@ -15,6 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(app.$el)
 
   console.log(app)
+
+  // new Vue({
+  //   el: '#app',
+  //   store: store,
+  //   render: (h) => h(App)
+  // })
 })
 
 
