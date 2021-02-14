@@ -46,4 +46,14 @@ RSpec.feature 'signup test' do
     expect(page).not_to have_field 'user[password]', with: "foo"
 
   end
+
+
+  scenario "未ログインユーザーのグーグルログインの成功" do
+    visit new_user_registration_path
+    expect{
+      click_link 'GoogleOauth2 でログインする'
+      sleep 1
+  }.to change(User, :count).by(1)
+  end
+
 end
