@@ -7,8 +7,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'main', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'custom_vue' %>
+    
+
     
     <%= render 'layouts/shim'%>
   </head>
@@ -20,8 +25,14 @@
       <%= content_tag(:div, value, class: "flash flash__#{key}") %>
     <% end %>
     <%= render 'layouts/header' %>
+    <div id="hello">
+      <p>{{ message }}</p>
+    </div>
     
     <%= yield %>
+    <div id="test">
+      <p>{{ message }}</p>
+    </div>
     
     <%= render 'layouts/footer' %>
     <%= debug(params) if Rails.env.development? %>
