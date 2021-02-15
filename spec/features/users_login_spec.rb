@@ -32,7 +32,9 @@ RSpec.feature 'login test', type: :feature do
     expect(page).to have_content 'Users#show'
     
     
-    
-    
   end
+  
+  
+
+
 end

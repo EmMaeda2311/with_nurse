@@ -53,8 +53,20 @@ RSpec.feature 'signup test' do
     visit new_user_registration_path
     expect{
       click_link 'Sign in with GoogleOauth2'
-      sleep 1
   }.to change(User, :count).by(1)
+  end
+
+
+  scenario "サインアップ済みユーザーの場合、ユーザーが増えない" do
+    visit new_user_registration_path
+    click_link 'Sign in with GoogleOauth2'
+    click_link 'ログアウト'
+    click_link 'ログイン'
+    expect{
+      click_link 'Sign in with GoogleOauth2'
+  }.not_to change(User, :count)
+    
+
   end
 
 end
