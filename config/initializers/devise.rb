@@ -310,6 +310,8 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
   
   config.scoped_views = true
-  config.omniauth :google_oauth2, ENV['CLIENT_ID'], ENV['CLIENT_SECRET']
+
+  require 'omniauth-google-oauth2'
+  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
 
 end

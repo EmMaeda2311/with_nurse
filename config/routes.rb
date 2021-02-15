@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  get 'users/show'
-  devise_for :users, :controller => {
+  devise_for :users, controllers: {
     :registrations => 'users/registrations',
-    :sessions => 'users/sessions' ,
-    omniauth_callbacks: 'users/omniauth_callbacks'
+    :sessions => 'users/sessions',
+    :omniauth_callbacks => 'users/omniauth_callbacks'
   }
+  
+  # devise :omniauthable: :omniauth_providers => [:google_oauth2]
+  
   
   devise_scope :user do
     get "sign_in", :to => "users/sessions#new"
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get '/help' ,to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
+  get 'users/show'
   
   resources :users, only: [:show]
   # get 'static_pages/home'

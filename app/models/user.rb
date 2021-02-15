@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255}, format: { with: VALID_EMAIL_REGEX },
   uniqueness: { case_sensitive: false}
   validates :password, presence: true, length: { minimum: 6},allow_nil: true
-  validates :accepted, presence:{message: 'に同意してください'}
+  # validates :accepted, presence:{message: 'に同意してください'}
 
   def self.find_or_create_for_oauth(auth)
     find_or_create_by!(email: auth.info.email) do |user|

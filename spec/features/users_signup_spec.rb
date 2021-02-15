@@ -26,7 +26,8 @@ RSpec.feature 'signup test' do
      click_button "新規登録"
    }.to change(User, :count).by(0)
    
-   blank_error_messages = %w[ユーザー名 が入力されていません メールアドレス が入力されていません。 メールアドレス は有効でありません。 パスワード が入力されていません。 パスワード は6文字以上に設定して下さい。 利用規約、及び、個人情報の取扱 に同意してください]
+   blank_error_messages = %w[ユーザー名 が入力されていません メールアドレス が入力されていません。 メールアドレス は有効でありません。 パスワード が入力されていません。 パスワード は6文字以上に設定して下さい。]
+  #  利用規約、及び、個人情報の取扱 に同意してください
    
    blank_error_messages.each do |blank_error_message|
     expect(page).to have_content blank_error_message
@@ -42,7 +43,7 @@ RSpec.feature 'signup test' do
      click_button "新規登録"
     }.to change(User, :count).by(0)
     
-    expect(page).to have_content "パスワード は6文字以上に設定して下さい。"
+    expect(page).to have_content "パスワードは6文字以上に設定して下さい。"
     expect(page).not_to have_field 'user[password]', with: "foo"
 
   end
@@ -51,7 +52,7 @@ RSpec.feature 'signup test' do
   scenario "未ログインユーザーのグーグルログインの成功" do
     visit new_user_registration_path
     expect{
-      click_link 'GoogleOauth2 でログインする'
+      click_link 'Sign in with GoogleOauth2'
       sleep 1
   }.to change(User, :count).by(1)
   end
