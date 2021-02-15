@@ -8,6 +8,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback_from(:google_oauth2)
   end
 
+  def line
+    callback_from(:line)
+  end
+
+  
   def callback_from(provider)
     provider = provider.to_s
     @user = User.find_or_create_for_oauth(request.env['omniauth.auth'])

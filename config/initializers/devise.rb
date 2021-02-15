@@ -314,4 +314,7 @@ Devise.setup do |config|
   require 'omniauth-google-oauth2'
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
 
+  require 'omniauth-line'
+  config.omniauth :line, ENV['LINE_CHANNEL_ID'],ENV['LINE_CHANNEL_SECRET']
+
 end
