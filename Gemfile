@@ -32,6 +32,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'dotenv-rails'
 
+gem 'rails-i18n'
+
 #Devise
 gem 'devise'
 gem 'devise-i18n'
@@ -39,6 +41,7 @@ gem 'devise-i18n-views'
 
 #SocialMedia Log_in
 gem 'omniauth', '1.9.1'
+gem "omniauth-rails_csrf_protection"
 gem 'omniauth-line'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'

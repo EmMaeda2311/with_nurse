@@ -32,7 +32,7 @@ RSpec.feature "edit test", type: :feature do
     fill_in "user[current_password]", with: "foo"
     click_button "プロフィール変更"
     
-    expect(page).to have_content "現在のパスワード が違います。"
+    expect(page).to have_content "現在のパスワードが違います。"
   
   end
   
