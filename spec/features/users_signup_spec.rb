@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'signup test' do
+  background do
+    ActionMailer::Base.deliveries.clear
+  end
+
   scenario "valid signup information" do
     visit new_user_registration_path
     
@@ -8,14 +12,27 @@ RSpec.feature 'signup test' do
     fill_in "user[email]", with: "tester@example.com"
     fill_in "user[password]", with: "password"
     check   'user[accepted]'
+    # expect{
+    #   click_button "新規登録"
+    # }.to change(User, :count).by(1)
+    
     expect{
       click_button "新規登録"
-    }.to change(User, :count).by(1)
+    }.to change{ ActionMailer::Base.deliveries.size }.by(1)
+
+    expect(page).to have_content '本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。'
+
+    user = User.last
+    token = user.confirmation_token
+    visit user_confirmation_path(confirmation_token: token)
+    
     
     within '.nav-menu' do
       expect(page).not_to have_content 'ログイン'
       expect(page).to have_content "Example User"
     end
+
+    expect(page).to have_content 'メールアドレスが確認できました。'
   end
   
   
@@ -53,7 +70,7 @@ RSpec.feature 'signup test' do
     visit new_user_registration_path
     expect{
       click_link 'Sign in with GoogleOauth2'
-  }.to change(User, :count).by(1)
+    }.to change(User, :count).by(1)
   end
 
 
@@ -64,9 +81,9 @@ RSpec.feature 'signup test' do
     click_link 'ログイン'
     expect{
       click_link 'Sign in with GoogleOauth2'
-  }.not_to change(User, :count)
-    
-
+    }.not_to change(User, :count)
   end
+
+ 
 
 end

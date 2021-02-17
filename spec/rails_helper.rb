@@ -38,7 +38,6 @@
 #   # If you're not using ActiveRecord, or you'd prefer not to run each of your
 #   # examples within a transaction, remove the following line or assign false
 #   # instead of true.
-#   config.use_transactional_fixtures = true
 
 #   # You can uncomment this line to turn off ActiveRecord support entirely.
 #   # config.use_active_record = false
@@ -148,7 +147,9 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  # config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
+  
 
   config.include Devise::Test::IntegrationHelpers, type: :request 
    #sign_inヘルパーを提供してくれます
@@ -189,7 +190,20 @@ RSpec.configure do |config|
     Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
   end
 
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+  config.after(:each) do
+    DatabaseCleaner.clean      
+  end
+
   config.include LoginHelper
   config.include FactoryBot::Syntax::Methods
+
 end
 
