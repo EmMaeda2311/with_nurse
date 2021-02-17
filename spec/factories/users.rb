@@ -6,6 +6,7 @@ FactoryBot.define do
         # { |n| "#{n}tester@example.com" }
         password { "foobar" }
         accepted {true}
+        confirmed_at { Date.today }
   end
   
   
@@ -15,6 +16,7 @@ FactoryBot.define do
         # { |n| "#{n}tester@example.com" }
         password { "foobar" }
         accepted {true}
+        confirmed_at { Date.today }
   end
   
 end
