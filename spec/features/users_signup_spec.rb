@@ -83,7 +83,7 @@ RSpec.feature 'signup test' do
   end
 
 
-  scenario "サインアップ済みユーザーの場合、ユーザーが増えない" do
+  scenario "google認証サインアップ済みユーザーの場合、ユーザーが増えない" do
     visit new_user_registration_path
     click_link 'Sign in with GoogleOauth2'
 
@@ -99,7 +99,7 @@ RSpec.feature 'signup test' do
       click_link 'Sign in with GoogleOauth2'
     }.not_to change(User, :count)
 
-    
+
   end
 
  

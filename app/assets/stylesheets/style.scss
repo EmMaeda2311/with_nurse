@@ -51,7 +51,9 @@ $baseColor:#efebe0;
   }
 }
 
-
+.flex{
+  display: flex;
+}
 
 .flash {
   width: 80%;
@@ -282,9 +284,13 @@ body{
   padding-left: 90px;
 }
 
-.delete_link{
+.delete_link, .password_link{
   text-align: end;
   margin-bottom: 30px;
+}
+
+.delete_link{
+  margin-left: auto;
 }
 
 .actions{

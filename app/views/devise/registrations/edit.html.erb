@@ -21,7 +21,7 @@
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
   
-    <div class="field">
+    <!-- <div class="field">
       <%= f.label :password %> <br />
       <%= f.password_field :password, autocomplete: "new-password" , class: "form-control form-control-comment" %>
       <% if @minimum_password_length %>
@@ -29,7 +29,7 @@
         <em><%= @minimum_password_length %> characters minimum</em>
       <% end %>
     </div>
-      <p class="comment">(変更したくない場合は空白のままにしてください)</p>
+      <p class="comment">(変更したくない場合は空白のままにしてください)</p> -->
 
  <!--   <div class="field">
       <%= f.label :current_password %> <br />
@@ -44,12 +44,20 @@
   
   <hr>
   
-  <div class="delete_link">
-    <h3>アカウントを削除する</h3>
-    
-    <p><%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <div class="flex">
+    <div class="password_link">
+      <h3>パスワードを変更</h3>
+      
+      <p><%= link_to "パスワード変更", user_password_path %></p>
+    </div>
+
+    <div class="delete_link">
+      <h3>アカウントを削除する</h3>
+      
+      <p><%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    </div>
+    <!--<%= link_to "Back", :back %>-->
   </div>
-  <!--<%= link_to "Back", :back %>-->
   
 </div>  
   
