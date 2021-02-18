@@ -13,7 +13,8 @@ class User < ApplicationRecord
   uniqueness: { case_sensitive: false}
   validates :password, presence: true, length: { minimum: 6},allow_nil: true
   # validates :accepted, presence:{message: 'に同意してください'}
-
+  attr_accessor :current_password
+  
   def self.find_or_create_for_oauth(auth)
     find_or_create_by!(email: auth.info.email) do |user|
       user.provider = auth.provider,
