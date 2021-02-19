@@ -4,20 +4,15 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions',
     :omniauth_callbacks => 'users/omniauth_callbacks',
     :confirmations => 'users/confirmations',
-    :passwords => 'users/passwords'
   }
   
   # devise :omniauthable: :omniauth_providers => [:google_oauth2]
   
-  
   devise_scope :user do
     get "sign_in", :to => "users/sessions#new"
     get "sign_out", :to => "users/sessions#destroy"
-    get '/users/password', to: 'devise/passwords#edit'
   end
 
-  resources :passwords, only: [:new, :create, :update]
-  
   root 'static_pages#home'
   get '/help' ,to: 'static_pages#help'
   get '/about', to: 'static_pages#about'

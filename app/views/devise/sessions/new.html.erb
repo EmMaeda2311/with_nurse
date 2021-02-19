@@ -30,4 +30,15 @@
   <% end %>
 </div>
 
-  <%= render "devise/shared/links" %>
+<%= render "devise/shared/links" %>
+<div class="password_link">
+<h3>パスワードを変更</h3>
+
+<p><%= link_to "パスワード変更", new_user_password_path %></p>
+
+<p>
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+<% end %>
+</p>
+</div>

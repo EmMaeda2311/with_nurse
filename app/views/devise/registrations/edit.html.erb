@@ -21,21 +21,23 @@
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
   
-    <!-- <div class="field">
-      <%= f.label :password %> <br />
-      <%= f.password_field :password, autocomplete: "new-password" , class: "form-control form-control-comment" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
-      <% end %>
-    </div>
-      <p class="comment">(変更したくない場合は空白のままにしてください)</p> -->
+    <%if current_user.uid == nil %>  
+      <div class="field">
+        <%= f.label :password %> <br />
+        <%= f.password_field :password, autocomplete: "new-password" , class: "form-control form-control-comment" %>
+        <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+      </div>
+        <p class="comment">(変更したくない場合は空白のままにしてください)</p>
 
- <!--   <div class="field">
-      <%= f.label :current_password %> <br />
-      <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control form-control-comment" %>
-    </div>
-      <p class="comment">(変更するには現在のパスワード入力が必要です)</p> -->
+      <div class="field">
+        <%= f.label :current_password %> <br />
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control form-control-comment" %>
+      </div>
+        <p class="comment">(変更するには現在のパスワード入力が必要です)</p> 
+    <% end %>
   
     <div class="actions">
       <%= f.submit "プロフィール変更" %>
@@ -48,7 +50,7 @@
     <div class="password_link">
       <h3>パスワードを変更</h3>
       
-      <p><%= link_to "パスワード変更", user_password_path %></p>
+      <p><%= link_to "パスワード変更", edit_user_password_path %></p>
     </div>
 
     <div class="delete_link">
