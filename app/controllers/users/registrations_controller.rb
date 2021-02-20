@@ -4,6 +4,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  # def index
+  #   @user = User.find_by(id: params[:id])
+  # end
   # GET /resource/sign_up
   # def new
   #   super
@@ -61,6 +64,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update_resource(resource, params)
-    resource.update_without_password(params)
+    if current_user.uid == nil
+      resource.update_with_password(params)
+    else
+      resource.update_without_password(params)
+    end
   end
 end

@@ -14,7 +14,7 @@ RSpec.feature "edit test", type: :feature do
     # ユーザー名とメールアドレスに現在のユーザー名とパスワードが表示されている
     expect(page).to have_field "user[username]", with: tester.username
     expect(page).to have_field "user[email]", with: tester.email
-    # expect(page).to have_field "user[current_password]"
+    expect(page).to have_field "user[current_password]"
     
     
     # ユーザーネーム、メールアドレス、現在のパスワードが空白でエラーを表示する
@@ -40,7 +40,7 @@ RSpec.feature "edit test", type: :feature do
     visit edit_user_registration_path
     fill_in "user[username]", with: "update_tester"
     fill_in "user[email]", with: tester.email
-    # fill_in "user[current_password]", with: "foobar"
+    fill_in "user[current_password]", with: "foobar"
     click_button "プロフィール変更"
     
     expect(page).to have_content "アカウント情報を変更しました。"
@@ -48,6 +48,13 @@ RSpec.feature "edit test", type: :feature do
       expect(page).to have_content "update_tester"
     end
   end
+
+
+  scenario "omniauth user successful edit" do
+    
+  end
+
+
   
   scenario "guest_user login request" do
     click_link "ログアウト"

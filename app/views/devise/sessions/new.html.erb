@@ -30,4 +30,15 @@
   <% end %>
 </div>
 
-  <%= render "devise/shared/links" %>
+<hr>
+
+  <div class="external-login">
+    <%= render "devise/shared/links" %>
+  </div>
+  
+<div class="password_link">
+<h3>パスワードを変更</h3>
+
+<p><%= link_to "パスワード変更", new_user_password_path %></p>
+
+</div>
