@@ -64,6 +64,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update_resource(resource, params)
-    resource.update_without_password(params)
+    if current_user.uid == nil
+      resource.update_with_password(params)
+    else
+      resource.update_without_password(params)
+    end
   end
 end
