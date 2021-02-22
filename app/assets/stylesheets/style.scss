@@ -234,6 +234,7 @@ body{
 .signup_title{
   display:flex;  
   justify-content:center;
+  margin-top: 50px;
   margin-bottom: 50px;
   h2{
     margin-left: 10px;
@@ -286,7 +287,7 @@ body{
 
 .delete_link, .password_link{
   text-align: end;
-  margin-bottom: 30px;
+  margin: 40px 30px 30px;
 }
 
 .delete_link{
@@ -297,7 +298,7 @@ body{
   margin: 30px auto 30px;
   text-align: center;
   input{
-    width: 200px;
+    width: 300px;
     padding: 10px;
     background: #f7c3bf;
     border-radius: 4px;

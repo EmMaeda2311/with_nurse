@@ -12,13 +12,10 @@ RSpec.feature 'signup test' do
     fill_in "user[email]", with: "tester@example.com"
     fill_in "user[password]", with: "password"
     check   'user[accepted]'
-    # expect{
-    #   click_button "新規登録"
-    # }.to change(User, :count).by(1)
     
     expect{
       click_button "新規登録"
-    }.to change{ ActionMailer::Base.deliveries.size }.by(1)
+    }.to change(User, :count).by(1).and change{ ActionMailer::Base.deliveries.size }.by(1)
 
     expect(page).to have_content '本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。'
 

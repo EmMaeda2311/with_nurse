@@ -49,12 +49,6 @@ RSpec.feature "edit test", type: :feature do
     end
   end
 
-
-  scenario "omniauth user successful edit" do
-    
-  end
-
-
   
   scenario "guest_user login request" do
     click_link "ログアウト"
@@ -64,6 +58,14 @@ RSpec.feature "edit test", type: :feature do
     expect(page).to have_content "アカウント登録もしくはログインしてください。"
     expect(page).to have_field "user[email]"
     expect(page).to have_field "user[password]"
+    
+  end
+
+  scenario "destroy user" do
+    visit edit_user_registration_path
+    expect{
+      click_button "アカウント削除"
+    }.to change(User, :count).by(-1)
     
   end
   
