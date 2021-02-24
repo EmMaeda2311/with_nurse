@@ -1,15 +1,19 @@
-<h2>パスワード再設定</h2>
+<div class="signup_title">
+  <%= image_tag 'logo2.png', alt: "With Nurse logo", width: "60px", height: "50px" %>
+  <h2>パスワード再設定</h2>
+</div>
+
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class: "form-control"%>
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "パスワード再設定用メールを送る" %>
   </div>
 <% end %>
 
