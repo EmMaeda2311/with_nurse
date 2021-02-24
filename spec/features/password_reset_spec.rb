@@ -30,12 +30,15 @@ RSpec.feature 'password_reset test', type: :feature do
     visit edit_user_password_path(reset_password_token: token)
 
     expect(page).to have_content 'パスワード再設定'
-    expect(page).to have_content '新 パスワード'
-    expect(page).to have_content '新 パスワード再入力'
+    expect(page).to have_field 'user[password]'
+    expect(page).to have_field 'user[password_confirmation]'
 
-    # find('user[reset_password_token]', visible: false).set(token)
-    # fill_in "user[password]", with:'password'
-    # fill_in "user[password_confirmation]", with:'password'
+    # expect( find("user[reset_password_token]" ,visible: false ).value ).to eq token
+  #パスワード変更のテスト未
+
+
+    fill_in "user[password]", with:'password'
+    fill_in "user[password_confirmation]", with:'password'
     
     click_button 'パスワードを変更する'
     

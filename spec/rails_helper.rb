@@ -204,6 +204,5 @@ RSpec.configure do |config|
 
   config.include LoginHelper
   config.include FactoryBot::Syntax::Methods
-
 end
 
