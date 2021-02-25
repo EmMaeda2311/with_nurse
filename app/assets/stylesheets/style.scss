@@ -38,7 +38,7 @@ $baseColor:#efebe0;
   display:flex;
   h1{
     margin-left: 10px;
-    font-family: 'Poppins', sans-serif;
+    // font-family: 'Poppins', sans-serif;
   }
 }
 
@@ -108,6 +108,9 @@ header{
 
 
 footer{
+
+  margin-top: 30px;
+  
   background:$baseColor;
   padding: 40px 0px 30px;
   .footer-contents{
@@ -352,7 +355,14 @@ body{
       background:#999;
     }
   
-  }
+  }  
   
 }
+// 記事投稿のcss
 
+.blog-title{
+  font-size: 20px;
+  font-weight: bold;
+  display: block;
+  padding-bottom: 10px;
+}

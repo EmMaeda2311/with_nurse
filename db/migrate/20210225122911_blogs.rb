@@ -1,0 +1,5 @@
+class Blogs < ActiveRecord::Migration[6.0]
+  def change
+    add_column :blogs, :title, :string
+  end
+end

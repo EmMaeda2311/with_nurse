@@ -1,0 +1,10 @@
+<hr>
+<li id="blog-<%= blog.id %>">
+  <span class="blog-title"><%= blog.title %></span>
+  <span class="content"><%= blog.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(blog.created_at) %> 前
+  </span><br>
+  <span class="user"><%= link_to blog.user.username, blog.user %></span>
+  <hr>
+</li>
