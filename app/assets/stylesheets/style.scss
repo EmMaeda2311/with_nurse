@@ -403,6 +403,9 @@ body{
     p{
       margin-top: 20px;
       font-size: 20px;
+      a{
+        color: #666;
+      }
     }
   }
 
@@ -414,7 +417,7 @@ body{
       border-radius: 5px;
 
       a{
-        color: #555;
+        color: #666;
         display: block;
         text-align: center;
         text-decoration: none;

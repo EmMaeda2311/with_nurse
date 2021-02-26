@@ -1,0 +1,10 @@
+<div class="container">
+  
+    <div class="col-md-8">
+      <h3>現在 <%= @blogs.count %> つの記事が投稿されています</h3>
+      <ol class="blog">
+        <%= render @blogs %>
+      </ol>
+      <%= will_paginate @blogs %>
+  </div>
+</div>
