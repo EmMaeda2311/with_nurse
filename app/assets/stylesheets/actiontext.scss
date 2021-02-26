@@ -10,36 +10,40 @@
 // images in galleries will be squished by the max-width: 33%; rule.
 // 
 
-  
-  .trix-content {
-    min-height: auto;
+trix-editor{
+  min-height: 300px !important;
 
-    .blog-create{
-      margin-bottom: 30px;
+}
+
+.trix-content {
+  min-height: auto;
+  
+  .blog-create{
+    margin-bottom: 30px;
+  }
+
+  .attachment-gallery {
+    > action-text-attachment,
+    > .attachment {
+      flex: 1 0 33%;
+      padding: 0 0.5em;
+      max-width: 33%;
     }
 
-    .attachment-gallery {
+    &.attachment-gallery--2,
+    &.attachment-gallery--4 {
       > action-text-attachment,
       > .attachment {
-        flex: 1 0 33%;
-        padding: 0 0.5em;
-        max-width: 33%;
-      }
-  
-      &.attachment-gallery--2,
-      &.attachment-gallery--4 {
-        > action-text-attachment,
-        > .attachment {
-          flex-basis: 50%;
-          max-width: 50%;
-        }
-      }
-    }
-  
-    action-text-attachment {
-      .attachment {
-        padding: 0;
-        max-width: 100%;
+        flex-basis: 50%;
+        max-width: 50%;
       }
     }
   }
+
+  action-text-attachment {
+    .attachment {
+      padding: 0;
+      max-width: 100%;
+    }
+  }
+}

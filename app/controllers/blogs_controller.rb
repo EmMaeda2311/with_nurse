@@ -10,9 +10,10 @@ class BlogsController < ApplicationController
     @blog = current_user.blogs.build(blog_params)
     if @blog.save
       flash[:success] = "あなたの看護を発信しました"
-      redirect_to users_show_path
+      redirect_to user_path(id: current_user.id)
     else
       render new_blog_path
+      flash[:alert] = "投稿に失敗しました"  
     end
   end
 
