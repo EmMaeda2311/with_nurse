@@ -38,7 +38,7 @@ $baseColor:#efebe0;
   display:flex;
   h1{
     margin-left: 10px;
-    font-family: 'Poppins', sans-serif;
+    // font-family: 'Poppins', sans-serif;
   }
 }
 
@@ -66,6 +66,10 @@ $baseColor:#efebe0;
   &__alert{
     background: $color-pink;
     
+  }
+
+  &__success{
+    background: $color-blue;
   }
   
   &__notice{
@@ -108,6 +112,9 @@ header{
 
 
 footer{
+
+  margin-top: 30px;
+  
   background:$baseColor;
   padding: 40px 0px 30px;
   .footer-contents{
@@ -352,7 +359,80 @@ body{
       background:#999;
     }
   
+  }  
+  
+}
+// 記事投稿のcss
+
+.users-blog{
+
+  .blog-title{
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 10px;
   }
   
+  .content{
+    margin-bottom: 30px;  
+  }
+
+  .brog-create{
+    float:right;
+  }
+  
+}
+
+
+//TOPページのMY情報
+
+#my-info{
+  border: 1px solid $baseColor;
+  border-radius: 10px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-around;
+  .img-name{
+    text-align: center;
+    .my-photo{
+      width: 100px;
+      height: 100px;
+      background-color: $baseColor;
+      border-radius: 50%;
+    }
+
+    p{
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  }
+
+  .my-action{
+    div{
+      padding: 10px;
+      width: 200px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+
+      a{
+        color: #555;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+      }
+    }
+
+    .my-page{
+      background-color: $color-pink;
+    }
+
+    .my-game{
+      background-color: $color-blue;
+    }
+
+    .new-blog{
+      background-color: $color-yellow;
+    }
+
+  }
 }
 
