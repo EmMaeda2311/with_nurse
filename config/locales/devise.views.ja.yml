@@ -100,3 +100,6 @@ ja:
     unlocks:
       new:
         resend_unlock_instructions: "アカウントの凍結解除方法を再送する"
+  time:
+    formats:
+      default: "%Y年%m月%d日"

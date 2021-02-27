@@ -18,6 +18,11 @@ class BlogsController < ApplicationController
   end
 
 
+  def show
+    @blog = Blog.find_by(id: params[:id])
+  end
+  
+
   def index
     @blogs = Blog.all.paginate(page: params[:page])
   end

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get '/help' ,to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
   get 'users/show'
+  # get ':username', to: 'users#show', as: :user
+
   
   resources :users, only: [:show]
   resources :blogs
