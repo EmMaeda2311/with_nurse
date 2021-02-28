@@ -6,9 +6,6 @@ RSpec.describe User, type: :model do
   let(:tester){FactoryBot.build(:tester,username: "tester")}
 
   describe "valid user" do
-    # let(:tester){
-    #   FactoryBot.build(:tester, username: "tester name",email: "tester@example.com")
-    # }
     it { is_expected.to be_valid }
     
     describe "email validation should accept valid addresses" do

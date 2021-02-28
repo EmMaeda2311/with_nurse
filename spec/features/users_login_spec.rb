@@ -24,14 +24,11 @@ RSpec.feature 'login test', type: :feature do
     fill_in "パスワード", with: tester.password
     click_button "ログイン"
     
-     within 'header' do
+    within 'header' do
       expect(page).not_to have_content 'ログイン'
       expect(page).to have_content "tester"
     end
     expect(page).to have_content 'ログインしました。'
-    expect(page).to have_content 'Users#show'
-    
-    
   end
   
 
