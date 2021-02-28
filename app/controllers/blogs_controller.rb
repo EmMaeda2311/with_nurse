@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   # before_action :correct_user, only:[:create,:destroy,:show]
-
+    before_action :authenticate_user!, only: [:new, :create, :update, :delete]
 
   def new
     @blog = Blog.new
@@ -16,6 +16,17 @@ class BlogsController < ApplicationController
       flash[:alert] = "投稿に失敗しました"  
     end
   end
+
+
+  def show
+    @blog = Blog.find_by(id: params[:id])
+  end
+  
+
+  def index
+    @blogs = Blog.all.paginate(page: params[:page])
+  end
+
 
 
   private
