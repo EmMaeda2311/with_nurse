@@ -6,6 +6,7 @@ module LoginHelper
     click_link "ログイン"
     fill_in "メールアドレス", with: tester.email
     fill_in "パスワード", with: tester.password
+
     within '.actions' do
       click_on "ログイン"
     end

@@ -53,7 +53,13 @@ $baseColor:#efebe0;
 
 .flex{
   display: flex;
+  align-items: flex-end;
+  & > h3{
+    margin-left: 20px;
+  }
 }
+
+
 
 .flash {
   width: 80%;

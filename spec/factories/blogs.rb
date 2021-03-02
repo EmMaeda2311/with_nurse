@@ -1,9 +1,27 @@
 FactoryBot.define do
-  factory :blog do
-    title { "Test Title"}
+  factory :blog ,class: Blog do
+    sequence(:title) {|n| "Test Title#{n}"}
     content { "MyText" }
     association :user, factory: :tester
-    #ここはuserモデルのidとblogモデルのuser_idを連携させたい。引数がわからん
-    user_id{1}
   end
+
+
+  factory :blog1 ,class: Blog do
+    sequence(:title) {|n| "Test Title#{n}"}
+    content { "MyText" }
+    association :user, factory: :tester
+  end
+
+  factory :blog2 ,class: Blog do
+    sequence(:title) {|n| "Test Title#{n}"}
+    content { "MyText" }
+    association :user, factory: :tester
+  end
+
+  factory :blog3 ,class: Blog do
+    sequence(:title) {|n| "Test Title#{n}"}
+    content { "MyText" }
+    association :user, factory: :tester
+  end
+
 end
