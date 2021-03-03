@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   # before_action :correct_user, only:[:create,:destroy,:show]
-    before_action :authenticate_user!, only: [:new, :create, :update, :delete]
+    before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
 
   def new
     @blog = Blog.new
@@ -25,6 +25,9 @@ class BlogsController < ApplicationController
 
   def index
     @blogs = Blog.all.paginate(page: params[:page])
+  end
+
+  def destroy
   end
 
 
