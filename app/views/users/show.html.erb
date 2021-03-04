@@ -3,8 +3,12 @@
   <h1><%= current_user.username%></h1>
   <h3>の看護記事 (<%= @user.blogs.count %>)</h3>
   </div>
+
+  <div class="actions new-blog-btn" , style="padding:10px; width:80%;  border-radius: 5px;">
+    <%= link_to "あなたの看護を発信する", new_blog_path %>            
+  </div>
   
-    <div class="col-md-8">
+  <div class="col-md-8">
     <% if @user.blogs.any? %>
       <ol class="blog">
         <%= render @blogs %>

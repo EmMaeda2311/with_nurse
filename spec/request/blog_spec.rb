@@ -22,10 +22,32 @@ RSpec.describe "Blogs" ,type: :request do
     end
   end
 
-  describe "ログインユーザー" do
 
+
+
+
+  describe "ログインユーザー" do
+    
+    before do
+      sign_in tester
+    end
+    
     it "testerを削除すると、testerのblogが削除されること" do
       expect{ tester.destroy }.to change{ tester.blogs.count }.by(-tester.blogs.count)
+    end
+
+    it "新規投稿画面" do
+      get new_blog_path
+      expect(response).to have_http_status ( 200 )
+    end
+
+    it "ブログ投稿" do
+      expect{ post blogs_path, params:{ blog: {title:"test", content:"text"}} }.to change{ tester.blogs.count }.by(1)
+    end
+
+    it "ブログ削除" do
+      delete blog_path(blog)
+      expect(response).to have_http_status(204)
     end
 
   end

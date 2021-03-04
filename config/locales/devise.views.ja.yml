@@ -32,7 +32,7 @@ ja:
         remember_me: "ログインを記憶"
         accepted: "利用規約、及び、個人情報の取扱"
     models:
-      user: "ユーザ"
+      user: "ユーザー"
   devise:
     confirmations:
       new:
