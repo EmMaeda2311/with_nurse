@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   # before_action :correct_user, only:[:create,:destroy,:show]
-    before_action :authenticate_user!, only: [:new, :create, :update, :delete]
+    before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
 
   def new
     @blog = Blog.new
@@ -10,10 +10,10 @@ class BlogsController < ApplicationController
     @blog = current_user.blogs.build(blog_params)
     if @blog.save
       flash[:success] = "あなたの看護を発信しました"
-      redirect_to user_path(id: current_user.id)
+      redirect_to @blog
     else
-      render new_blog_path
-      flash[:alert] = "投稿に失敗しました"  
+      render "new"
+      flash.now[:alert] = "投稿に失敗しました"  
     end
   end
 
@@ -25,6 +25,9 @@ class BlogsController < ApplicationController
 
   def index
     @blogs = Blog.all.paginate(page: params[:page])
+  end
+
+  def destroy
   end
 
 

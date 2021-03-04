@@ -10,4 +10,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
   end
+
+  private
+  
+  def correct_user
+    @user = User.find_by(id: params[:id])
+    if @user == nil || @user != current_user
+      redirect_to(root_url)
+    end
+  end
+  
 end

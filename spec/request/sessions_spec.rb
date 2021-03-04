@@ -6,6 +6,20 @@ RSpec.describe "Sessions" ,type: :request do
   let(:guest_user_params) { attributes_for(:user, name: "") }
   let(:another_tester){FactoryBot.create(:another_tester)}
   
+
+  describe "サインアップできる" do
+    it "new_signup_page" do
+      get new_user_registration_path
+      expect(response).to have_http_status(200)
+    end
+
+    it "signup" do
+      expect{ post user_registration_path, params:{ blog: {username: "masa", email: "tester@example.com", password: "foobar"}}}.to change{ User.count }.by(0)
+    end
+      
+  end
+
+
   describe "get new page" do  
     it "sign_in returns a 200 request" do
       get new_user_session_path
@@ -80,8 +94,14 @@ RSpec.describe "Sessions" ,type: :request do
      it "show_page responds a 302" do
       user_id = tester.id
       get "/users/#{user_id}"
-      # expect(response).to have_http_status (302)
-      expect(response).to redirect_to new_user_session_path
+      expect(response).to have_http_status (302)
+      # expect(response).to redirect_to new_user_session_path
+    end
+
+    it "delete responds a 302" do
+      user_id = tester.id
+      delete user_registration_path
+      expect(response).to have_http_status (302)
     end
     
     it "unless loginn user redirect_to login_page" do

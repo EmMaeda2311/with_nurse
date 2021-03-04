@@ -42,3 +42,7 @@
   </div>
 
 </div>
+
+<% if resource.errors.any? %>
+  <%= javascript_pack_tag 'users/render' %>
+<%end%>

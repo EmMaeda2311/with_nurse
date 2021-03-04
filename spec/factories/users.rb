@@ -10,7 +10,7 @@ FactoryBot.define do
         confirmed_at { Date.today }
 
         after(:create) do |tester|
-            create_list(:blog, 5, user: tester)
+            create_list(:blog, 43, user: tester)
         end
   end
   
