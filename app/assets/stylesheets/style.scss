@@ -33,7 +33,6 @@ $baseColor:#efebe0;
   }
 }
 
-
 .logo-title{
   display:flex;
   h1{
@@ -391,6 +390,7 @@ body{
 // 記事投稿のcss
 
 .users-blog{
+  margin-top: 50px;
   a{
     color: #666;
   }
@@ -490,6 +490,7 @@ body{
 }
 .new-blog-btn{
   background: $color-yellow;
+  font-weight: bold;
   width: 300px;
   padding: 10px;
   border-radius: 5px;
@@ -497,3 +498,20 @@ body{
   border: none;
 }
 
+.action-btn{
+  a{
+    color: #fff;
+    font-weight: bold;
+  }
+  width: 300px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  margin: 30px auto;
+}
+
+.edit-icon{
+  margin-left: auto;
+
+}

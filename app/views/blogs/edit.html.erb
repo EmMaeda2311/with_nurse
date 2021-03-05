@@ -1,7 +1,6 @@
 <div class="container">
-  <h2>新規作成</h2>
-  <%= form_with model: @blog, local:true do |form| %>
-  
+  <h2>記事編集</h2>
+  <%= form_with model: @blog do |form| %>
   <%= render '/shared/error_messages', object: form.object %>
     
 
@@ -18,11 +17,11 @@
     <hr>
 
     <div class="form-label-group col-md-3 mx-auto brog-create">
-      <%= form.submit "作成", class: "btn btn-lg btn-pink btn-block" %>
+      <%= form.submit "編集", class: "btn btn-lg btn-pink btn-block" %>
     </div>
   <% end %>
 </div>
-<%# 下記を追加%>
+
 <% if @blog.errors.any? %>
   <%= javascript_pack_tag 'blogs/render' %>
 <%end%>
