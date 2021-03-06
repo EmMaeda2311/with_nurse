@@ -515,3 +515,15 @@ body{
   margin-left: auto;
 
 }
+
+
+.delete-link{
+  margin-left: 30px;
+  a{
+    color: #666;
+    cursor: pointer;
+    &:hover{
+      color:#666;
+    }
+  } 
+}

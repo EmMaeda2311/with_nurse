@@ -18,10 +18,16 @@
       </div>
     </div>
 
-    <div class="edit-icon">
-     <%= link_to image_tag("edit.png",alt: "編集" ,width: "20px"), edit_blog_path(blog)%>
-    </div>
-      
+    <% if current_user == blog.user %>
+      <div class="edit-icon">
+      <%= link_to image_tag("edit.png",alt: "編集" ,width: "20px"), edit_blog_path(blog)%>
+      </div>
+
+      <div class="delete-link">
+        <%= link_to "削除", blog, method: :delete, data:{ confirm:"削除しますか？"} %>
+      </div>
+    <%end%>
+
   </li>
  </ul>
   <hr>
