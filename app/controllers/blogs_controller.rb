@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
-  # before_action :correct_user, only:[:create,:destroy,:show]
-    before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit,:update, :destroy]
+  before_action :correct_user, only: :destroy
 
   def new
     @blog = Blog.new
@@ -9,7 +9,7 @@ class BlogsController < ApplicationController
   def create
     @blog = current_user.blogs.build(blog_params)
     if @blog.save
-      flash[:success] = "あなたの看護を発信しました"
+      flash[:success] = "記事 「#{@blog.title}」 を投稿しました"
       redirect_to @blog
     else
       render "new"
@@ -17,6 +17,18 @@ class BlogsController < ApplicationController
     end
   end
 
+  def edit
+    @blog = Blog.find(params[:id])
+  end
+
+  def update
+    @blog = Blog.find(params[:id])
+    if @blog.update(blog_params)
+      redirect_to blog_path
+    else
+      render "edit"
+    end
+  end
 
   def show
     @blog = Blog.find_by(id: params[:id])
@@ -28,6 +40,9 @@ class BlogsController < ApplicationController
   end
 
   def destroy
+    @blog.destroy
+    flash[:success] = "記事 「#{@blog.title}」 を削除しました"
+    redirect_to request.referrer || root_url
   end
 
 
@@ -37,4 +52,10 @@ class BlogsController < ApplicationController
   def blog_params
     params.require(:blog).permit(:title, :content)
   end
+
+  def correct_user
+   @blog = current_user.blogs.find_by(id: params[:id])
+   redirect_to root_url if @blog.nil?
+  end
+
 end

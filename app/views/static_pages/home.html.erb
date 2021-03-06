@@ -23,14 +23,30 @@
           
           <div class="new-blog">
             <%= link_to "自分の看護を発信する", new_blog_path %>            
-          </div>
-        
+          </div>        
         </div>
 
+
+
+
+
       </div>
-    </div>
     
+      <div class="col-md-8 blog-index">
+        <h3>みんなの看護</h3>
+        <ol class="blog">
+          <%= render Blog.limit(10) %>
+        </ol>
+        
+        <div class="action-btn btn-blue">
+          <%= link_to "もっと見る", blogs_path %>            
+        </div>
+      </div>
+
+
+    </div>
   </section>
+
   
   <% else %>
    <div class="top">

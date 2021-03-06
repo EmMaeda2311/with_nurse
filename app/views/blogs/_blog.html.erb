@@ -1,15 +1,34 @@
 <div class="users-blog">
-  <hr>
-  <li id="blog-<%= blog.id %>">
-    <div class="blog-title"><%= link_to blog.title, blog_path(blog) %></div>
-    <div class="content"><%= strip_tags(blog.content.to_s).gsub(/[\n]/,"").strip.truncate(20) %></div>
-    <div class="flex">
-      <div class="user"><%= link_to blog.user.username, blog.user %></div>
-      <div class="timestamp">
-        <%= l blog.created_at %> に投稿
+ <ul>
+  <li id="blog-<%= blog.id %>" class="flex">
+    <div>
+      <div class="blog-title">
+        <%= link_to blog.title, blog_path(blog) %>
+      </div>
+      <div class="content">
+        <%= strip_tags(blog.content.to_s).gsub(/[\n]/,"").strip.truncate(20) %>
+      </div>
+      <div class="flex">
+        <div class="user">
+          <%= link_to blog.user.username, blog.user %>
+        </div>
+        <div class="timestamp">
+          <%= l blog.created_at %> に投稿
+        </div>
       </div>
     </div>
 
-    <hr>
+    <% if current_user == blog.user %>
+      <div class="edit-icon">
+      <%= link_to image_tag("edit.png",alt: "編集" ,width: "20px"), edit_blog_path(blog)%>
+      </div>
+
+      <div class="delete-link">
+        <%= link_to "削除", blog, method: :delete, data:{ confirm:"削除しますか？"} %>
+      </div>
+    <%end%>
+
   </li>
+ </ul>
+  <hr>
 </div>
