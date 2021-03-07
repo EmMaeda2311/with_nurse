@@ -31,6 +31,9 @@ ja:
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
         accepted: "利用規約、及び、個人情報の取扱"
+      blog:
+        title: "タイトル"
+        content: "本文"
     models:
       user: "ユーザー"
   devise:

@@ -3,15 +3,23 @@ require 'date'
 
 RSpec.feature 'blog interface', type: :feature do
   let!(:blog){ create(:blog)}
+  let!(:blog2){ create(:blog2)}
   let!(:tester){ blog.user }
+  let!(:tester2){ blog2.user }
+  # let(:tester2){ create(:tester2) }
 
-  scenario "new post blog" do
+  scenario "ブログ新規投稿" do
     valid_login(tester)
 
     within 'header' do
       expect(page).not_to have_content 'ログイン'
       expect(page).to have_content "tester"
     end
+    
+    
+    expect(page).to have_content "みんなの看護"
+    expect(all('div.users-blog').size).to eq(10)
+
 
     click_link "自分の看護を発信する"
     expect(page).to have_content "新規作成"
@@ -19,16 +27,17 @@ RSpec.feature 'blog interface', type: :feature do
     expect(page).to have_content "本文"
     expect(page).to have_css "trix-editor"
     
-    fill_in "blog[title]", with: "test title"
+    fill_in "タイトル", with: "test title"
     # fill_in_rich_text_area "blog_content" ,with: "testだよ"
 
     click_button "作成"
 
-    expect(page).to have_content "Contentを入力してください"
+    expect(page).to have_content "本文を入力してください"
 
   end
 
-  scenario "ブログの変更画面" do
+
+  scenario "ブログの変更画面と詳細ページの表示" do
     valid_login(tester)
     day = blog.created_at
     blog_time = day.strftime("%Y年%m月%d日")
@@ -39,15 +48,53 @@ RSpec.feature 'blog interface', type: :feature do
 
     
     within first('.edit-icon') do
-      click_link "編集"
+      click_link "編集"#画像リンク
     end
 
     expect(page).to have_content "記事編集"
-    expect(page).to have_field "blog_title", with: "Test Title1"
+    expect(page).to have_field "タイトル", with: blog.title
     # expect(page).to have_field "blog_content"
 
-    
+    fill_in "タイトル", with: "変更後のタイトル"
+
+    click_button "編集"
+
+    #ブログ記事の詳細ページの表示
+    expect(page).to have_content "変更後のタイトル"
+    expect(page).to have_link "編集"#画像リンク
+    expect(page).to have_link "削除"
+  end
+
+  scenario "ブログの一覧ページの表示" do
+    visit root_url
+    click_link "みんなの看護を見る"
+
+
+    expect(page).to have_content "#{Blog.all.count} の看護が投稿されています"
+
+    expect(all('div.users-blog').size).to eq(30)
+    expect(page).to have_selector "div.pagination"
+
 
   end
 
+
+  # scenario "他ユーザーのブログは編集削除リンクが表示されていない" do
+  #   valid_login(tester2)
+  #   within 'header' do
+  #     expect(page).not_to have_content 'ログイン'
+  #     expect(page).to have_content "tester2"
+  #   end
+
+  #   expect(page).to have_content "みんなの看護"
+  #   expect(all('div.users-blog').size).to eq(10)
+  #   expect(page).to have_selector 'div.user', text: 'tester2'
+  #   expect(page).to have_selector 'div.user', text: 'tester' 
+    
+    
+  #   expect(page).to have_link "編集"#画像リンク
+  #   expect(page).to have_link "削除"
+  #   # expect('tester2'.size).to eq(10)
+  #   expect('div.delete-link'.size).to eq(28)
+  # end
 end

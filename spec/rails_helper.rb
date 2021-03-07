@@ -150,7 +150,7 @@ RSpec.configure do |config|
   # config.use_transactional_fixtures = true
   config.use_transactional_fixtures = false
   
-  config.include ActionTextHelper, type: :features
+  config.include ActionTextHelper
   config.include Devise::Test::IntegrationHelpers, type: :request 
    #sign_inヘルパーを提供してくれます
 

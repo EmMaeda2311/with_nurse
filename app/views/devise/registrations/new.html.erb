@@ -8,17 +8,17 @@
     <!--<%= render "devise/shared/error_messages", resource: resource %>-->
         <%= devise_error_messages %>
      <div class="field">
-      <%= f.label :ユーザーネーム %><br />
+      <%= f.label :username %><br />
       <%= f.text_field :username, class: "form-control" %>
     </div>
     
     <div class="field">
-      <%= f.label :メールアドレス %><br />
+      <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control" %>
     </div>
   
     <div class="field">
-      <%= f.label :パスワード %>
+      <%= f.label :password %>
       <% if @minimum_password_length %>
       <!--<em>(<%= @minimum_password_length %> characters minimum)</em>-->
       <% end %><br />

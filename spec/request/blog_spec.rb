@@ -28,7 +28,7 @@ RSpec.describe "Blogs" ,type: :request do
 
     it "update blog but not update" do
       patch blog_path(blog), params:{ blog: {title:"test2",content:"text2"}}
-      expect(blog.reload.title).to eq ("Test Title1")
+      expect(blog.reload.title).not_to eq ("test2")
     end
 
     it "blogs index page request 200" do

@@ -4,8 +4,8 @@ module LoginHelper
   def valid_login(user)
     visit root_path
     click_link "ログイン"
-    fill_in "メールアドレス", with: tester.email
-    fill_in "パスワード", with: tester.password
+    fill_in "メールアドレス", with: user.email
+    fill_in "パスワード", with: user.password
 
     within '.actions' do
       click_on "ログイン"

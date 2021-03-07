@@ -15,15 +15,21 @@ FactoryBot.define do
   end
   
   
-  factory :another_tester , class: User do
+  factory :tester2 , class: User do
       #   sequence(:id){ |n| n }
       #   id{2}
-        username{ "teser2" }
+        username{ "tester2" }
         sequence(:email,"tester2@example.com") 
         # { |n| "#{n}tester@example.com" }
         password { "foobar" }
         accepted {true}
         confirmed_at { Date.today }
+        
+        after(:create) do |tester2|
+          create_list(:blog, 2, user: tester2)
+        end
   end
+
+  
   
 end
