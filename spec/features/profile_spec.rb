@@ -23,7 +23,7 @@ RSpec.feature 'login test', type: :feature do
     
     expect(page).to have_content "の看護記事"
     expect(page).to have_content "の看護記事 (#{tester.blogs.count})"
-    expect(page).to have_content "Test Title#{tester.blogs.count}"
+    expect(page).to have_content "Test Title #{tester.blogs.count}"
 
     expect(page).to have_selector '.pagination'
     expect(page).to have_content "Next Label"

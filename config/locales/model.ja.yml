@@ -1,0 +1,8 @@
+ja:
+  blogs:
+    new:
+      title: 'タイトル'
+      content: '本文'
+    edit:
+      title: 'タイトル'
+      content: '本文'

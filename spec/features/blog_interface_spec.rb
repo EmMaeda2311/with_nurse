@@ -12,6 +12,10 @@ RSpec.feature 'blog interface', type: :feature do
       expect(page).not_to have_content 'ログイン'
       expect(page).to have_content "tester"
     end
+    
+    
+    # expect(page).to have_content ""
+
 
     click_link "自分の看護を発信する"
     expect(page).to have_content "新規作成"
@@ -24,7 +28,7 @@ RSpec.feature 'blog interface', type: :feature do
 
     click_button "作成"
 
-    expect(page).to have_content "Contentを入力してください"
+    expect(page).to have_content "本文を入力してください"
 
   end
 
@@ -43,7 +47,7 @@ RSpec.feature 'blog interface', type: :feature do
     end
 
     expect(page).to have_content "記事編集"
-    expect(page).to have_field "blog_title", with: "Test Title1"
+    expect(page).to have_field "blog_title", with: blog.title
     # expect(page).to have_field "blog_content"
 
     
