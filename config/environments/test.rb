@@ -6,6 +6,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+
+  config.active_storage.service = :local
+  
   config.cache_classes = false
   config.action_view.cache_template_loading = true
 
