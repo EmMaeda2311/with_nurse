@@ -9,6 +9,11 @@ FactoryBot.define do
         accepted {true}
         confirmed_at { Date.today }
 
+
+        after(:build) do |tester|
+          tester.avatar.attach(io: File.open('spec/fixtures/images/test_image.png'), filename: 'test_image.png', content_type: 'image/png')
+        end
+        
         after(:create) do |tester|
             create_list(:blog, 43, user: tester)
         end

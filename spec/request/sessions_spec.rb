@@ -4,7 +4,7 @@ RSpec.describe "Sessions" ,type: :request do
   let(:tester) { FactoryBot.create(:tester)}
   let(:tester_params) { attributes_for(:tester) }
   let(:guest_user_params) { attributes_for(:user, name: "") }
-  let(:another_tester){FactoryBot.create(:another_tester)}
+  let(:tester2){FactoryBot.create(:tester2)}
   
 
   describe "サインアップできる" do
@@ -49,8 +49,8 @@ RSpec.describe "Sessions" ,type: :request do
     end
     
     
-    it "can`t access another_tester_page" do
-      get "/users/#{another_tester.id}"
+    it "can`t access tester2_page" do
+      get "/users/#{tester2.id}"
       expect(response).to redirect_to( root_url )
     end
     

@@ -1,11 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Poppins:wght@700&display=swap');
+// @import 'font-awesome-sprockets';
+// @import "font-awesome"
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
 
 $color-pink: #f7c3bf;
 $color-blue: #8ac8cf;
 $color-yellow:#f8b500;
 $baseColor:#efebe0;
+
+
+
 .btn-pink{
   background:$color-pink;
   color:#fff;
@@ -19,8 +24,8 @@ $baseColor:#efebe0;
   background:$color-blue;
   color:#fff;
   &:hover{
-  background:#5291c4;
-  color:#fff;
+    background:#5291c4;
+    color:#fff;
   }
 }
 
@@ -28,8 +33,8 @@ $baseColor:#efebe0;
   background:$color-yellow;
   color:#fff;
   &:hover{
-  background:#f8c845;
-  color:#fff;
+    background:#f8c845;
+    color:#fff;
   }
 }
 
@@ -45,8 +50,8 @@ $baseColor:#efebe0;
   color: #666;
   text-decoration: none;
   &:hover{
-  text-decoration: none;
-  color:#666;
+    text-decoration: none;
+    color:#666;
   }
 }
 
@@ -59,12 +64,32 @@ $baseColor:#efebe0;
 }
 
 
+
+
 .my-photo{
   width: 150px;
   height: 150px;
   background-color: $baseColor;
   border-radius: 50%;
   margin: 0px auto 30px;
+  box-sizing: border-box;
+  position: relative;
+  img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  label{
+    cursor: pointer;
+    font-size: 3em;
+    color: #999;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+  }
+
 }
 
 

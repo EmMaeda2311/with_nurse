@@ -24,7 +24,7 @@ ja:
               invalid: "が違います。"
     attributes:
       user:
-        username: "ユーザー名"
+        username: "アカウント名"
         current_password: "現在のパスワード"
         email: "メールアドレス"
         password: "パスワード"

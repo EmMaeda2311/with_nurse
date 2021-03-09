@@ -4,9 +4,13 @@ RSpec.feature "edit test", type: :feature do
   let(:tester){ FactoryBot.create(:tester) }
   let(:another_tester){FactoryBot.create(:another_tester)}
   
+
+  
   before do 
     valid_login(tester)
   end
+  
+
   
   scenario "miss edit" do
     visit edit_user_registration_path
@@ -22,7 +26,7 @@ RSpec.feature "edit test", type: :feature do
     fill_in "user[email]", with: "　　　"
     
     click_button "プロフィール変更"
-    blank_error_messages = %w[ユーザー名 が入力されていません メールアドレス が入力されていません。 メールアドレス は有効でありません。]
+    blank_error_messages = %w[アカウント名 が入力されていません メールアドレス が入力されていません。 メールアドレス は有効でありません。]
     blank_error_messages.each do |blank_error_message|
       expect(page).to have_content blank_error_message
     end
@@ -47,6 +51,21 @@ RSpec.feature "edit test", type: :feature do
      within 'header' do
       expect(page).to have_content "update_tester"
     end
+  end
+
+
+  scenario "edit avatar image" do
+    click_link "avatar"
+    expect(page).to have_content "プロフィール変更"
+    expect(page).to have_content "アカウント名"
+    attach_file 'file-input', "#{Rails.root}/spec/fixtures/images/test_image.png", visible: false
+
+    fill_in "現在のパスワード", with: tester.password
+    click_button "プロフィール変更"
+    expect(page).to have_content "スキルを鍛える"
+
+    expect(page).to have_selector("img[src$='test_image.png']")
+
   end
 
   
