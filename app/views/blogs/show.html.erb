@@ -1,16 +1,27 @@
  <div class="container blog-content">
+    
+  <h1><%= @blog.title%></h1>
+      
   <div class="flex">
-    <h1><%= @blog.title%></h1>
-        <div class="edit-icon">
+    
+      <%if current_user.already_liked?(@blog) %>
+        <div class="liked"><%= link_to "#{@blog.likes.count} Good Nurse", blog_like_path(@blog), method: :delete %></div>
+      <% else %>
+         <div class="like"><%= link_to "#{@blog.likes.count} Good Nurse", blog_likes_path(@blog), method: :post %></div>      
+      <% end %>
+    
+    
+    <div class="edit-icon">
       <%= link_to image_tag("edit.png",alt: "編集" ,width: "20px"), edit_blog_path%>
-      </div>
+    </div>
 
-      <div class="delete-link">
-        <%= link_to "削除", @blog, method: :delete, data:{ confirm:"削除しますか？"} %>
-      </div>
-
+    <div class="delete-link">
+      <%= link_to "削除", @blog, method: :delete, data:{ confirm:"削除しますか？"} %>
+    </div>
   </div>
+
   <hr>
+  
   <div class="col-md-8">
     <%= @blog.content %>
   </div>

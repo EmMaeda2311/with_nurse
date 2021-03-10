@@ -556,3 +556,20 @@ body{
     }
   } 
 }
+
+
+.like{
+  padding:15px;
+  background-color: $color-blue;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.liked{
+  padding:15px;
+  background-color: $color-pink;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #fff;
+}

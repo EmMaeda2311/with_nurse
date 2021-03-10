@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   
   
   resources :users, only: [:show]
-  resources :blogs
+  resources :blogs do
+    resources :likes, only: [:create, :destroy]  
+  end
 
 
 
