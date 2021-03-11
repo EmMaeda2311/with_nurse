@@ -6,7 +6,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @blog = Blog.find( params[:blog_id])
+    @blog = Blog.find( params[:blog_id] )
     @like = current_user.likes.find_by(blog_id: @blog.id)
     @like.destroy
     redirect_back(fallback_location: root_path)

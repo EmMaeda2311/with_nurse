@@ -20,10 +20,10 @@ Rails.application.routes.draw do
   # get ':username', to: 'users#show', as: :users
   
   
-  resources :users, only: [:show]
   resources :blogs do
     resources :likes, only: [:create, :destroy]  
   end
+  resources :users, only: [:show]
 
 
 
