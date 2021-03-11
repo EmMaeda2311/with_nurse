@@ -10,7 +10,7 @@
           <div class="my-photo">
           
             <% if current_user.avatar.attached? %>
-              <%= link_to image_tag(current_user.avatar.variant(combine_options:{gravity: :center, resize:"150x150^", crop:"150x150+0+0"}).processed, alt: "avatar"), edit_user_registration_path%>
+              <%= link_to image_tag(current_user.avatar.variant(resize_to_fill: [150, 150]).processed, alt: "avatar"), edit_user_registration_path%>
             <% else %>
               <%= link_to image_tag("nurse.png",alt: "avatar" ,width: "100px"), edit_user_registration_path %>
             <% end %>
