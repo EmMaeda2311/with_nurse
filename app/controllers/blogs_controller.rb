@@ -32,6 +32,7 @@ class BlogsController < ApplicationController
 
   def show
     @blog = Blog.find_by(id: params[:id])
+    @like = Like.new
   end
   
 
