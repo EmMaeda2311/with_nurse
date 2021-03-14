@@ -1,10 +1,10 @@
 <template>
   <div id="like">
-    <div v-if="isLiked" @click="deleteLike()">
-      いいねを取り消す {{ count }}
+    <div v-if="isLiked" @click="deleteLike()" class="liked">
+      Good Nurse {{ count }}
     </div>
-    <div v-else @click="registerLike()">
-      いいねする {{ count }}
+    <div v-else @click="registerLike()" class="like">
+      Good Nurse {{ count }}
     </div>
   </div>
 </template>

@@ -557,6 +557,10 @@ body{
   } 
 }
 
+#like{
+  cursor: pointer;
+  user-select: none;
+}
 
 .like{
   padding:15px;
