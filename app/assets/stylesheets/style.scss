@@ -557,19 +557,28 @@ body{
   } 
 }
 
+#like{
+  cursor: pointer;
+  user-select: none;
+}
 
-.like{
-  padding:15px;
-  background-color: $color-blue;
+.like ,.liked{
+  padding:10px;
   border-radius: 5px;
   font-weight: bold;
+  width: fit-content;
+  margin-bottom: 20px;
   color: #fff;
+  a{
+    color: #fff;
+  }
+}
+
+
+.like{
+  background-color: $color-blue;
 }
 
 .liked{
-  padding:15px;
   background-color: $color-pink;
-  border-radius: 5px;
-  font-weight: bold;
-  color: #fff;
 }

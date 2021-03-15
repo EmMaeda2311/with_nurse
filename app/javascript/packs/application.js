@@ -18,7 +18,7 @@ require("channels")
 
 require("trix")
 require("@rails/actiontext")
-require("blogs/render")
-require("users/render")
+// require("blogs/render")
+// require("users/render")
 
 import '@fortawesome/fontawesome-free/js/all';

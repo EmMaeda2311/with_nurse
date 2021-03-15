@@ -8,6 +8,18 @@
       <div class="content">
         <%= strip_tags(blog.content.to_s).gsub(/[\n]/,"").strip.truncate(20) %>
       </div>
+      <% if user_signed_in? %>
+        <%if current_user.already_liked?(blog) %>
+          <div class="liked"><%= "#{blog.likes.count} Good Nurse" %></div>
+        <% else %>
+          <div class="like"><%= "#{blog.likes.count} Good Nurse" %></div>      
+        <% end %>
+      
+      <% else %>
+        <div class="like"><%= "#{blog.likes.count} Good Nurse" %></div>
+      <%end%>
+
+
       <div class="flex">
         <div class="user">
           <%= link_to blog.user.username, blog.user %>

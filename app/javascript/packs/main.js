@@ -5,17 +5,26 @@
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
-import Vue from 'vue'
-import App from '../app.vue'
+import { $ } from '@rails/ujs'
+import Vue from '@vue'
+// import Vue from "vue/dist/vue/vue.esm.js";
+import LikeButton from '../components/Like/LikeButton.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
-  const app = new Vue({
-    render: h => h(App)
-  }).$mount()
-  document.body.appendChild(app.$el)
-
-  console.log(app)
+  new Vue({
+    el: '#like',
+    components: { LikeButton }
+    // render: h => h( LikeButton ,{ props: document.getElementById('like-list').dataset })
+  })
 })
+// document.addEventListener('DOMContentLoaded', () => {
+//   const app = new Vue({
+//     render: h => h(App)
+//   }).$mount()
+//   document.body.appendChild(app.$el)
+
+//   console.log(app)
+// })
 
 
 // The above code uses Vue without the compiler, which means you cannot
