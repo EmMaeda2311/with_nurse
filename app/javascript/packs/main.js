@@ -5,15 +5,26 @@
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
-import { $ } from '@rails/ujs'
 import Vue from '@vue'
 // import Vue from "vue/dist/vue/vue.esm.js";
 import LikeButton from '../components/Like/LikeButton.vue'
+
+import Modal from '../components/Modal/Modal.vue'
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   new Vue({
     el: '#like',
     components: { LikeButton }
+    // render: h => h( LikeButton ,{ props: document.getElementById('like-list').dataset })
+  })
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+  new Vue({
+    el: '#modal',
+    components: { Modal }
     // render: h => h( LikeButton ,{ props: document.getElementById('like-list').dataset })
   })
 })

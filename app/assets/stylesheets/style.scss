@@ -582,3 +582,31 @@ body{
 .liked{
   background-color: $color-pink;
 }
+
+.el-modal{
+  visibility: hidden;
+
+  &__holder{
+    position: absolute;
+    padding: 40px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1100;
+    background-color: #fff;
+    width: 50%;
+    height: 50%;
+    border-radius: 10px;
+  }
+  &__overlay{
+    position: absolute;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+  }
+
+  &[aria-hidden=false]{
+    visibility: visible;
+  }
+}

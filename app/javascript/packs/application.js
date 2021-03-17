@@ -18,6 +18,7 @@ require("channels")
 
 require("trix")
 require("@rails/actiontext")
+
 // require("blogs/render")
 // require("users/render")
 
