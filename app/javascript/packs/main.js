@@ -11,6 +11,12 @@ import LikeButton from '../components/Like/LikeButton.vue'
 
 import Modal from '../components/Modal/Modal.vue'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+library.add(fas)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     components: { Modal }
     // render: h => h( LikeButton ,{ props: document.getElementById('like-list').dataset })
   })
+  console.log("test")
 })
 // document.addEventListener('DOMContentLoaded', () => {
 //   const app = new Vue({

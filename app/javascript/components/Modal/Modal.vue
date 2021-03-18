@@ -1,12 +1,15 @@
 <template>
   <div>
+   
     <div class="el-modal" :aria-hidden="isOpen ? 'false' : 'true'">
       <div class="el-modal__holder">
-        <button @click="close()">閉じる</button>
+        <button @click="close()"><font-awesome-icon :icon= "['fas', 'times']" /></button>
+        <div class="change-avatar">サムネイルを変更する</div>
+        <div class="delete-avatar">初期に戻す</div>
       </div>
-      <div class="el-modal__overlay"></div>
+      <div @click="close()" class="el-modal__overlay"></div>
     </div>
-    <button @click="open()">開く</button>
+    <div @click="open()"><font-awesome-icon :icon= "['fas', 'portrait']" /></div>
   </div>
 </template>
 

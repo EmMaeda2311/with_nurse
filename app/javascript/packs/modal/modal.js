@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   new Vue({
     el: '#modal',
     components: { Modal }
-
+    // render: h => h( LikeButton ,{ props: document.getElementById('like-list').dataset })
   })
+  console.log("test")
 })
