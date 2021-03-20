@@ -75,11 +75,12 @@ $baseColor:#efebe0;
   box-sizing: border-box;
   position: relative;
   img{
-    width: 100%;
-    height: 100%;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
+    object-fit: cover;
   }
-  .portrait{
+  .portrait, label{
     cursor: pointer;
     font-size: 3em;
     color: #999;
@@ -622,6 +623,7 @@ body{
     border-radius: 5px;
     width: auto;
     color: #fff;
+    cursor: pointer;
   }
   .change-avatar{
     background-color: $color-pink;
