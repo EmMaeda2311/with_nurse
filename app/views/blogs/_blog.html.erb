@@ -5,6 +5,17 @@
       <div class="blog-title">
         <%= link_to blog.title, blog_path(blog) %>
       </div>
+      
+      <div class="tags">
+          <ul class="flex" style="list-style:none;">
+            <% blog.tags.each do |tag| %>
+                <li class="tag-list">
+                  <%= tag.name %>
+                </li>
+            <% end %>      
+          </ul>
+      </div>
+
       <div class="content">
         <%= strip_tags(blog.content.to_s).gsub(/[\n]/,"").strip.truncate(20) %>
       </div>

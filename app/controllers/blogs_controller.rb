@@ -8,7 +8,9 @@ class BlogsController < ApplicationController
   
   def create
     @blog = current_user.blogs.build(blog_params)
+    tag_list = params[:blog][:tag_ids].split(',')
     if @blog.save
+      @blog.save_tags(tag_list)
       flash[:success] = "記事 「#{@blog.title}」 を投稿しました"
       redirect_to @blog
     else
@@ -19,11 +21,14 @@ class BlogsController < ApplicationController
 
   def edit
     @blog = Blog.find(params[:id])
+    @tag_list = @blog.tags.pluck(:name).join(",")
   end
 
   def update
     @blog = Blog.find(params[:id])
-    if @blog.update(blog_params)
+    tag_list = params[:blog][:tag_ids].split(',')
+    if @blog.update_attributes(blog_params)
+      @blog.save_tags(tag_list)
       redirect_to blog_path
     else
       render "edit"
@@ -43,7 +48,7 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     flash[:success] = "記事 「#{@blog.title}」 を削除しました"
-    redirect_to request.referrer || root_url
+    redirect_to root_url
   end
 
 

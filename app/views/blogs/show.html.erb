@@ -1,7 +1,17 @@
  <div class="container blog-content">
     
   <h1><%= @blog.title%></h1>
-      
+  
+  <div class="tags">
+    <ul class="flex" style="list-style:none;">
+      <% @blog.tags.each do |tag| %>
+          <li class="tag-list">
+            <%= tag.name %>
+          </li>
+      <% end %>      
+    </ul>
+  </div>
+
   <div class="flex">
     
   <!--    <%if current_user.already_liked?(@blog) %>
