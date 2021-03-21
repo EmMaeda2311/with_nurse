@@ -4,12 +4,65 @@
 // @import "font-awesome"
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
 
+
+
 $color-pink: #f7c3bf;
 $color-blue: #8ac8cf;
 $color-yellow:#f8b500;
 $baseColor:#efebe0;
 
 
+.logo-title{
+  display:flex;
+  h1{
+    margin-left: 10px;
+    font-size: 30px;
+    
+    // font-family: 'Poppins', sans-serif;
+  }
+
+  img{
+    width: 60px;
+    margin-top: 10px;
+  }
+}
+
+.Editlink{
+  color: #666;
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+    color:#666;
+  }
+}
+
+header{
+    
+  .nav-menu{
+      display:flex;
+      align-items: center;
+      // justify-content:space-between;
+  }
+  
+  ul{
+    margin-top: 10px;
+    margin-left: auto;
+    display:flex;
+   li{
+      list-style: none;
+      margin-left: 20px;
+    }
+   }
+   
+   .login_user_menu{
+     margin-left: auto;
+     a{
+       color: #666;
+       margin-left: 10px;
+     }
+   }
+    
+}
 
 .btn-pink{
   background:$color-pink;
@@ -38,22 +91,56 @@ $baseColor:#efebe0;
   }
 }
 
-.logo-title{
-  display:flex;
-  h1{
-    margin-left: 10px;
-    // font-family: 'Poppins', sans-serif;
+.top{
+  text-align: center;
+  .toppng{
+    margin-bottom: 50px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  h2{
+    font-size: 20px;
+  }
+
+}
+
+.blogs{
+  .like-png{
+    text-align: center;
+    margin-bottom: 20px;
+    img{
+      width: 200px;
+    }
+  }
+  .Explanation{
+    & > p:first-child{
+      text-align: center; 
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .your-nurse{
+    }
+
+    .btn{
+      display: block;
+      margin-top: 20px;
+    }
   }
 }
 
-.Editlink{
-  color: #666;
-  text-decoration: none;
-  &:hover{
-    text-decoration: none;
-    color:#666;
+@media (min-width: 600px){
+
+  .logo-title{
+    h1{
+      font-size: 36px; 
+    }
   }
-}
+
+
+
 
 .flex{
   display: flex;
@@ -136,32 +223,7 @@ body{
   letter-spacing: 1.5;
 }
 
-header{
-    
-    .nav-menu{
-        display:flex;
-        align-items: center;
-        // justify-content:space-between;
-    }
-    
-    ul{
-      margin-left: auto;
-      display:flex;
-     li{
-        list-style: none;
-        margin-left: 20px;
-      }
-     }
-     
-     .login_user_menu{
-       margin-left: auto;
-       a{
-         color: #666;
-         margin-left: 10px;
-       }
-     }
-      
-}
+
 
 
 footer{
@@ -213,82 +275,85 @@ $gray-medium-light: #eaeaea;
 }
 
 
-body{
-  .toppng{
-    margin-bottom: 80px;
+
+.toppng{
+  margin-bottom: 80px;
+  width: 100%;
+  height: auto;
+  object-fit: initial;
+}
+
+
+.top{
+  margin-bottom: 30px;
+    h2{
+      font-size: 30px;
+    }
+}
+
+section{
+  padding: 60px 30px 60px;
+  line-height: 20px;
+  &:nth-of-type(2){
+    background:$baseColor;
+    padding: 80px 30px 80px;
   }
   
+}
+
+
+.blogs{
+  display:flex;
+  justify-content:space-evenly;
+  .Explanation{
+    & > p:first-child{
+      text-align: center; 
+      font-size: 1.5em;
+      margin-bottom: 30px;
+    }
+    .btn{
+      display: block;
+      margin-top: 30px;
+    }
+  }
+}
+
+.skill{
+  display:flex;
+  flex-direction: row-reverse;
+  justify-content:space-evenly;
+  .Explanation{
+    p:first-child{
+      text-align: center; 
+      font-size: 1.5em;
+      margin-bottom: 30px;
+    }
+    .btn{
+      display: block;
+      margin-top: 30px;
+    }
+  }
+}
+
+
+.introduction{
+  text-align: center;
   h2{
-    text-align: center;
-  }
-  
-  .top{
     margin-bottom: 30px;
   }
   
-  section{
-    padding: 60px 30px 60px;
-    line-height: 20px;
-    &:nth-of-type(2){
-      background:$baseColor;
-      padding: 80px 30px 80px;
-    }
-    
+  p{
+    margin-bottom: 20px;
   }
-  
-  
-  .blogs{
-    display:flex;
-    justify-content:space-evenly;
-    .Explanation{
-      p:first-child{
-       text-align: center; 
-       font-size: 1.5em;
-       margin-bottom: 30px;
-      }
-      .btn{
-        display: block;
-        margin-top: 30px;
-      }
-    }
-  }
-
-  .skill{
-    display:flex;
-    flex-direction: row-reverse;
-    justify-content:space-evenly;
-    .Explanation{
-      p:first-child{
-       text-align: center; 
-       font-size: 1.5em;
-       margin-bottom: 30px;
-      }
-      .btn{
-        display: block;
-        margin-top: 30px;
-      }
-    }
-  }
-  
-  
-  .introduction{
-    text-align: center;
-    h2{
-      margin-bottom: 30px;
-    }
-    
-    p{
-      margin-bottom: 20px;
-    }
-    .btn{
-      width:300px;
-      margin-top: 30px;
-    }    
-    
-  }
-  
+  .btn{
+    width:300px;
+    margin-top: 30px;
+  }    
   
 }
+
+
+
 
 //新規登録画面 & ログイン
 .signup_title{
@@ -651,3 +716,4 @@ body{
 }
 
 
+}
