@@ -31,5 +31,10 @@ class Blog < ApplicationRecord
       self.tags << blog_tag
     end
   end
+  
+  def self.search(search)
+    return Blog.all unless search
+    Blog.where(['title LIKE ?', "%#{search}%"])
+  end
 
 end

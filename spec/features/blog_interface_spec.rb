@@ -56,13 +56,18 @@ RSpec.feature 'blog interface', type: :feature do
     # expect(page).to have_field "blog_content"
 
     fill_in "タイトル", with: "変更後のタイトル"
-
+    fill_in "タグをつける。複数つけるには’,’で区切ってください。　例: 循環器,救急看護",with: "test-tag1,test-tag2,　, 半角スペース"
     click_button "編集"
 
     #ブログ記事の詳細ページの表示
     expect(page).to have_content "変更後のタイトル"
     expect(page).to have_link "編集"#画像リンク
     expect(page).to have_link "削除"
+
+    expect(page).to have_selector '.tag-list', text: 'test-tag1'
+    expect(page).to have_selector '.tag-list', text: 'test-tag2'
+    expect(page).to have_selector '.tag-list', text: '半角スペース'
+    expect(page).not_to have_selector '.tag-list', text: '　'
   end
 
   scenario "ブログの一覧ページの表示" do
@@ -74,8 +79,6 @@ RSpec.feature 'blog interface', type: :feature do
 
     expect(all('div.users-blog').size).to eq(30)
     expect(page).to have_selector "div.pagination"
-
-
   end
 
 

@@ -7,7 +7,7 @@ environment.loaders.prepend('vue', vue)
 environment.toWebpackConfig().merge({
   resolve: {
     alias: {
-      '@vue': 'vue/dist/vue.esm.js'
+      'vue': 'vue/dist/vue.esm.js'
     }
   }
 });

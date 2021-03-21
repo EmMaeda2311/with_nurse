@@ -8,11 +8,20 @@ class BlogsController < ApplicationController
   
   def create
     @blog = current_user.blogs.build(blog_params)
-    tag_list = params[:blog][:tag_ids].split(',')
+    tag_list = params[:blog][:tag_ids].split(',').uniq
+    delete_tags = [" ","　"]
+    
+    tag_list.delete_if do |str|
+      delete_tags.include?(str)
+    end
+
     if @blog.save
-      @blog.save_tags(tag_list)
+      if @blog.save_tags(tag_list)
       flash[:success] = "記事 「#{@blog.title}」 を投稿しました"
       redirect_to @blog
+      else
+        return false
+      end
     else
       render "new"
       flash.now[:alert] = "投稿に失敗しました"  
@@ -42,7 +51,20 @@ class BlogsController < ApplicationController
   
 
   def index
-    @blogs = Blog.all.paginate(page: params[:page])
+    # @blogs = Blog.all.paginate(page: params[:page])
+    @blogs = Blog.search(params[:search]).paginate(page: params[:page])
+
+      # if (params[:tag_id] and params[:search]).present?
+      #   Blog.all.paginate(page: params[:page])
+      # elsif params[:tag_id].present?
+      #   Blog.search(params[:search]).blogs.paginate(page: params[:page])
+      # elsif params[:search].present?
+      #   Tag.find(params[:tag_id]).blogs.paginate(page: params[:page])
+      # end
+
+
+    # params[:tag_id].present? ? Tag.find(params[:tag_id]).blogs.paginate(page: params[:page]) : Blog.all.paginate(page: params[:page])
+    
   end
 
   def destroy
