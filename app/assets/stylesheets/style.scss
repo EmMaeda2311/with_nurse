@@ -63,9 +63,6 @@ $baseColor:#efebe0;
   }
 }
 
-
-
-
 .my-photo{
   width: 150px;
   height: 150px;
@@ -446,7 +443,19 @@ body{
   .user{
     margin-right: 20px;
   }
-  
+}
+
+.tags{
+  ul{
+    padding: 0;
+  }
+
+  .tag-list{
+    padding: 7px;
+    margin-right: 5px;
+    background-color: $baseColor;
+    border-radius: 4px;
+  }
 }
 
 .blog-content{
@@ -462,6 +471,11 @@ body{
 
   a{
     color: #666;
+  }
+
+  .btn{
+    display: block;
+    margin-left: auto;
   }
 }
 
@@ -633,4 +647,7 @@ body{
   .delete-avatar{
     background-color: $color-blue;
   }
+
 }
+
+

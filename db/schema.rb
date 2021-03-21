@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_10_002350) do
+ActiveRecord::Schema.define(version: 2021_03_20_125852) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +62,22 @@ ActiveRecord::Schema.define(version: 2021_03_10_002350) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "tag_relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "blog_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["blog_id", "tag_id"], name: "index_tag_relationships_on_blog_id_and_tag_id", unique: true
+    t.index ["blog_id"], name: "index_tag_relationships_on_blog_id"
+    t.index ["tag_id"], name: "index_tag_relationships_on_tag_id"
+  end
+
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -96,4 +112,6 @@ ActiveRecord::Schema.define(version: 2021_03_10_002350) do
   add_foreign_key "blogs", "users"
   add_foreign_key "likes", "blogs"
   add_foreign_key "likes", "users"
+  add_foreign_key "tag_relationships", "blogs"
+  add_foreign_key "tag_relationships", "tags"
 end
