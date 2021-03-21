@@ -60,22 +60,24 @@
   <% else %>
    <div class="top">
     <%= image_tag 'TOP.png', width: "100%", class: "toppng" %>
-    <h2 class="mb5">すべてのナースのためのWEBサービス</h2>
+    <h2>すべてのナースのためのWEBサービス</h2>
   </div>
   
   <section>
     <div class="container blogs">
-      <div>
+      <div class="like-png">
         <%= image_tag 'like.png',width: "250px"%>
       </div>
       <div class="Explanation">
         <p>ナース専用のソーシャルメディア<p>
-        <p>あなただけの看護が誰かの看護を色づけます。<br>
-        あなたの看護をアウトプットしませんか？<br>
-        あなたしか発信できないことがあります。<br></p>
-    
-        <p>色鮮やかなナースたちの看護・情報・知識が集まる<br>
-        場所を作ろう</p>
+        <div class="your-nurse">
+          <p>あなただけの看護が誰かの看護を色づけます。<br>
+          あなたの看護をアウトプットしませんか？<br>
+          あなたしか発信できないことがあります。<br></p>
+      
+          <p>色鮮やかなナースたちの看護・情報・知識が集まる<br>
+          場所を作ろう</p>
+        </div>
         <div class="btn btn-lg btn-pink"><%= link_to "みんなの看護を見る", blogs_path %></div>
       </div>  
     </div>  
