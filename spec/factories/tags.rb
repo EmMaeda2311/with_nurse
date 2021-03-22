@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :tag1 ,class:Tag do
     name { "tag1" }
+    association :blog, factory: :blog1
   end
   
   factory :tag2 ,class:Tag do

@@ -35,8 +35,8 @@ class BlogsController < ApplicationController
 
   def update
     @blog = Blog.find(params[:id])
-    tag_list = params[:blog][:tag_ids].split(',')
-    if @blog.update_attributes(blog_params)
+    tag_list = params[:blog][:tag_ids].split(',').uniq
+    if @blog.update(blog_params)
       @blog.save_tags(tag_list)
       redirect_to blog_path
     else
