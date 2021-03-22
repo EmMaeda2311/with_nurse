@@ -24,7 +24,7 @@ RSpec.describe Blog, type: :model do
 
     describe "title blank" do
       let(:blog){FactoryBot.build(:blog, content: " " )}
-    it { is_expected.to be_invalid }
+      it { is_expected.to be_invalid }
     end
   end
 

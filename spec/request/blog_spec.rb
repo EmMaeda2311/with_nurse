@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Blogs" ,type: :request do
 
   let(:blog) { create(:blog) }
+  let(:blog1) { build(:blog1)}
   let!(:tester){ blog.user }
 
   describe "ログインユーザーではない" do
@@ -57,7 +58,7 @@ RSpec.describe "Blogs" ,type: :request do
     end
 
     it "post blog" do
-      expect{ post blogs_path, params:{ blog: {title:"test", content:"text"}} }.to change{ tester.blogs.count }.by(1)
+      expect{ post blogs_path, params:{ blog: {title:"test", content:"text",tag_ids:"tag1,tag2"}} }.to change{ tester.blogs.count }.by(1)
     end
 
     it "edit blog page request 200" do
@@ -66,7 +67,7 @@ RSpec.describe "Blogs" ,type: :request do
     end
 
     it "update blog" do
-      patch blog_path(blog), params:{ blog: {title:"test2",content:"text2"}}
+      patch blog_path(blog), params:{ blog: {title:"test2",content:"text2",tag_ids:"tag1"}}
       expect(blog.reload.title).to eq ("test2")
     end
 
