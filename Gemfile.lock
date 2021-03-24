@@ -320,7 +320,7 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap-will_paginate (= 1.0.0)
   byebug
-  capybara (>= 2.15)
+  capybara
   database_cleaner
   devise
   devise-i18n
