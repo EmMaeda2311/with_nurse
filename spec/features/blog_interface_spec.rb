@@ -37,7 +37,7 @@ RSpec.feature 'blog interface', type: :feature do
   end
 
 
-  scenario "ブログの変更画面と詳細ページの表示" do
+  scenario "ブログの変更画面と詳細ページの表示とタグ検索" do
     valid_login(tester)
     day = blog.created_at
     blog_time = day.strftime("%Y年%m月%d日")
@@ -68,17 +68,26 @@ RSpec.feature 'blog interface', type: :feature do
     expect(page).to have_selector '.tag-list', text: 'test-tag2'
     expect(page).to have_selector '.tag-list', text: '半角スペース'
     expect(page).not_to have_selector '.tag-list', text: '　'
+
+
+
+
   end
 
-  scenario "ブログの一覧ページの表示" do
+  scenario "ブログの一覧ページの表示とテキスト検索" do
     visit root_url
     click_link "みんなの看護を見る"
 
 
-    expect(page).to have_content "#{Blog.all.count} の看護が投稿されています"
+    expect(page).to have_content "#{Blog.all.count} 件の看護が投稿されています"
 
     expect(all('div.users-blog').size).to eq(30)
     expect(page).to have_selector "div.pagination"
+
+    fill_in "search", with: "Test Title 2"
+    click_button "検索"
+
+    expect(page).to have_content "3 件の看護が投稿されています"
   end
 
 

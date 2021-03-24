@@ -179,6 +179,12 @@ footer{
   .logo-title{
     margin-bottom: 30px;
   }
+
+  .footerLeft{
+    img{
+      
+    }
+  }
   
   .footerCenter, .footerRight{
     p{
@@ -472,10 +478,15 @@ body{
   a{
     color: #666;
   }
-
-  .btn{
+  
+  .btn-yellow{
     display: block;
     margin-left: auto;
+  }
+
+  .search-btn{
+    display: block;
+    margin-left: 20px;
   }
 }
 

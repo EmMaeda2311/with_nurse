@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :blog ,class: Blog do
     # sequence(:title) {|n| "Test Title#{n}"}
-    title {"Test Title 44"}
+    title {"Test Title 0"}
     content { "MyText" }
     association :user, factory: :tester
   end
@@ -15,7 +15,8 @@ FactoryBot.define do
   end
 
   factory :blog2 ,class: Blog do
-    sequence(:title) {|n| "Test Title#{n}"}
+    # sequence(:title) {|n| "Test Title#{n}"}
+    title {"Test Title 2"}
     content { "MyText" }
     association :user, factory: :tester2
   end

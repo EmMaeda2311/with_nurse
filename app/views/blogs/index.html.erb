@@ -1,10 +1,10 @@
 <div class="container">
   
     <div class="col-md-8 blog-index">
-      <h3> <%= @blogs.count %> の看護が投稿されています</h3>
+      <h3> <%= @blogs.count %> 件の看護が投稿されています</h3>
 
 
-    <%= form_tag(blogs_path, :method =>" get") do %>
+   <!-- <%= form_tag(blogs_path, :method =>" get") do %>
       <%= select_tag :tag_id,
       options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
       {
@@ -12,12 +12,27 @@
         onchange: 'submit(this.form);',
         class: "form-control"
       }%>
+    <% end %> -->
+
+
+    <%= form_with url: blogs_path, method: :get do %>
+      <%= select_tag :tag_id,
+        options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+        {
+          prompt: 'タグで絞り込み',
+          class: 'form-control',
+          onchange: 'submit(this.form);'
+      }%>
     <% end %>
 
     <%= form_tag(blogs_path, :method => "get") do %>
-      <%= text_field_tag :search , " ",class: "form-control", style: "margin:10px 0;" %> 
-      <%= submit_tag "検索" ,:title => nil, :class=>"btn btn-yellow" %> 
-    <% end %> 
+      <%= text_field_tag :search , "",class: "form-control", style: "margin:10px 0;" %> 
+
+      <div class="flex">
+        <%= submit_tag "検索" ,:title => nil, :class=>"btn btn-yellow" %> 
+        <div><%= reset_tag '検索条件をリセット',class: "btn btn-blue search-btn" %></div>
+      </div>
+    <% end %>
 
       <ol class="blog">
         <%= render @blogs %>
