@@ -55,7 +55,7 @@ RSpec.feature "edit test", type: :feature do
 
 
   scenario "edit avatar image" do
-    click_link "avatar"
+    click_link "プロフィール変更"
     expect(page).to have_content "プロフィール変更"
     expect(page).to have_content "アカウント名"
     attach_file 'file-input', "#{Rails.root}/spec/fixtures/images/test_image.png", visible: false

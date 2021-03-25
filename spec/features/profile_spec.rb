@@ -21,9 +21,9 @@ RSpec.feature 'login test', type: :feature do
     click_on "マイページへ"
 
     
-    expect(page).to have_content "の看護記事"
-    expect(page).to have_content "の看護記事 (#{tester.blogs.count})"
-    expect(page).to have_content "Test Title #{tester.blogs.count}"
+    expect(page).to have_content "の看護"
+    expect(page).to have_content "#{tester.username}さんの看護"
+    expect(page).to have_content "#{tester.blogs.count}"
 
     expect(page).to have_selector '.pagination'
     expect(page).to have_content "Next Label"

@@ -49,9 +49,9 @@ RSpec.describe "Sessions" ,type: :request do
     end
     
     
-    it "can`t access tester2_page" do
+    it "access tester2_page" do
       get "/users/#{tester2.id}"
-      expect(response).to redirect_to( root_url )
+      expect(response).to have_http_status (200)
     end
     
     it "is not exist user" do

@@ -1,13 +1,52 @@
 <div class="container">
-  <div class="flex">
-  <h1><%= current_user.username%></h1>
-  <h3>の看護記事 (<%= @user.blogs.count %>)</h3>
+
+  <div id="my-info">
+    <div class="img-name">
+      <div class="my-photo">
+      
+        <% if @user.avatar.attached? %>
+          <%= image_tag(@user.avatar.variant(resize_to_fill:[150,150]), alt: "avatar") %>
+        <% else %>
+          <%= image_tag("nurse.png",alt: "avatar" ,width: "100px") %>
+        <% end %>
+
+      </div>
+      
+      <p><%= link_to @user.username, user_path(id: current_user.id) %><p>
+    </div>
+
+    <div class="my-action">
+
+      <div class="my-status flex">
+        <p>フォロー</p>
+        <p>0</p>
+      </div>
+      
+      <div class="my-status flex">
+      <p>フォロワー</p>
+      <p>0</p>
+      
+      </div>
+      
+      <div class="my-status flex" style="margin-bottom:40px;">
+        <p><%= @user.username%>さんの看護</p>
+        <p><%= @user.blogs.count %></p>
+      </div>
+      
+      <% if @user == current_user%>
+        <div class="new-blog">
+          <%= link_to "あなたの看護を発信する", new_blog_path %>            
+        </div>
+      <% end %>        
+    </div>
+
+
   </div>
 
-  <div class="actions new-blog-btn" , style="padding:10px; width:80%;  border-radius: 5px;">
-    <%= link_to "あなたの看護を発信する", new_blog_path %>            
-  </div>
-  
+
+ <div class="your-blogs">
+  <h3><%= @user.username%>さんの看護</h3>
+
   <div class="col-md-8">
     <% if @user.blogs.any? %>
       <ol class="blog">
@@ -16,4 +55,5 @@
       <%= will_paginate @blogs %>
     <% end %>
   </div>
+ </div>
 </div>
