@@ -137,7 +137,7 @@ body{
 }
 
 header{
-    
+    margin-bottom: 40px;
     .nav-menu{
         display:flex;
         align-items: center;
@@ -432,6 +432,10 @@ body{
     color: #666;
   }
 
+  .flex{
+    align-items: baseline;
+  }
+
   .blog-title{
     font-size: 20px;
     font-weight: bold;
@@ -449,9 +453,21 @@ body{
   .user{
     margin-right: 20px;
   }
+  .small-avatar{
+    border: solid 1px $baseColor;
+    margin-right: 10px;
+    border-radius: 50%;
+    
+    img{
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+    }
+  }
 }
 
 .tags{
+  margin-bottom: 20px;
   ul{
     padding: 0;
   }
@@ -487,6 +503,14 @@ body{
   .search-btn{
     display: block;
     margin-left: 20px;
+  }
+
+  .blog{
+    padding: 0;
+  }
+
+  .btn-blue{
+    cursor: pointer;
   }
 }
 
@@ -528,21 +552,40 @@ body{
       }
     }
 
+    .my-status{
+      padding: 0;
+      margin: 0 0 15px;
+      p:last-child{
+        margin-left: auto;
+      }
+
+    }
+
+    
+    
+    
     .my-page{
       background-color: $color-pink;
     }
-
+    
     .my-game{
       background-color: $color-blue;
     }
-
+    
     .new-blog{
       background-color: $color-yellow;
     }
-
+    
   }
-
 }
+
+.your-blogs{
+  margin-top: 40px;
+  .blog{
+    padding: 0;
+  }
+}
+
 .new-blog-btn{
   background: $color-yellow;
   font-weight: bold;

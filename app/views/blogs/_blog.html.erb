@@ -32,6 +32,14 @@
 
 
       <div class="flex">
+        <div class="small-avatar">
+          <% if blog.user.avatar.attached? %>
+            <%= link_to image_tag(blog.user.avatar.variant(resize_to_fill:[30,30]), alt: "avatar"), user_path(blog.user)%>
+          <% else %>
+            <%= link_to image_tag("nurse.png",alt: "avatar" ,width: "100px"), user_path(user) %>
+          <% end %>          
+        </div>
+
         <div class="user">
           <%= link_to blog.user.username, blog.user %>
         </div>

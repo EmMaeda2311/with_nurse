@@ -29,6 +29,10 @@ FactoryBot.define do
         password { "foobar" }
         accepted {true}
         confirmed_at { Date.today }
+
+        after(:build) do |tester|
+          tester.avatar.attach(io: File.open('spec/fixtures/images/test_image.png'), filename: 'test_image.png', content_type: 'image/png')
+        end
         
         after(:create) do |tester2|
           create_list(:blog2, 2, user: tester2)

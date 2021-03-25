@@ -88,6 +88,25 @@ RSpec.feature 'blog interface', type: :feature do
     click_button "検索"
 
     expect(page).to have_content "3 件の看護が投稿されています"
+
+
+  end
+
+  scenario "ブログから別ユーザーのマイページが閲覧できる" do
+    valid_login(tester)
+    visit root_url
+    click_link "もっと見る"
+
+    expect(page).to have_content "tester2"
+
+
+    within first('.users-blog') do
+      click_link "tester2"
+    end
+
+    expect(page).to have_content "tester2さんの看護"
+    expect(page).to have_content "#{tester2.blogs.count}"    
+
   end
 
 
