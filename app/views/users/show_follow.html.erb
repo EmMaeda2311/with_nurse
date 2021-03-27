@@ -1,0 +1,44 @@
+<div class="container">
+  <div id="my-info">
+    <div class="img-name">
+      <div class="my-photo">
+      
+        <% if @user.avatar.attached? %>
+          <%= image_tag(@user.avatar.variant(resize_to_fill:[150,150]), alt: "avatar") %>
+        <% else %>
+          <%= image_tag("nurse.png",alt: "avatar" ,width: "100px") %>
+        <% end %>
+
+      </div>
+      
+      <p><%= link_to @user.username, user_path(id: current_user.id) %><p>
+    </div>
+
+    <div class="my-action">
+
+      <div class="my-status flex">
+        <p>フォロー</p>
+        <p id="following" class="stat">
+          <%= @user.following.count %>
+        </p>
+      </div>
+      
+      <div class="my-status flex">
+        <p>フォロワー</p>
+        <p id="following" class="stat">
+          <%= @user.followers.count %>
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <h3><%= @title %></h3>
+  <% if @users.any? %>
+    <ul class="users follow">
+      <%= render @users %>
+    </ul>
+    <%= will_paginate %>
+  <% end %>
+</div>

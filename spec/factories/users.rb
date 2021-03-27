@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :tester , class: User do
-      #   id {1}
+        # id {1}
         sequence(:id){ |n| n }
         username { "tester" }
         sequence(:email,"tester1@example.com") 
@@ -22,7 +22,7 @@ FactoryBot.define do
   
   factory :tester2 , class: User do
       #   sequence(:id){ |n| n }
-      #   id{2}
+        # id{2}
         username{ "tester2" }
         sequence(:email,"tester2@example.com") 
         # { |n| "#{n}tester@example.com" }
