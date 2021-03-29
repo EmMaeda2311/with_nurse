@@ -30,7 +30,7 @@ FactoryBot.define do
         accepted {true}
         confirmed_at { Date.today }
 
-        after(:build) do |tester|
+        after(:create) do |tester|
           tester.avatar.attach(io: File.open('spec/fixtures/images/test_image.png'), filename: 'test_image.png', content_type: 'image/png')
         end
         

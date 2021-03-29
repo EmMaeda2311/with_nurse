@@ -1,14 +1,15 @@
 require 'rails_helper'
 require 'date'
 
-RSpec.feature 'blog interface', type: :feature do
+RSpec.describe 'blog interface',type: :system do
   let!(:blog){ create(:blog)}
   let!(:blog2){ create(:blog2)}
   let!(:tester){ blog.user }
   let!(:tester2){ blog2.user }
-  # let(:tester2){ create(:tester2) }
 
-  scenario "ブログ新規投稿" do
+
+  scenario "ブログ新規投稿", use_truncation: false, js:true do
+
     valid_login(tester)
 
     within 'header' do
@@ -28,11 +29,11 @@ RSpec.feature 'blog interface', type: :feature do
     expect(page).to have_css "trix-editor"
     
     fill_in "タイトル", with: "test title"
-    # fill_in_rich_text_area "blog_content" ,with: "testだよ"
+    fill_in_rich_text_area "blog_content" ,with: "testだよ"
 
     click_button "作成"
 
-    expect(page).to have_content "本文を入力してください"
+    expect(page).to have_content "「test title」 を投稿しました"
 
   end
 
@@ -94,8 +95,6 @@ RSpec.feature 'blog interface', type: :feature do
 
   scenario "ブログから別ユーザーのマイページが閲覧できる" do
     valid_login(tester)
-    visit root_url
-    click_link "もっと見る"
 
     expect(page).to have_content "tester2"
 
