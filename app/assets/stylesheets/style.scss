@@ -466,6 +466,13 @@ body{
   }
 }
 
+.middle-avatar{
+  margin-bottom: 10px;
+  img{
+    border-radius: 50%;
+  }
+
+}
 .tags{
   margin-bottom: 20px;
   ul{
@@ -558,7 +565,9 @@ body{
       p:last-child{
         margin-left: auto;
       }
-
+      a{
+        color: #666;
+      }
     }
 
     
@@ -704,4 +713,17 @@ body{
 
 }
 
+.user-list{
+  list-style: none;
+  a{
+    color:#666;
+    
+  }
+}
+
+.btn-outpink{
+  border: 1px solid $color-pink;
+  background-color: #fff;
+  color: #666;
+}
 

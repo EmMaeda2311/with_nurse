@@ -1,0 +1,6 @@
+<li class="user-list">
+  <div class="middle-avatar">
+    <%= link_to image_tag(user.avatar.variant(resize_to_fill:[50,50]), alt: "avatar"),  user_path(user) %>
+  </div>
+  <%= link_to user.username, user_path(user)%>
+</li>

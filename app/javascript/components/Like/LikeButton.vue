@@ -68,9 +68,10 @@ export default {
     //likeListのなかでいいねしているユーザーのIDとpropsで取得したuserIdが一致する人を取得し、likeに代入。
     //もしlikeがtrueであればlike.idを返してね→それをislikedメソッドに変換
     findLikeId: function() {
-      const like = this.likeList.find((like) => like.user_id === 29)
-      // { return (like.user_id === this.userId)
-      // })
+      const like = this.likeList.find((like) => { return (like.user_id === this.userId)
+      })
+      
+      // like.user_id === 29)
       if (like) { return like.id }
     }
   }

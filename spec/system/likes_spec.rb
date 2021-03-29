@@ -1,39 +1,33 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# RSpec.feature 'like', type: :system ,js: true do
+RSpec.describe 'like', type: :system do
 
-#   # background do
-#   #   @blog = FactoryBot.create(:blog1) 
-#   #   tester = FactoryBot.create(:tester)
-#   #   @like = create(:like,user_id:tester.id, blog_id:@blog.id)
-#   # end
-#   let!(:blog) { FactoryBot.create(:blog1) }
-#   let!(:tester){ blog.user }
-#   let(:like) { create(:like, user_id: tester.id, blog_id: blog.id) }
+  before do
+    @blog = FactoryBot.create(:blog) 
+    tester = FactoryBot.create(:tester)
+    @like = create(:like,user_id:tester.id, blog_id:@blog.id)
+    valid_login(tester)
+  end
 
-#   scenario "いいねする" do
-#     visit  root_path
-#     click_link "ログイン"
+  scenario "いいねする", use_truncation: false, js:true do
 
+    within 'header' do
+      expect(page).not_to have_content 'ログイン'
+      expect(page).to have_content "tester"
+    end
 
-#     fill_in "メールアドレス", with: "tester1@example.com"
-#     fill_in "パスワード", with: "foobar"
+    expect(page).to have_content "Test Title 0"
+    within first('.blog-title') do
+      click_link "Test Title 0"
+    end
+    expect(page).to have_selector  'h1', text: "Test Title 0"
+    expect(page).to have_content "Good Nurse 0"
+    
+    find(".like").click
+    
+    expect(page).to have_content "Good Nurse 1"
+    expect(page).not_to have_content "Good Nurse 0"
 
-#     within '.actions' do
-#       click_on "ログイン"
-#     end
-#     expect(page).not_to have_content "メールアドレス もしくはパスワードが不正です。"
-#     within 'header' do
-#       expect(page).not_to have_content 'ログイン'
-#       expect(page).to have_content "tester"
-#     end
+  end
 
-#     expect(page).to have_content "Test Title1"
-#     click_link "Test Title1"
-
-#     expect(page).to have_selector  'h1', text: "Test Title1"
-#     expect(page).to have_content "Good Nurse"
-
-#   end
-
-# end
+end
