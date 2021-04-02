@@ -1,41 +1,39 @@
 <template>
+<!-- ゲーム中の画面 -->
 <div id="typing-game">
-
-  <div>
-    <h3>Nurse Typing</h3>
-  </div>
-  <!-- ゲームスタート前の画面 -->
+  <h1>Nurse Typing</h1>
   <div v-if="trying">
-    <div class="words">
-      <h1 v-text="currentWord"></h1>
-      <input ref="inputTyping" type="text" class="form-control" v-model="typingText">
-    </div>
-
+    <h3 ref="target" v-text="currentWord"></h3>   
     <div>
-      <button type="button" class="btn btn-pink btn-lg" @click="start()">やり直す</button>
+      <p v-text="finishMessage"></p>   
+      <p v-text="nowTimerMessage"></p>
+      <div v-if="isFinished">
+        <button class="btn btn-blue btn-lg" @click="stopGame()">もう一度プレイする</button>
+      </div>
     </div>
-
   </div>
 
 
-
-  <!-- ゲーム開始前に表示する部分 -->
+<!-- ゲーム開始前 -->
   <div v-if="!trying">
-      <button type="button" class="btn btn-yellow" @click="start()">タイピングゲームをスタート</button>
+    <div class="btn btn-yellow btn-lg">Enterを押すと始まります</div>
   </div>
-    
-
-  
-  
 </div>
 </template>
 
 <script>
 export default {
-  data() {
+
+  data(){
     return{
       trying: false,
-      typingText: '',
+      isFinished: false,
+      timeLimit: 10 * 1000,
+      startTime: 0,
+      nowTimerMessage:"",
+      loc: 0,
+      goodType:0,
+      missType:0,
       words: [
         'red',
         'yellow',
@@ -48,23 +46,90 @@ export default {
         'gold',
         'purple'
       ],
+      finishMessage: "",
+      //回答済みの問題を入れる
       solvedWords: []
     }
   },
 
-  methods: {
+  methods:{
     start() {
-      this.trying = true
-      this.solvedWords = []
-      console.log("test")
+      this.trying = true;
+      this.solvedWords = [];
+      
+      this.startTime = Date.now();
+      this.updateTimer();
+    },
 
-      // Vue.$nextTick(() => {
-      //   this.$refs.inputTyping.focus()
-      // })
+    stopGame(){
+      this.trying = false
+      this.isFinished = false
+      this.finishMessage = ""
+    },
+
+    inputKey(e){
+      //ゲームが終わっていたら、キーボード操作を無効
+      if(this.isFinished == true){
+        return;
+      }
+      // ゲームが始まっていない状態でEnterが押されたらゲームスタート
+      if(this.trying == false && e.key == "Enter"){
+        this.start()
+      }
+
+      //もし入力した文字と現在の正しい文字が等しくなければmissTypeを＋して以降の処理を無視 
+      if(e.key !== this.currentWord[this.loc]){
+        this.missType++;
+        return;
+      }
+
+      //入力が正しければ何文字目を入力しているか＋ 
+      this.loc++;
+      this.goodType++;
+      this.$refs.target.textContent = '_'.repeat(this.loc) + this.currentWord.substring(this.loc)
+
+      if( this.loc === this.currentWord.length){
+        this.solvedWords.push(this.currentWord)
+        this.loc = 0
+
+        if(this.words.length == this.solvedWords.length){
+          const finishedTime = ((Date.now() - this.startTime) / 1000).toFixed(2);
+          this.finishMessage = `Finished ${finishedTime} second`
+          this.isFinished = true
+             
+        }
+      } 
+    },
+  
+    updateTimer(){
+      const timeLeft = this.startTime + this.timeLimit - Date.now();
+      const nowTime = (timeLeft / 1000).toFixed(2)
+      this.nowTimerMessage = nowTime
+      const timeoutId = setTimeout(() => {
+        this.updateTimer()
+      },10)
+
+      if(this.nowTimerMessage < 0){
+        this.isFinished = true
+
+        clearTimeout(timeoutId);
+        this.nowTimerMessage = "0.00"
+        setTimeout(() => {
+          this.finishMessage = `正答率${this.showResult}％ スピード${this.showTypeSpeed}打鍵 / 秒`
+        }, 100)
+        
+      }
     }
+
   },
 
+  created(){
+    window.addEventListener('keydown', this.inputKey);
+
+  },
+   
   computed:{
+
     currentWord(){
 
       //unsolvedWordsという定数にthis.words配列から要素を取り出し、代入する
@@ -79,27 +144,15 @@ export default {
       const randomIndex = Math.floor(Math.random() * unsolvedWords.length)
       return unsolvedWords[randomIndex]
     },
+    showResult(){
+      return this.goodType + this.missType === 0 ? 0 : (this.goodType / ( this.goodType + this.missType ) * 100).toFixed(2); 
+    },
 
-    isTypingCorrect(){
-
-      if(this.typingText == this.currentWord){
-        this.solvedWords.push(this.currentWord)
-        this.typingText = ''
-
-        if(this.words.length == this.solvedWords.length){
-          this.solvedWords = []
-          this.trying = false
-          alert("全問正解")
-        }
-
-        return true
-      }
-
-      const typingTextLength = this.typingText.length
-      return (this.typingText === this.currentWord.slice(0, typingTextLength))
-
+    showTypeSpeed(){
+      return this.goodType / ( this.timeLimit / 1000 )
     }
   }
   
 }
 </script>
+
