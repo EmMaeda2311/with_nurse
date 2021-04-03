@@ -30,6 +30,7 @@ class User < ApplicationRecord
   end
   
   has_one_attached :avatar
+  has_one :user_typing
 
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, #:timeoutable,

@@ -1,12 +1,5 @@
 <template>
-  <div class="my-photo">
-    <img
-      v-show="uploadedImage"
-      class="preview-item-file"
-      :src="uploadedImage"
-      alt=""
-    />
-
+  <div>
     <div class="el-modal" :aria-hidden="isOpen ? 'false' : 'true'">
 
       <div class="el-modal__holder">

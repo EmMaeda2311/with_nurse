@@ -1,4 +1,5 @@
 class Api::LikesController <  ActionController::API
+  before_action :authenticate_user!, only: [:create, :destroy]
   def index
     render json: Like.filter_by_blog(params[:blog_id]).select(:id, :user_id, :blog_id)
   end
