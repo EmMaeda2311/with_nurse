@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  namespace :api do
+    get 'words/index'
+  end
   namespace :api ,{ format: 'json' } do
     resources :likes, only: [:index, :create, :destroy]
+    resources :words, only:[:index]
   end
 
   devise_for :users, controllers: {

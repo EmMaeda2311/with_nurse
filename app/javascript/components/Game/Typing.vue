@@ -3,13 +3,18 @@
 <div id="typing-game">
   <h1>Nurse Typing</h1>
   <div v-if="trying">
-    <h3 ref="target" v-text="currentWord"></h3>   
+    <p class="read" v-text="currentWord.read"></p>   
+    <h3 v-text="currentWord.name"></h3>
+    <p ref="target" class="spell" v-text="currentWord.spell"></p>
     <div>
+      <!-- ゲーム終了後のメッセージ -->
       <p v-text="finishMessage"></p>   
       <p v-text="nowTimerMessage"></p>
+
       <div v-if="isFinished">
         <button class="btn btn-blue btn-lg" @click="stopGame()">もう一度プレイする</button>
       </div>
+
     </div>
   </div>
 
@@ -22,8 +27,9 @@
 </template>
 
 <script>
-export default {
+import axios from 'axios';
 
+export default {
   data(){
     return{
       trying: false,
@@ -76,19 +82,22 @@ export default {
       if(this.trying == false && e.key == "Enter"){
         this.start()
       }
+      console.log(e.key)
 
       //もし入力した文字と現在の正しい文字が等しくなければmissTypeを＋して以降の処理を無視 
-      if(e.key !== this.currentWord[this.loc]){
+      if(e.key !== this.currentWord.spell[this.loc]){
+        console.log("miss")
         this.missType++;
         return;
       }
 
       //入力が正しければ何文字目を入力しているか＋ 
+      console.log("good")
       this.loc++;
       this.goodType++;
-      this.$refs.target.textContent = '_'.repeat(this.loc) + this.currentWord.substring(this.loc)
+      this.$refs.target.textContent = '_'.repeat(this.loc) + this.currentWord.spell.substring(this.loc)
 
-      if( this.loc === this.currentWord.length){
+      if( this.loc === this.currentWord.spell.length){
         this.solvedWords.push(this.currentWord)
         this.loc = 0
 
@@ -121,6 +130,11 @@ export default {
       }
     }
 
+  },
+  mounted(){
+    axios
+      .get('/api/words.json')
+      .then(response => (this.words = response.data))
   },
 
   created(){

@@ -19,17 +19,39 @@ $baseColor:#efebe0;
 
 }
 
+
+#app{
+  .home{
+    margin-top:80px;
+    text-align: center;
+  }
+}
 #typing-game{
   text-align: center;
   h1{
-    margin-bottom: 80px;
+    margin-bottom: 50px;
     color: #999;
+    background: -webkit-linear-gradient(45deg, $color-pink, $color-pink);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .read{
+    margin: 0;
+    letter-spacing: .1em;
+  }
+
+  .spell{
+    letter-spacing: .1em;
   }
 
   h3{
-    margin-bottom: 50px;
+    margin:0 0 50px;
     letter-spacing: .1em;
   }
+
+.status{
+  background-color: red;
+}
 
 
 }

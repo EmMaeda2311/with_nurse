@@ -93,6 +93,21 @@ RSpec.describe 'blog interface',type: :system do
 
   end
 
+  scenario "未ログインユーザーでもブログ記事は見れる" do
+    visit root_url
+    click_link "みんなの看護を見る"
+
+    expect(page).to have_content "#{Blog.all.count} 件の看護が投稿されています"
+
+    within first('.blog-title') do
+      click_link "Test Title 2"
+    end
+
+    expect(page).to have_selector "h1", text: "Test Title 2"
+
+
+  end
+
   scenario "ブログから別ユーザーのマイページが閲覧できる" do
     valid_login(tester)
 
