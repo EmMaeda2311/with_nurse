@@ -28,6 +28,9 @@
 
 <script>
 import axios from 'axios';
+import { csrfToken } from 'rails-ujs'
+axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken()
+
 
 export default {
   data(){
@@ -54,7 +57,13 @@ export default {
       ],
       finishMessage: "",
       //回答済みの問題を入れる
-      solvedWords: []
+      solvedWords: [],
+      userScore:{
+        hiScore: 0,
+        hiSpeed: 0,
+        plays: 0
+      }
+
     }
   },
 
@@ -105,6 +114,7 @@ export default {
           const finishedTime = ((Date.now() - this.startTime) / 1000).toFixed(2);
           this.finishMessage = `Finished ${finishedTime} second`
           this.isFinished = true
+          this.loc = 0
              
         }
       } 
@@ -126,22 +136,45 @@ export default {
         setTimeout(() => {
           this.finishMessage = `正答率${this.showResult}％ スピード${this.showTypeSpeed}打鍵 / 秒`
         }, 100)
+        this.createUserScore()
         
       }
+    },
+
+    createUserScore(){
+        axios
+        .post('/api/user_typings',{
+          hi_score: this.showResult,
+          hi_speed: this.showTypeSpeed,
+          plays: 1
+        })
+        .then(response => {
+          this.hiScore = response.data.hi_score
+          this.hiSpeed = response.data.hi_speed
+        })
+    },
+
+    updateUserScore(){
+      axios
+      .patch(`/api/user_typings/${this.$route.params.id}.json`)
+ 
     }
 
   },
   mounted(){
     axios
       .get('/api/words.json')
-      .then(response => (this.words = response.data))
+      .then(response => (this.words = response.data)),
+    axios
+      .get(`/api/user_typings/.json`)
+      .then(response => (this.userScore = response.data))
+
   },
 
   created(){
     window.addEventListener('keydown', this.inputKey);
 
-  },
-   
+  },   
   computed:{
 
     currentWord(){
