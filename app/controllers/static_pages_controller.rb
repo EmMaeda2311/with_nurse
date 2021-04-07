@@ -13,4 +13,12 @@ class StaticPagesController < ApplicationController
 
   def guest_game
   end
+
+  def terms
+  end
+  
+  def privacy
+  end
+
+  
 end

@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   get '/about', to: 'static_pages#about'
   get '/game', to: 'static_pages#game'
   get '/guest_game', to: 'static_pages#guest_game'
+  get '/privacy', to: 'static_pages#privacy'
+  get '/terms', to: 'static_pages#terms'
 
   get 'users/show'
   # get 'users/index'
