@@ -90,7 +90,13 @@
         タイピング、忘却曲線を使ったクイズゲーム<br>
         あなたのハードスキルを鍛えましょう。<br>
         会員登録であなたの成長も視覚化できます</p>
-        <div class="btn btn-lg btn-blue">タイピングゲームをやってみる</div>
+        <div class="btn btn-lg btn-blue">
+          <% if signed_in?%>
+            <%= link_to "タイピングゲームをやってみる", game_path %>
+          <% else %>
+            <%= link_to "タイピングゲームをやってみる", guest_game_path %>
+          <% end %>          
+        </div>
       </div>
     </div>
   </section>
