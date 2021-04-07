@@ -3,7 +3,7 @@
       <div class="footerLeft">
         <div class="logo-title">
           <%= link_to image_tag("logo2.png",alt: "With Nurse logo" ,width: "80px"), root_path %>
-          <h1><%= link_to "With Nurse", root_path , class: "Editlink"%></h1>
+          <h1><%= link_to "With Nurse", root_path , class: "link"%></h1>
         </div>
         
         <p>ナース専用のソーシャルメディアサービスです</p>
@@ -13,10 +13,10 @@
       <div class="footerCenter">
         <p>メニュー</p>
         <ul>
-          <li>記事一覧TOP</li>
-          <li>ゲーム一覧</li>
-          <li><%= link_to "ヘルプ", help_path , class: "Editlink" %></li>
-          <li><%= link_to "With Nurseについて" , about_path , class: "Editlink" %></li>
+          <li><%= link_to "記事一覧", blogs_path, class: "link" %>TOP</li>
+          <li><%= link_to "ゲーム", game_path, class: "link" %></li>
+          <li><%= link_to "ヘルプ", help_path , class: "link" %></li>
+          <li><%= link_to "With Nurseについて" , about_path , class: "link" %></li>
         </ul>
       </div>
       

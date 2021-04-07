@@ -30,13 +30,17 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get '/help' ,to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
+  get '/game', to: 'static_pages#game'
+  get '/guest_game', to: 'static_pages#guest_game'
+
   get 'users/show'
+  # get 'users/index'
   # get ':username', to: 'users#show', as: :users
   
   
   resources :users do
     member do
-      get :show, :following, :followers
+      get :following, :followers
     end
   end 
 

@@ -21,7 +21,22 @@
 
 <!-- ゲーム開始前 -->
   <div v-if="!trying">
+    <div class="user-score">
+      <ul>
+        <li>正確さ
+          <span v-text="this.hiScoreText"></span>
+        </li>
+        <li>タイピングスピード
+          <span v-text="this.hiSpeedText"></span>
+        </li>
+        <li>プレイ回数
+          <span v-text="this.playsText"></span>
+        </li>
+      </ul>
+    </div>
     <div class="btn btn-yellow btn-lg">Enterを押すと始まります</div>
+
+    
   </div>
 </div>
 </template>
@@ -43,29 +58,16 @@ export default {
       loc: 0,
       goodType:0,
       missType:0,
-      words: [
-        'red',
-        'yellow',
-        'blue',
-        'black',
-        'white',
-        'green',
-        'pink',
-        'silver',
-        'gold',
-        'purple'
-      ],
+      words: [],
       finishMessage: "",
       //回答済みの問題を入れる
       solvedWords: [],
       userScore:{
-        hiScore: 0,
-        hiSpeed: 0,
-        plays: 0
       }
 
     }
   },
+
 
   methods:{
     start() {
@@ -134,47 +136,60 @@ export default {
         clearTimeout(timeoutId);
         this.nowTimerMessage = "0.00"
         setTimeout(() => {
-          this.finishMessage = `正答率${this.showResult}％ スピード${this.showTypeSpeed}打鍵 / 秒`
+          this.finishMessage = `正答率${this.showResult}％ タイピングスピード${this.showTypeSpeed}打鍵 / 秒`
         }, 100)
-        this.createUserScore()
+        this.loc = 0
+
+        if(this.playsText == "0 回"){
+          this.createUserScore()
+        }
+
+        this.updateUserScore()
         
       }
     },
 
     createUserScore(){
-        axios
-        .post('/api/user_typings',{
-          hi_score: this.showResult,
-          hi_speed: this.showTypeSpeed,
-          plays: 1
-        })
-        .then(response => {
-          this.hiScore = response.data.hi_score
-          this.hiSpeed = response.data.hi_speed
-        })
+      axios
+      .post('/api/user_typings',{
+        hi_score: this.showResult,
+        hi_speed: this.showTypeSpeed,
+        plays: 1
+      })
+      .then(response => {
+        this.userScore.hi_score = response.data.hi_score
+        this.userScore.hi_speed = response.data.hi_speed
+      })
     },
 
-    updateUserScore(){
+    updateUserScore(){     
+      // ハイスコアだった場合はデーターを更新
+      if( this.userScore.hi_score < this.showResult ){
+        this.userScore.hi_score = this.showResult
+        }
+
+      if( this.userScore.hi_speed < this.showTypeSpeed ) {
+        this.userScore.hi_speed = this.showTypeSpeed
+      }
+      
+      this.userScore.plays ++
       axios
-      .patch(`/api/user_typings/${this.$route.params.id}.json`)
+      .patch(`/api/user_typings/${this.typingUserId}.json`, {
+        hi_score: this.userScore.hi_score,
+        hi_speed: this.userScore.hi_speed,
+        plays: this.userScore.plays
+      })
+      .then(response => {
+        this.userScore.hi_score = response.data.hi_score
+        this.userScore.hi_speed = response.data.hi_speed
+      })
  
     }
 
   },
-  mounted(){
-    axios
-      .get('/api/words.json')
-      .then(response => (this.words = response.data)),
-    axios
-      .get(`/api/user_typings/.json`)
-      .then(response => (this.userScore = response.data))
 
-  },
 
-  created(){
-    window.addEventListener('keydown', this.inputKey);
 
-  },   
   computed:{
 
     currentWord(){
@@ -191,15 +206,55 @@ export default {
       const randomIndex = Math.floor(Math.random() * unsolvedWords.length)
       return unsolvedWords[randomIndex]
     },
+
     showResult(){
-      return this.goodType + this.missType === 0 ? 0 : (this.goodType / ( this.goodType + this.missType ) * 100).toFixed(2); 
+      return this.goodType + this.missType === 0 ? 0 : (this.goodType / ( this.goodType + this.missType ) * 100).toFixed(2);
     },
 
     showTypeSpeed(){
       return this.goodType / ( this.timeLimit / 1000 )
+    },
+
+    hiScoreText(){
+      if(this.userScore.hi_score == null){
+        return 0 + " %"
+      }
+      return this.userScore.hi_score + ' %'
+    },
+
+    hiSpeedText(){
+      if(this.userScore.hi_speed == null){
+        return 0 + " 打鍵 / 秒"
+      }
+      return this.userScore.hi_speed + ' 打鍵 / 秒'
+    },
+
+    playsText(){
+      if(this.userScore.plays == null){
+        return 0 + "回"
+      }
+      return this.userScore.plays + ' 回'
     }
-  }
-  
+
+  },
+
+
+  mounted(){
+    axios
+      .get('/api/words.json')
+      .then(response => (this.words = response.data)),
+    axios
+      .get(`/api/user_typings/${this.typingUserId}.json`)
+      .then(response => (this.userScore = response.data))
+    console.log(this.userScore)    
+  },
+
+
+  created(){
+    window.addEventListener('keydown', this.inputKey);
+    let typingUserId = $('#play-user').data('id')
+    console.log(typingUserId)
+  }   
 }
 </script>
 
