@@ -8,7 +8,9 @@
 import Vue from 'vue'
 // import Vue from "vue/dist/vue/vue.esm.js";
 import LikeButton from '../components/Like/LikeButton.vue'
+import GuestTyping from '../components/Game/GuestTyping.vue'
 // import Modal from '../components/Modal/Modal.vue'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -26,6 +28,16 @@ document.addEventListener('turbolinks:load', () => {
   }).$mount("#app")
 })
 
+
+
+
+document.addEventListener('turbolinks:load', () => {
+  new Vue({
+    el: '#guest_game',
+    components: { GuestTyping }
+    // render: h => h( LikeButton ,{ props: document.getElementById('like-list').dataset })
+  })
+})
 
 document.addEventListener('turbolinks:load', () => {
   new Vue({

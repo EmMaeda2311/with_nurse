@@ -4,14 +4,14 @@
       <nav class="flex game-nav">
         <router-link to="/typing"
                     tag="div"
-                    class="game-menu">
-                    TYPING
+                    class="game-menu menu-typing">
+                    <img src="../assets/images/typing.png" alt="タイピングゲーム" width= 100px>
                     </router-link>
 
         <router-link to="/word-quiz"
                     tag="div"
-                    class="game-menu">
-                    三択クイズ
+                    class="game-menu menu-three-quiz">
+                    <img src="../assets/images/three-quiz.png" alt="タイピングゲーム" width= 100px>
                     </router-link>
       </nav>
 
@@ -32,19 +32,3 @@
 
   </div>
 </template>
-
-<style scoped>
-  .game-nav{
-    justify-content: space-around;
-    margin-bottom: 100px;
-  }
-
-
-  .game-menu{
-    text-align: center;
-    padding: 30px;
-    border-radius: 5px;
-    background-color: #efebe0;
-    cursor: pointer;
-  }
-</style>

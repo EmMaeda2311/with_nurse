@@ -89,7 +89,7 @@ idW,name,read,spell,spell_confirmation,略語
 88,慢性呼吸不全,まんせいこきゅうふぜん,mannseikokyuuhuzenn,mannseikokyuuhuzenn,CRF
 89,慢性腎不全,まんせいじんふぜん,mannseijinnhuzenn,mannseijinnhuzenn,CRF
 90,帝王切開,ていおうせっかい,teiousekkai,teiousekkai,CS
-91,チェーン・ストークス呼吸,ちぇーん・すとーくす呼吸,tile-nnsuto-kusu,tile-nnsuto-kusu,CSB
+91,チェーン・ストークス呼吸,ちぇーん・すとーくす呼吸,tile-nnsuto-kusukokyuu,tile-nnsuto-kusukokyuu,CSB
 92,心タンポナーデ,しんたんぽなーで,sinntannpona-de,sinntannpona-de,CT
 93,セフトリアキソン,せふとりあきそん,sehutoriakisonn,sehutoriakisonn,CTRX
 94,中心静脈カテーテル,ちゅうしんじょうみゃくかてーてる,tyuusinnjoumyakukate-teru,tyuusinnjoumyakukate-teru,CVC
@@ -255,7 +255,7 @@ idW,name,read,spell,spell_confirmation,略語
 259,最大吸気圧,さいだいきゅうきあつ,saidaikyuukiatu,saidaikyuukiatu,PIP
 260,膵臓がん,すいぞうがん,suizougann,suizougann,PK
 262,腎盂腎炎,じんうじんえん,jinnujinnenn,jinnujinnenn,PN
-263,脈拍数,脈拍数,myakuhakusuu,myakuhakusuu,PR
+263,脈拍数,みゃくはくすう,myakuhakusuu,myakuhakusuu,PR
 264,理学療法士,りがくりょうほうし,rigakuryouhousi,rigakuryouhousi,PT
 265,患者,かんじゃ,kannja,kannja,Pt
 266,心的外傷後ストレス障害,しんてきがいしょうごすとれすしょうがい,sinntekigaisyougosutoresusyougai,sinntekigaisyougosutoresusyougai,

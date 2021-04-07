@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_many :blogs ,dependent: :destroy  
+  has_many :blogs ,dependent: :destroy 
+  has_one :user_typing , dependent: :destroy 
   has_many :likes ,dependent: :destroy
   has_many :liked_blogs, through: :likes, source: :blog
   has_many :active_relationships, class_name:  "Relationship",
@@ -30,7 +31,7 @@ class User < ApplicationRecord
   end
   
   has_one_attached :avatar
-  has_one :user_typing
+
 
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, #:timeoutable,
