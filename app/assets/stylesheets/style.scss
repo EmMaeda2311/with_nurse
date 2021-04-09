@@ -12,21 +12,16 @@ $baseColor:#efebe0;
 
 #app{
  margin-top: 80px;
+ .home{
+   margin-top:80px;
+   text-align: center;
+ }
   a{
   color: #444;
   margin-top: 80px;
  }
 
 }
-
-
-#app{
-  .home{
-    margin-top:80px;
-    text-align: center;
-  }
-}
-
 
 .btn-pink{
   background:$color-pink;
