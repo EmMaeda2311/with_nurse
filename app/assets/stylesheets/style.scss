@@ -345,22 +345,81 @@ body{
   }
 }
 
+.password_reset{
+  a{
+    color: #444;
+  }
+}
+
 .boxcheck{
-  padding-left: 110px;
+  padding-left: 180px;
   .accepted , .remember_me{
-    width: 320px;
-    margin-left: 10px;
+    width: 400px;
     color: #666;
   }
   
   .remember_me{
     text-align: start;
+    margin-left: 20px;
   }
   
-  #user_accepted , #user_remember_me{
+  #user_remember_me{
     margin: 10px 0px 0px;
   }
 }
+
+.term-checkbox{
+  margin-top: 10px;
+  font-weight: bold;
+  .accepted{
+    margin-left: 20px;
+    a{
+      color: $color-blue;
+    }
+  }
+}
+
+.privacy-policy{
+  letter-spacing: .1em;
+  line-height: 1.3em;
+  h1{
+    margin-bottom: 60px;
+  }
+
+  h2{
+    text-align: start;
+  }
+
+  .last{
+    margin-top: 40px;
+    text-align: end;
+  }
+
+  .message{
+    background-color: $baseColor;
+    border-radius: 10px;
+    padding: 30px;
+    
+  }
+}
+
+.terms{
+  .message{
+    background-color: $baseColor;
+    border-radius: 10px;
+    padding: 30px;
+    
+    a{
+      color: $color-blue;
+    }
+
+    .last{
+      margin-top: 40px;
+      text-align: end;
+    }
+  }
+}
+
 
 .comment{
   text-align:center;

@@ -26,11 +26,18 @@
     </div>
   
     
-    <div class="field text-left boxcheck">
+    <div class="field text-left boxcheck term-checkbox">
       <%= f.check_box :accepted ,{},checked_value = "true",unchecked_value = "false" %>
-      <%= f.label '利用規約、及び、個人情報の取扱に同意する', class: "accepted" %>
+      <div>
+        <p class="accepted">
+          <span><%= link_to "利用規約", terms_path , class: "link" %></span>
+          、及び、
+          <span><%= link_to "プライバシーポリシー", privacy_path , class: "link" %></span>
+          に同意する。
+        </p>
+      </div>
     </div>
-    
+
     <div class="actions">
       <%= f.submit "新規登録" %>
     </div>
