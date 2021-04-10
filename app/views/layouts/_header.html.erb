@@ -2,22 +2,24 @@
     <div class="container">
       <nav class="nav-menu">
         <div class="logo-title">
-          <%= link_to image_tag("logo2.png",alt: "With Nurse logo" ,width: "80px"), root_path %>
+          <%= link_to image_tag("logo2.png",alt: "With Nurse logo"), root_path %>
           <h1><%= link_to "With Nurse", root_path , class: "link"%></h1>
         </div>
         <% if user_signed_in? %>
-          <!----ユーザーアイコン---->
-          <div class= "login_user_menu">
-            <strong><%= link_to current_user.username, user_path(id: current_user.id) %></strong>
-            <strong><%= link_to "ログアウト", sign_out_path %></strong>
-            <strong><%= link_to "プロフィール変更", edit_user_registration_path %></strong>
-          </div>
+
+          <div class= "login_user_menu flex">
+
+            <p class="rwd-off"><%= link_to current_user.username, user_path(id: current_user.id) %></p>
+  
+            <p class="rwd-off"><%= link_to "プロフィール変更", edit_user_registration_path %></p>
+            <p class="rwd-off"><%= link_to "ログアウト", sign_out_path %></p>
           
-          <!----ベルの通知マーク---->
+          </div>
+
         <% else %>
           <ul>
-            <li><%= link_to "ログイン", new_user_session_path , class: "nav-link btn btn btn-pink" %></li>
-            <li><%= link_to '無料会員登録' , new_user_registration_path , class: "nav-link btn btn btn-blue" %></li>
+            <li><%= link_to "ログイン", new_user_session_path , class: "nav-link btn btn-pink" %></li>
+            <li><%= link_to '無料会員登録' , new_user_registration_path , class: "nav-link btn btn-blue" %></li>
           </ul> 
         <% end %>
         

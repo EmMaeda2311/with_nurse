@@ -43,19 +43,23 @@
         <div class="user">
           <%= link_to blog.user.username, blog.user %>
         </div>
-        <div class="timestamp">
-          <%= l blog.created_at %> に投稿
-        </div>
+      </div>
+      <div class="timestamp">
+        <%= l blog.created_at %> に投稿
       </div>
     </div>
 
     <% if current_user == blog.user %>
       <div class="edit-icon">
-      <%= link_to image_tag("edit.png",alt: "編集" ,width: "20px"), edit_blog_path(blog)%>
+        <%= link_to edit_blog_path(blog) do %>
+          <i class="fas fa-edit fa-lg"></i>
+        <% end %>
       </div>
 
       <div class="delete-link">
-        <%= link_to "削除", blog, method: :delete, data:{ confirm:"削除しますか？"} %>
+        <%= link_to blog, method: :delete, data:{ confirm:"削除しますか？"} do %>
+        <i class="fas fa-trash-alt fa-lg"></i>
+        <% end %>
       </div>
     <%end%>
 

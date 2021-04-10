@@ -29,7 +29,7 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
-        remember_me: "ログインを記憶"
+        remember_me: "ログインをキープする"
         accepted: "利用規約、及び、個人情報の取扱"
       blog:
         title: "タイトル"

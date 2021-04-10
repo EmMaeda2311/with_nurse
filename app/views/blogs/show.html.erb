@@ -22,15 +22,22 @@
        <div class="like">
         <%= "#{@blog.likes.count} Good Nurse" %>
        </div> 
-      <% end %>
-      
-    <div class="edit-icon">
-      <%= link_to image_tag("edit.png",alt: "編集" ,width: "20px"), edit_blog_path%>
-    </div>
+    <% end %>
 
-    <div class="delete-link">
-      <%= link_to "削除", @blog, method: :delete, data:{ confirm:"削除しますか？"} %>
-    </div>
+    <% if user_signed_in? && @blog.user == current_user %> 
+      <div class="edit-icon">
+        <%= link_to edit_blog_path(@blog) do %>
+          <i class="fas fa-edit fa-lg"></i>
+        <% end %>
+      </div>
+
+      <div class="delete-link">
+        <%= link_to @blog, method: :delete, data:{ confirm:"削除しますか？"} do %>
+        <i class="fas fa-trash-alt fa-lg"></i>
+        <% end %>
+      </div>
+    <%end%>
+
   </div>
 
   <hr>

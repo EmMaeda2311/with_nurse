@@ -11,7 +11,9 @@
 // 
 
 trix-editor{
-  min-height: 300px;
+  min-height: 40em;
+  max-height: 40em;
+  overflow: auto;
 
 }
 
