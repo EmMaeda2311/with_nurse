@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  private
+  # private
   
   # def user_admin
   #   if current_user.admin == false

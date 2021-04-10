@@ -6,7 +6,7 @@ RSpec.describe "StaticPages", type: :request do
   describe 'root' do
     it 'returns a 200 response' do
       get root_path
-      expect(response).to have_http_status (200)
+      expect(response).to have_http_status(200)
       # expect(response.body).to have_title(/<title>#{base_title}<\/title>/i)
       expect(response.body).to match(/<title>#{base_title}<\/title>/i)
     end
@@ -15,14 +15,14 @@ RSpec.describe "StaticPages", type: :request do
   describe 'about' do
     it 'returns a 200 response' do
       get about_path
-      expect(response).to have_http_status (200)
+      expect(response).to have_http_status(200)
     end
   end
   
   describe 'help' do
     it 'returns a 200 response' do
       get help_path
-      expect(response).to have_http_status (200)
+      expect(response).to have_http_status(200)
     end
   end
 end

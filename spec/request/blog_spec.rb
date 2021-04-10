@@ -10,7 +10,7 @@ RSpec.describe "Blogs" ,type: :request do
     
     it "新規投稿をリクエストしてもログインを要求される" do
         get new_blog_path
-        expect(response).to redirect_to ( new_user_session_path )
+        expect(response).to redirect_to( new_user_session_path )
     end
 
     it "なんとかPOSTしてみても、投稿されない" do
@@ -19,22 +19,22 @@ RSpec.describe "Blogs" ,type: :request do
 
     it "削除しようとするとログインを要求される" do
       delete blog_path(blog)
-      expect(response).to redirect_to ( new_user_session_path )
+      expect(response).to redirect_to( new_user_session_path )
     end
 
     it "edit blog page request 302" do
       get edit_blog_path(blog)
-      expect(response).to have_http_status ( 302 )
+      expect(response).to have_http_status( 302 )
     end
 
     it "update blog but not update" do
       patch blog_path(blog), params:{ blog: {title:"test2",content:"text2"}}
-      expect(blog.reload.title).not_to eq ("test2")
+      expect(blog.reload.title).not_to eq("test2")
     end
 
     it "blogs index page request 200" do
       get blogs_path
-      expect(response).to have_http_status ( 200 )
+      expect(response).to have_http_status( 200 )
     end
   end
 
@@ -54,7 +54,7 @@ RSpec.describe "Blogs" ,type: :request do
 
     it "blog new page request 200" do
       get new_blog_path
-      expect(response).to have_http_status ( 200 )
+      expect(response).to have_http_status( 200 )
     end
 
     it "post blog" do
@@ -63,12 +63,12 @@ RSpec.describe "Blogs" ,type: :request do
 
     it "edit blog page request 200" do
       get edit_blog_path(blog)
-      expect(response).to have_http_status ( 200 )
+      expect(response).to have_http_status( 200 )
     end
 
     it "update blog" do
       patch blog_path(blog), params:{ blog: {title:"test2",content:"text2",tag_ids:"tag1"}}
-      expect(blog.reload.title).to eq ("test2")
+      expect(blog.reload.title).to eq("test2")
     end
 
     it "delete blog" do

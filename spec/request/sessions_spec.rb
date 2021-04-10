@@ -23,7 +23,7 @@ RSpec.describe "Sessions" ,type: :request do
   describe "get new page" do  
     it "sign_in returns a 200 request" do
       get new_user_session_path
-      expect(response).to have_http_status (200)
+      expect(response).to have_http_status(200)
     end
   end
   
@@ -39,19 +39,18 @@ RSpec.describe "Sessions" ,type: :request do
     
     it "edit_page responds a 200" do
       get edit_user_registration_path
-      expect(response).to have_http_status (200)
+      expect(response).to have_http_status(200)
     end
     
     it "show_page responds a 200" do
-      user_id = tester.id
-      get "/users/#{user_id}"
-      expect(response).to have_http_status (200)
+      get "/users/#{tester.id}"
+      expect(response).to have_http_status(200)
     end
     
     
     it "access tester2_page" do
       get "/users/#{tester2.id}"
-      expect(response).to have_http_status (200)
+      expect(response).to have_http_status(200)
     end
     
     it "is not exist user" do
@@ -62,7 +61,7 @@ RSpec.describe "Sessions" ,type: :request do
     it "log_out_test" do 
       sign_out tester
       get edit_user_registration_path
-      expect(response).to have_http_status (302)
+      expect(response).to have_http_status(302)
     end
 
   end
@@ -88,20 +87,19 @@ RSpec.describe "Sessions" ,type: :request do
   describe "as a guest" do 
     it "edit_page responds a 302" do
       get edit_user_registration_path
-      expect(response).to have_http_status (302)
+      expect(response).to have_http_status(302)
     end
     
      it "show_page responds a 302" do
       user_id = tester.id
       get "/users/#{user_id}"
-      expect(response).to have_http_status (302)
+      expect(response).to have_http_status(302)
       # expect(response).to redirect_to new_user_session_path
     end
 
     it "delete responds a 302" do
-      user_id = tester.id
       delete user_registration_path
-      expect(response).to have_http_status (302)
+      expect(response).to have_http_status(302)
     end
     
     it "unless loginn user redirect_to login_page" do
