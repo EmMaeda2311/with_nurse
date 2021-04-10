@@ -8,10 +8,14 @@ RSpec.describe User, type: :model do
     it { is_expected.to be_valid }
 
     describe 'email validation should accept valid addresses' do
-      valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org first.last@foo.jp alice+bob@baz.cn]
-      valid_addresses.each do |valid_address|
-        let(:tester) { build(:tester, email: valid_address) }
-        it { is_expected.to be_valid }
+      let(:tester) { build(:tester) }
+
+      it "valid email format" do
+        valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org first.last@foo.jp alice+bob@baz.cn]
+        valid_addresses.each do |valid_address|
+          tester.email = valid_address
+          expect(tester).to be_valid
+        end
       end
     end
   end
@@ -48,13 +52,16 @@ RSpec.describe User, type: :model do
       end
 
       describe 'email validation should reject invalid addresses' do
-        invalid_emails = %w[user@example.com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com]
-        invalid_emails.each do |invalid_email|
-          # invalid_email = "user@example.com"
-          let(:tester) { build(:tester, email: invalid_email) }
-          # let(:email){ invalid_email }
-          it { is_expected.to be_invalid }
-        end
+        let(:tester) { build(:tester) }
+        
+          it "invalid email format" do
+            invalid_emails = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com]
+            invalid_emails.each do |invalid_email|
+              tester.email = invalid_email
+              expect(tester).to be_invalid
+              # it { is_expected.to be_valid }
+            end
+          end
       end
 
       describe 'email addresses should be unique' do
