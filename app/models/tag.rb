@@ -7,7 +7,8 @@ class Tag < ApplicationRecord
   validates :name, uniqueness: { case_sensitive: true }
 
   private
-    def delete_space
-      self.name = name.strip
-    end
+
+  def delete_space
+    self.name = name.strip
+  end
 end

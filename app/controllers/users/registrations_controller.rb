@@ -4,7 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   before_action :authenticate_user!
-  
+
   # def index
   #   @user = User.find_by(id: params[:id])
   # end
@@ -25,7 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-   self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
     resource_updated = update_resource(resource, account_update_params)
@@ -39,7 +39,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       set_minimum_password_length
       respond_with resource
-    end 
+    end
   end
 
   # DELETE /resource
@@ -69,17 +69,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  def after_sign_up_path_for(resource)
+  def after_sign_up_path_for(_resource)
     root_path
   end
-  
+
   # The path used after sign up for inactive accounts.
-  def after_inactive_sign_up_path_for(resource)
-   root_path
+  def after_inactive_sign_up_path_for(_resource)
+    root_path
   end
 
   def update_resource(resource, params)
-    if current_user.uid == nil
+    if current_user.uid.nil?
       resource.update_with_password(params)
     else
       resource.update_without_password(params)

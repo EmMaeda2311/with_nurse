@@ -1,5 +1,5 @@
-class Api::LikesController <  ActionController::API
-  before_action :authenticate_user!, only: [:create, :destroy]
+class Api::LikesController < ActionController::API
+  before_action :authenticate_user!, only: %i[create destroy]
   def index
     render json: Like.filter_by_blog(params[:blog_id]).select(:id, :user_id, :blog_id)
   end
@@ -11,8 +11,8 @@ class Api::LikesController <  ActionController::API
       render json: @like, status: :created
     else
       render json: @like.errors, status: unprocessable_entity
-    # current_user.likes.create!(likes_params)
-    # head :created
+      # current_user.likes.create!(likes_params)
+      # head :created
     end
   end
 
@@ -20,6 +20,5 @@ class Api::LikesController <  ActionController::API
     @like = current_user.likes.find_by(id: params[:id])
     @like.destroy!
     render json: { status: 'SUCCESS', message: 'いいねを取り消しました', data: @like }
-
   end
 end
