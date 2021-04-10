@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  
+
   config.hosts << 'f726d0cb30cc4cd4874f1c91edb1bd1c.vfs.cloud9.us-east-2.amazonaws.com'
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -36,14 +36,13 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :user_name => ENV['EMAIL_ADDRESS'],
-    :password => ENV['EMAIL_PASSWORD'],
-    :authentication => :plain,
-    :enable_starttls_auto => true
+    address: 'smtp.gmail.com',
+    port: 587,
+    user_name: ENV['EMAIL_ADDRESS'],
+    password: ENV['EMAIL_PASSWORD'],
+    authentication: :plain,
+    enable_starttls_auto: true
   }
-
 
   config.action_mailer.perform_caching = false
 
@@ -63,7 +62,7 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-  
+
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Raises error for missing translations.

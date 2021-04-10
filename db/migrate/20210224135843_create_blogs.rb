@@ -6,6 +6,6 @@ class CreateBlogs < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    add_index :blogs, [:user_id, :created_at]
+    add_index :blogs, %i[user_id created_at]
   end
 end

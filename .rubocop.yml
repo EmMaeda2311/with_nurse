@@ -1,0 +1,13 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+
+Rails:
+  Enabled: true
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

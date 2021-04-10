@@ -7,28 +7,28 @@ Rails.application.routes.draw do
   namespace :api do
     get 'words/index'
   end
-  namespace :api ,{ format: 'json' } do
-    resources :likes, only: [:index, :create, :destroy]
-    resources :words, only:[:index]
-    resources :user_typings, only:[:create, :update, :show]
+  namespace :api, { format: 'json' } do
+    resources :likes, only: %i[index create destroy]
+    resources :words, only: [:index]
+    resources :user_typings, only: %i[create update show]
   end
 
   devise_for :users, controllers: {
-    :registrations => 'users/registrations',
-    :sessions => 'users/sessions',
-    :omniauth_callbacks => 'users/omniauth_callbacks',
-    :confirmations => 'users/confirmations',
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    confirmations: 'users/confirmations'
   }
-  
+
   # devise :omniauthable: :omniauth_providers => [:google_oauth2]
-  
+
   devise_scope :user do
-    get "sign_in", :to => "users/sessions#new"
-    get "sign_out", :to => "users/sessions#destroy"
+    get 'sign_in', to: 'users/sessions#new'
+    get 'sign_out', to: 'users/sessions#destroy'
   end
 
   root 'static_pages#home'
-  get '/help' ,to: 'static_pages#help'
+  get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
   get '/game', to: 'static_pages#game'
   get '/guest_game', to: 'static_pages#guest_game'
@@ -38,21 +38,18 @@ Rails.application.routes.draw do
   get 'users/show'
   # get 'users/index'
   # get ':username', to: 'users#show', as: :users
-  
-  
+
   resources :users do
     member do
       get :following, :followers
     end
-  end 
-
-  resources :relationships, only: [:create, :destroy]
-
-  resources :blogs do
-    resources :likes, only: [:create, :destroy]  
   end
 
+  resources :relationships, only: %i[create destroy]
 
+  resources :blogs do
+    resources :likes, only: %i[create destroy]
+  end
 
   # get 'static_pages/home'
   # get 'static_pages/help'

@@ -21,8 +21,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
-
-
   # You should also create an action method in this controller like this:
   # def twitter
   # end

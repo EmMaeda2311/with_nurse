@@ -5,19 +5,16 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    added_attrs = [ :email, :username, :password, :accepted, :avatar ]
+    added_attrs = %i[email username password accepted avatar]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
   end
 
   private
-  
+
   def correct_user
     @user = User.find_by(id: params[:id])
-    if @user == nil || @user != current_user
-      redirect_to(root_url)
-    end
+    redirect_to(root_url) if @user.nil? || @user != current_user
   end
-  
 end
