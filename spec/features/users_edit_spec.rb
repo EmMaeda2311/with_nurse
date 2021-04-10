@@ -55,7 +55,9 @@ RSpec.feature "edit test", type: :feature do
 
 
   scenario "edit avatar image" do
-    click_link "プロフィール変更"
+    within "header" do
+      click_link "プロフィール変更"
+    end
     expect(page).to have_content "プロフィール変更"
     expect(page).to have_content "アカウント名"
     attach_file 'file-input', "#{Rails.root}/spec/fixtures/images/test_image.png", visible: false
@@ -70,7 +72,9 @@ RSpec.feature "edit test", type: :feature do
 
   
   scenario "guest_user login request" do
-    click_link "ログアウト"
+    within 'header' do
+      click_link "ログアウト"
+    end
     expect(page).to have_content "ログアウトしました。"
     
     visit edit_user_registration_path

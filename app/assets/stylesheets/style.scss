@@ -9,20 +9,6 @@ $color-blue: #8ac8cf;
 $color-yellow:#f8b500;
 $baseColor:#efebe0;
 
-
-#app{
- margin-top: 80px;
- .home{
-   margin-top:80px;
-   text-align: center;
- }
-  a{
-  color: #444;
-  margin-top: 80px;
- }
-
-}
-
 .btn-pink{
   background:$color-pink;
   color:#fff;
@@ -50,13 +36,698 @@ $baseColor:#efebe0;
   }
 }
 
-.logo-title{
-  display:flex;
-  h1{
-    margin-left: 10px;
-    // font-family: 'Poppins', sans-serif;
+.rwd-off{
+  display: none;
+}
+
+
+
+
+header{
+
+  .nav-menu{
+    // display:flex;
+    align-items: center;
+    text-align: center;
+    // justify-content:space-between;
+  }
+
+      .logo-title{
+      padding: 10px;
+      display:flex;
+      justify-content: center;
+      img{
+        width: 80px;
+      }
+      h1{
+        margin-left: 10px;
+        // font-family: 'Poppins', sans-serif;
+      }
+    }
+  
+  ul{
+    margin-top: 10px;
+    margin-left: auto;
+    display:flex;
+    justify-content: center;
+    padding-left: 0px;
+    li{
+      list-style: none;
+      margin-left: 20px;
+    }
+  }
+  
+  .login_user_menu{
+    margin-left: auto;
+
+    p{
+      font-weight: bold;
+      margin: 0 10px 0 10px;
+    }
+
+    a{
+      color: #666;
+      justify-content: space-between;
+    }
+  }
+  
+}
+
+.toppng{
+  margin-bottom: 80px;
+}
+
+h2{
+  text-align: center;
+  font-size: 20px;
+}
+
+.top{
+  margin-bottom: 30px;
+}
+
+section{
+  letter-spacing: .1em;
+  padding: 20px;
+  line-height: 20px;
+  &:nth-of-type(2){
+    background:$baseColor;
+    padding: 80px 30px 80px;
+  }
+  
+}
+
+.img-center{
+  text-align: center;
+}
+
+.blogs{
+  // display:flex;
+  img{
+    text-align: center;
+  }
+  justify-content:space-evenly;
+  .Explanation{
+    margin-top: 10px;
+    p:first-child{
+      text-align: center; 
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+    .btn{
+      display: block;
+      margin-top: 30px;
+    }
   }
 }
+
+.skill{
+  .Explanation{
+    margin-top: 10px;
+    p:first-child{
+      text-align: center; 
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+    .btn{
+      display: block;
+      margin-top: 30px;
+    }
+  }
+}
+
+
+.introduction{
+  text-align: center;
+  h2{
+    margin-bottom: 30px;
+  }
+  
+  p{
+    margin-bottom: 20px;
+  }
+  .btn{
+    width:300px;
+    margin-top: 30px;
+  }    
+  
+}
+
+  
+#my-info{
+  border: 1px solid $baseColor;
+  border-radius: 10px;
+  padding: 30px;
+  justify-content: space-around;
+  align-items: center;
+  .img-name{
+    text-align: center;
+
+
+    p{
+      margin-top: 20px;
+      font-size: 20px;
+      a{
+        color: #666;
+      }
+    }
+  }
+
+  .my-action{
+    margin-top: 30px;
+    div{
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+
+      a{
+        color: #fff;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+      }
+    }
+
+    .my-status{
+      padding: 0;
+      margin: 0 0 15px;
+      p:last-child{
+        margin-left: auto;
+      }
+      a{
+        color: #666;
+      }
+    }
+
+    
+    
+    
+    .my-page{
+      background-color: $color-pink;
+    }
+    
+    .my-game{
+      background-color: $color-blue;
+    }
+    
+    .new-blog{
+      background-color: $color-yellow;
+    }
+    
+  }
+}
+
+footer{
+  margin-top: 50px;
+  background:$baseColor;
+  padding: 40px 0px 30px;
+
+  .footer-contents{
+    margin-bottom: 50px;
+  }
+  
+  .logo-title{
+    margin-bottom: 30px;
+    display: inline-flex;
+  }
+  
+  .footerLeft{
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .footerCenter, .footerRight{
+    margin: 30px;
+
+    p{
+      margin-bottom:10px;
+      font-weight: bold;
+    }
+
+    
+  }
+  
+  .copylight{
+    margin-top: 30px;
+    text-align: center;
+    color:#666;
+    font-size: 12px;
+  }
+}
+
+
+
+.field{
+  text-align: center;
+  label{
+    width: 160px;
+    height: 34px;
+    font-size: 16px;
+    line-height: 34px;
+  }
+  
+  .form-control{
+    width: 300px;
+    margin: 0px auto 20px;
+  }
+  
+  .form-control-comment{
+    margin-bottom: 10px;
+  }
+}
+
+
+.boxcheck{
+  display: flex;
+  justify-content: center;
+
+  .accepted , .remember_me{
+    color: #666;
+    font-size: 12px;
+  }
+  
+  .remember_me{
+    margin-left: 20px;
+    text-align: initial;
+  }
+  
+  #user_remember_me{
+    margin: 10px 0px 0px;
+  }
+}
+
+
+// 記事投稿のcss
+
+.users-blog{
+  margin-top: 50px;
+  a{
+    color: #666;
+  }
+
+  .flex{
+    align-items: baseline;
+  }
+
+  .blog-title{
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
+  
+  .content{
+    margin-bottom: 30px;  
+  }
+
+  .brog-create{
+    float:right;
+  }
+
+  .user{
+    margin-right: 20px;
+  }
+  .small-avatar{
+    border: solid 1px $baseColor;
+    margin-right: 10px;
+    border-radius: 50%;
+    
+    img{
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  .timestamp{
+    margin-top: 10px;
+    font-size: 12px;
+  }
+}
+
+.comment{
+  text-align:center;
+  margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+@media(min-width: 768px){
+
+  .rwd-off{
+    display: initial;
+  }
+  .rwd-on{
+    display: none;
+  }
+
+  .logo-title{
+    display:flex;
+    img{
+      width: 80px;
+    }
+
+    h1{
+      margin-left: 10px;
+      font-size: 36px;
+      // font-family: 'Poppins', sans-serif;
+    }
+  }
+
+
+  header{
+    .nav-menu{
+      display:flex;
+      align-items: center;
+      // justify-content:space-between;
+    }
+    
+    ul{
+      margin-left: auto;
+      display:flex;
+      li{
+        list-style: none;
+        margin-left: 20px;
+      }
+    }
+    
+    .login_user_menu{
+      margin-left: auto;
+      a{
+        color: #666;
+        margin-left: 10px;
+      }
+    }
+    
+  }
+
+  body{
+    .toppng{
+      margin-bottom: 80px;
+    }
+    
+    h2{
+      text-align: center;
+      font-size: 30px;
+    }
+    
+    .top{
+      margin-bottom: 30px;
+    }
+    
+    section{
+      padding: 60px 30px 60px;
+      line-height: 20px;
+      &:nth-of-type(2){
+        background:$baseColor;
+        padding: 80px 30px 80px;
+      }
+      
+    }
+    
+    
+    .blogs{
+      display:flex;
+      justify-content:space-evenly;
+      .Explanation{
+        p:first-child{
+          text-align: center; 
+          font-size: 1.5em;
+          margin-bottom: 30px;
+        }
+        .btn{
+          display: block;
+          margin-top: 30px;
+        }
+      }
+    }
+    
+    .skill{
+      display:flex;
+      flex-direction: row-reverse;
+      justify-content:space-evenly;
+      .Explanation{
+        p:first-child{
+          text-align: center; 
+          font-size: 1.5em;
+          margin-bottom: 30px;
+        }
+        .btn{
+          display: block;
+          margin-top: 30px;
+        }
+      }
+    }
+    
+    
+    .introduction{
+      text-align: center;
+      h2{
+        margin-bottom: 30px;
+      }
+      
+      p{
+        margin-bottom: 20px;
+      }
+      .btn{
+        width:300px;
+        margin-top: 30px;
+      }    
+      
+    }
+    
+    
+  }
+
+  #my-info{
+    border: 1px solid $baseColor;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .img-name{
+      text-align: center;
+  
+  
+      p{
+        margin-top: 20px;
+        font-size: 20px;
+        a{
+          color: #666;
+        }
+      }
+    }
+  
+    .my-action{
+      display: inline;
+      margin-top: 0;
+      div{
+        padding: 10px;
+        width: 200px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+  
+        a{
+          color: #fff;
+          display: block;
+          text-align: center;
+          text-decoration: none;
+        }
+      }
+  
+      .my-status{
+        padding: 0;
+        margin: 0 0 15px;
+        p:last-child{
+          margin-left: auto;
+        }
+        a{
+          color: #666;
+        }
+      }
+  
+      
+      
+      
+      .my-page{
+        background-color: $color-pink;
+      }
+      
+      .my-game{
+        background-color: $color-blue;
+      }
+      
+      .new-blog{
+        background-color: $color-yellow;
+      }
+      
+    }
+  }
+
+
+  footer{
+  
+    margin-top: 100px;
+    
+    background:$baseColor;
+    padding: 40px 0px 30px;
+    .footer-contents{
+      display:flex;
+      justify-content:space-evenly;
+      margin-bottom: 90px;
+    }
+    
+    .logo-title{
+      margin-bottom: 30px;
+    }
+    
+    .footerLeft{
+      img{
+        
+      }
+    }
+    
+    .footerCenter, .footerRight{
+      margin: 0;
+      p{
+        text-align: center;
+        margin-bottom:20px;
+      }
+    }
+    
+    .copylight{
+      margin-top: 30px;
+      text-align: center;
+      color:#666;
+    }
+  }
+
+
+
+  .field{
+    justify-content:center;
+    display:flex;
+    label{
+      width: 160px;
+      height: 34px;
+      font-size: 16px;
+      text-align: end;
+      line-height: 34px;
+    }
+    
+    .form-control{
+      width: 400px;
+      margin: 0px 20px 20px;
+    }
+    
+    .form-control-comment{
+      margin-bottom: 10px;
+    }
+  }
+
+
+  .boxcheck{
+    text-align: initial;
+    padding-left: 200px;
+    .accepted , .remember_me{
+      width: 400px;
+      color: #666;
+    }
+    
+    .remember_me{
+      text-align: start;
+      margin-left: 20px;
+    }
+    
+    #user_remember_me{
+      margin: 10px 0px 0px;
+    }
+  }
+    
+  // 記事投稿のcss
+
+  .users-blog{
+    margin-top: 50px;
+    a{
+      color: #666;
+    }
+
+    .flex{
+      align-items: baseline;
+    }
+
+    .blog-title{
+      font-size: 20px;
+      font-weight: bold;
+      padding-bottom: 10px;
+    }
+    
+    .content{
+      margin-bottom: 30px;  
+    }
+
+    .brog-create{
+      float:right;
+    }
+
+    .user{
+      margin-right: 20px;
+    }
+    .small-avatar{
+      border: solid 1px $baseColor;
+      margin-right: 10px;
+      border-radius: 50%;
+      
+      img{
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+      }
+    }
+  } 
+
+  .comment{
+    text-align:center;
+    margin-bottom: 20px;
+    padding-left: 90px;
+  }
+  
+
+}
+
+
+// レスポンシブのcss以上
+
+
+
+
+
+
+
+
+#app{
+ margin-top: 80px;
+ .home{
+   margin-top:80px;
+   text-align: center;
+ }
+  a{
+  color: #444;
+  margin-top: 80px;
+ }
+
+}
+
+
+
+
 
 .link{
   color: #666;
@@ -148,69 +819,9 @@ body{
   letter-spacing: 1.5;
 }
 
-header{
-  margin-bottom: 40px;
-  .nav-menu{
-    display:flex;
-    align-items: center;
-    // justify-content:space-between;
-  }
-  
-  ul{
-    margin-left: auto;
-    display:flex;
-    li{
-      list-style: none;
-      margin-left: 20px;
-    }
-  }
-  
-  .login_user_menu{
-    margin-left: auto;
-    a{
-      color: #666;
-      margin-left: 10px;
-    }
-  }
-  
-}
 
 
-footer{
-  
-  margin-top: 100px;
-  
-  background:$baseColor;
-  padding: 40px 0px 30px;
-  .footer-contents{
-    display:flex;
-    justify-content:space-evenly;
-    margin-bottom: 90px;
-  }
-  
-  .logo-title{
-    margin-bottom: 30px;
-  }
-  
-  .footerLeft{
-    img{
-      
-    }
-  }
-  
-  .footerCenter, .footerRight{
-    p{
-      text-align: center;
-      margin-bottom:20px;
-    }
-  }
-  
-  .copylight{
-    margin-top: 30px;
-    text-align: center;
-    color:#666;
-  }
-}
+
 
 /* mixins, variables, etc. */
 
@@ -231,82 +842,7 @@ $gray-medium-light: #eaeaea;
 }
 
 
-body{
-  .toppng{
-    margin-bottom: 80px;
-  }
-  
-  h2{
-    text-align: center;
-  }
-  
-  .top{
-    margin-bottom: 30px;
-  }
-  
-  section{
-    padding: 60px 30px 60px;
-    line-height: 20px;
-    &:nth-of-type(2){
-      background:$baseColor;
-      padding: 80px 30px 80px;
-    }
-    
-  }
-  
-  
-  .blogs{
-    display:flex;
-    justify-content:space-evenly;
-    .Explanation{
-      p:first-child{
-        text-align: center; 
-        font-size: 1.5em;
-        margin-bottom: 30px;
-      }
-      .btn{
-        display: block;
-        margin-top: 30px;
-      }
-    }
-  }
-  
-  .skill{
-    display:flex;
-    flex-direction: row-reverse;
-    justify-content:space-evenly;
-    .Explanation{
-      p:first-child{
-        text-align: center; 
-        font-size: 1.5em;
-        margin-bottom: 30px;
-      }
-      .btn{
-        display: block;
-        margin-top: 30px;
-      }
-    }
-  }
-  
-  
-  .introduction{
-    text-align: center;
-    h2{
-      margin-bottom: 30px;
-    }
-    
-    p{
-      margin-bottom: 20px;
-    }
-    .btn{
-      width:300px;
-      margin-top: 30px;
-    }    
-    
-  }
-  
-  
-}
+
 
 //新規登録画面 & ログイン
 .signup_title{
@@ -319,47 +855,10 @@ body{
   }
 }
 
-.field{
-  justify-content:center;
-  display:flex;
-  label{
-    width: 160px;
-    height: 34px;
-    font-size: 16px;
-    text-align: end;
-    line-height: 34px;
-  }
-  
-  .form-control{
-    width: 400px;
-    margin: 0px 20px 20px;
-  }
-  
-  .form-control-comment{
-    margin-bottom: 10px;
-  }
-}
 
 .password_reset{
   a{
     color: #444;
-  }
-}
-
-.boxcheck{
-  padding-left: 180px;
-  .accepted , .remember_me{
-    width: 400px;
-    color: #666;
-  }
-  
-  .remember_me{
-    text-align: start;
-    margin-left: 20px;
-  }
-  
-  #user_remember_me{
-    margin: 10px 0px 0px;
   }
 }
 
@@ -416,11 +915,6 @@ body{
 }
 
 
-.comment{
-  text-align:center;
-  margin-bottom: 20px;
-  padding-left: 90px;
-}
 
 
 
@@ -570,47 +1064,7 @@ body{
   }  
   
 }
-// 記事投稿のcss
 
-.users-blog{
-  margin-top: 50px;
-  a{
-    color: #666;
-  }
-
-  .flex{
-    align-items: baseline;
-  }
-
-  .blog-title{
-    font-size: 20px;
-    font-weight: bold;
-    padding-bottom: 10px;
-  }
-  
-  .content{
-    margin-bottom: 30px;  
-  }
-
-  .brog-create{
-    float:right;
-  }
-
-  .user{
-    margin-right: 20px;
-  }
-  .small-avatar{
-    border: solid 1px $baseColor;
-    margin-right: 10px;
-    border-radius: 50%;
-    
-    img{
-      border-radius: 50%;
-      width: 35px;
-      height: 35px;
-    }
-  }
-}
 
 .middle-avatar{
   margin-bottom: 10px;
@@ -619,6 +1073,7 @@ body{
   }
 
 }
+
 .tags{
   margin-bottom: 20px;
   ul{
@@ -682,69 +1137,7 @@ body{
 
 //TOPページのMY情報
 
-#my-info{
-  border: 1px solid $baseColor;
-  border-radius: 10px;
-  padding: 30px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  .img-name{
-    text-align: center;
 
-
-    p{
-      margin-top: 20px;
-      font-size: 20px;
-      a{
-        color: #666;
-      }
-    }
-  }
-
-  .my-action{
-    div{
-      padding: 10px;
-      width: 200px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-
-      a{
-        color: #fff;
-        display: block;
-        text-align: center;
-        text-decoration: none;
-      }
-    }
-
-    .my-status{
-      padding: 0;
-      margin: 0 0 15px;
-      p:last-child{
-        margin-left: auto;
-      }
-      a{
-        color: #666;
-      }
-    }
-
-    
-    
-    
-    .my-page{
-      background-color: $color-pink;
-    }
-    
-    .my-game{
-      background-color: $color-blue;
-    }
-    
-    .new-blog{
-      background-color: $color-yellow;
-    }
-    
-  }
-}
 
 .your-blogs{
   margin-top: 40px;
@@ -778,7 +1171,9 @@ body{
 
 .edit-icon{
   margin-left: auto;
-
+  a{
+    color: #666;
+  }
 }
 
 

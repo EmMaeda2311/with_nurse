@@ -26,13 +26,14 @@
             <%= link_to "マイページへ", user_path(id: current_user.id) %>
           </div>
           
+          <div class="new-blog">
+            <%= link_to "自分の看護を発信する", new_blog_path %>            
+          </div>        
+
           <div class="my-game">
             <%= link_to "スキルを鍛える", game_path %>
           </div>
           
-          <div class="new-blog">
-            <%= link_to "自分の看護を発信する", new_blog_path %>            
-          </div>        
         </div>
 
 
@@ -41,7 +42,7 @@
 
       </div>
     
-      <div class="col-md-8 blog-index">
+      <div class="col-md-10 blog-index">
         <h3>みんなの看護</h3>
         <ol class="blog">
           <%= render Blog.limit(10) %>
@@ -57,23 +58,22 @@
   
   <% else %>
    <div class="top">
-    <%= image_tag 'TOP.png', width: "100%", class: "toppng" %>
+    <%= image_tag 'TOP.png', width: "100%", class: "toppng rwd-off" %>
     <h2 class="mb5">すべてのナースのためのWEBサービス</h2>
   </div>
   
   <section>
     <div class="container blogs">
-      <div>
+      <div class="img-center">
         <%= image_tag 'like.png',width: "250px"%>
       </div>
       <div class="Explanation">
-        <p>ナース専用のソーシャルメディア<p>
+        <p>ナース専用の記事投稿サービス</p>
         <p>あなただけの看護が誰かの看護を色づけます。<br>
-        あなたの看護をアウトプットしませんか？<br>
-        あなたしか発信できないことがあります。<br></p>
-    
-        <p>色鮮やかなナースたちの看護・情報・知識が集まる<br>
-        場所を作ろう</p>
+          あなたの看護をアウトプットしませんか？<br>
+          あなたしか発信できないことがあります。<br></p>
+      
+        <p>色鮮やかなナースたちの看護・情報・知識が集まる場所を作ろう</p>
         <div class="btn btn-lg btn-pink"><%= link_to "みんなの看護を見る", blogs_path %></div>
       </div>  
     </div>  
@@ -81,7 +81,7 @@
   
   <section>
     <div class="skill container">
-      <div>
+      <div class="img-center">
         <%= image_tag 'skill.png' ,width: "250px"%>  
       </div>
       <div class="Explanation">
@@ -94,7 +94,7 @@
           <% if signed_in?%>
             <%= link_to "タイピングゲームをやってみる", game_path %>
           <% else %>
-            <%= link_to "タイピングゲームをやってみる", guest_game_path %>
+            <%= link_to "ゲームをやってみる", guest_game_path %>
           <% end %>          
         </div>
       </div>
@@ -104,15 +104,13 @@
  <section>
    <div class="introduction container">
       <h2>すべてのナースと共に</h2>
-      <p>「With Nurse」はナース、ナースマン、これからナースになる人、ナースだった人、<br>
-      すべてのナースと作る新しいWebサービスです。</p>
-      <p>今のあなたの心に刺さる「看護」を伝えてくれるナースは、あなたの近くにはいないかもしれません。<br>
-      それはどこかにいる元ナース、まだナースじゃないナースの卵、あなたと同じ状況のナースかもしれません。<br>
-      あなたがいるその場所だけでは決して見ることができない「看護」が、他の場所にはあります。</p>
-      <p>「あなたの看護」も大切にしながら、新しく刺激的な「看護」に触れられる場所を作りたい、<br>
-      そして全てのナースのためになるサービスを作りたい。</p>
-      <p>そんな思いで「With Nurse」はできています。</p>
-      <p>あなたのナースライフを「With Nurse」と共に歩みましょう</p>
+      <div class="text-center">
+        <p>「With Nurse」はナース、ナースマン、これからナースになる人、ナースだった人、すべてのナースと作る新しいWebサービスです。</p>
+        <p>今のあなたの心に刺さる「看護」を伝えてくれるナースは、あなたの近くにはいないかもしれません。それはどこかにいる元ナース、まだナースじゃないナースの卵、あなたと同じ状況のナースかもしれません。あなたがいるその場所だけでは決して見ることができない「看護」が、他の場所にはあります。</p>
+        <p>「あなたの看護」も大切にしながら、新しく刺激的な「看護」に触れられる場所を作りたい、そして全てのナースのためになるサービスを作りたい。</p>
+        <p>そんな思いで「With Nurse」はできています。</p>
+        <p>あなたのナースライフを「With Nurse」と共に歩みましょう</p>
+      </div>
       <div class="btn btn-lg btn-yellow">無料会員登録</div>
    </div>
   </section>

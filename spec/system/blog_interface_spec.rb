@@ -38,7 +38,7 @@ RSpec.describe 'blog interface',type: :system do
   end
 
 
-  scenario "ブログの変更画面と詳細ページの表示とタグ検索" do
+  scenario "ブログの変更画面と詳細ページの表示とタグ検索" ,use_truncation: false, js:true do
     valid_login(tester)
     day = blog.created_at
     blog_time = day.strftime("%Y年%m月%d日")
@@ -47,10 +47,10 @@ RSpec.describe 'blog interface',type: :system do
     expect(page).to have_content blog.title
     expect(page).to have_content "#{blog_time} に投稿"
 
+    expect(page).to have_selector ".users-blog", text: "tester"
     
-    within first('.edit-icon') do
-      click_link "編集"#画像リンク
-    end
+    first(".edit-icon").click
+
 
     expect(page).to have_content "記事編集"
     expect(page).to have_field "タイトル", with: blog.title
@@ -61,9 +61,11 @@ RSpec.describe 'blog interface',type: :system do
     click_button "編集"
 
     #ブログ記事の詳細ページの表示
-    expect(page).to have_content "変更後のタイトル"
-    expect(page).to have_link "編集"#画像リンク
-    expect(page).to have_link "削除"
+    # expect(page).to have_content "変更後のタイトル"
+    # expect(page).to have_link "編集"#画像リンク
+    find(".edit-icon")
+    find(".delete-link")
+    # expect(page).to have_link "削除"
 
     expect(page).to have_selector '.tag-list', text: 'test-tag1'
     expect(page).to have_selector '.tag-list', text: 'test-tag2'

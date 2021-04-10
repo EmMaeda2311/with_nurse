@@ -7,9 +7,9 @@ RSpec.feature 'omniauth test', type: :feature do
   end
 
   scenario "未ログインユーザーのグーグルログインの成功" do
-    visit new_user_registration_path
+    visit new_user_session_path
     expect{
-      click_link 'Sign in with GoogleOauth2'
+      click_link 'Googleアカウントでログイン'
     }.to change(User, :count).by(1).and change{ ActionMailer::Base.deliveries.size }.by(1)
 
     expect(page).to have_content '本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。'
@@ -26,8 +26,8 @@ RSpec.feature 'omniauth test', type: :feature do
 
 
   scenario "google認証サインアップ済みユーザーの場合、ユーザーが増えない" do
-    visit new_user_registration_path
-    click_link 'Sign in with GoogleOauth2'
+    visit new_user_session_path
+    click_link 'Googleアカウントでログイン'
 
     expect(page).to have_content '本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。'
 
@@ -35,13 +35,16 @@ RSpec.feature 'omniauth test', type: :feature do
     token = user.confirmation_token
     visit user_confirmation_path(confirmation_token: token)
 
-    click_link 'ログアウト'
+    within "header" do
+      click_link 'ログアウト'
+    end
+    
     click_link 'ログイン'
     expect{
-      click_link 'Sign in with GoogleOauth2'
+      click_link 'Googleアカウントでログイン'
     }.not_to change(User, :count)
 
-    expect(page).to have_content 'ログアウト'
+    expect(page).to have_selector "header", text: 'ログアウト'
     expect(page).to have_content 'Google_oauth2 アカウントによる認証に成功しました。'
 
   end
@@ -49,7 +52,7 @@ RSpec.feature 'omniauth test', type: :feature do
 
   scenario "omniauth user successful edit" do
     visit new_user_registration_path
-    click_link 'Sign in with GoogleOauth2'
+    click_link 'Googleアカウントでログイン'
 
     expect(page).to have_content '本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。'
 
@@ -57,7 +60,9 @@ RSpec.feature 'omniauth test', type: :feature do
     token = user.confirmation_token
     visit user_confirmation_path(confirmation_token: token)
 
-    click_link 'プロフィール変更'
+    within "header" do
+      click_link 'プロフィール変更'
+    end
 
     expect(page).not_to have_field "user[password]"
     expect(page).not_to have_field "user[current_password]"
