@@ -4,9 +4,11 @@ Rails.application.routes.draw do
     get 'user_typings/update'
     get 'user_typings/show'
   end
+  
   namespace :api do
     get 'words/index'
   end
+
   namespace :api, { format: 'json' } do
     resources :likes, only: %i[index create destroy]
     resources :words, only: [:index]
@@ -35,14 +37,16 @@ Rails.application.routes.draw do
   get '/privacy', to: 'static_pages#privacy'
   get '/terms', to: 'static_pages#terms'
 
-  get 'users/show'
-  # get 'users/index'
-  # get ':username', to: 'users#show', as: :users
-
-  resources :users do
+  # get 'users/show'
+  # get 'users/:id', to: "users#show"
+  resources :users, only: %i[show index destroy] do
     member do
       get :following, :followers
     end
+    
+    # namespace :admin do
+    #   resources :admin_user, only: %i[index destroy]
+    # end
   end
 
   resources :relationships, only: %i[create destroy]

@@ -1,9 +1,27 @@
-<!-- <div class="container">
+<div class="container">
   <div class="col-mb-10">
     <h3> <%= @users.count %> 人のユーザーがいます</h3>
   </div>
 
-  <ol class="user-list user-index">
-    <%= render @users %>
-  </ol>
-</div> -->
+  <ul class="user-list user-index admin">
+    <% @users.each do |user| %>
+      <li class="user-list">
+        <div class="middle-avatar">
+          <% if user.avatar.attached? %>
+            <%= image_tag(user.avatar.variant(resize_to_fill:[50,50]), alt: "avatar") %>
+          <% else %>
+            <%= image_tag("nurse.png",alt: "avatar" ,width: "50px") %>
+          <% end %>
+        </div>
+        <%= link_to user.username, user_path(user)%>
+        <div class="admin-delete-link">
+          <%= link_to user, method: :delete, data:{ confirm:"削除しますか？"} do %>
+          <p class="btn btn-blue delete-button">削除</p>
+        <% end %>
+      </div>
+      </li>
+      <hr>
+    <% end %>
+  </ul>
+
+</div>
