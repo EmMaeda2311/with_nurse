@@ -9,6 +9,10 @@
 
           <div class= "login_user_menu flex">
 
+            <% if current_user.admin? %>
+              <p><%= link_to "管理者ページ", users_path(current_user.id) %></p>
+            <% end %>
+
             <p class="rwd-off"><%= link_to current_user.username, user_path(id: current_user.id) %></p>
   
             <p class="rwd-off"><%= link_to "プロフィール変更", edit_user_registration_path %></p>

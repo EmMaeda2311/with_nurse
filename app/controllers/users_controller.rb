@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: %i[following followers]
-  # before_action :user_admin, only: [:index]
+  before_action :not_admin, only: %i[index destroy]
 
   def show
     @user = User.find_by(id: params[:id])
@@ -31,13 +31,16 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  # private
+  def destroy
+    @admin_user_id = current_user.id
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to users_path(current_user.id)
+  end
 
-  # def user_admin
-  #   if current_user.admin == false
-  #     redirect_to root_path
-  #   else
-  #     render action: "index"
-  #   end
-  # end
+  private
+  def not_admin
+    redirect_to root_path unless current_user.admin?
+  end
+
 end

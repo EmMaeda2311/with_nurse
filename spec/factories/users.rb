@@ -7,6 +7,7 @@ FactoryBot.define do
     # { |n| "#{n}tester@example.com" }
     password { 'foobar' }
     accepted { true }
+    admin { true }
     confirmed_at { Date.today }
 
     after(:build) do |tester|
@@ -27,6 +28,7 @@ FactoryBot.define do
     # { |n| "#{n}tester@example.com" }
     password { 'foobar' }
     accepted { true }
+    admin { false }
     confirmed_at { Date.today }
 
     after(:create) do |tester|
