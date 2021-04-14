@@ -1,5 +1,25 @@
 version: '3'
 services:
+  app:
+    build:
+      context: .
+
+# =========ローカルと本番切り替え===========
+    # command: bundle exec puma -C config/puma.rb -e production
+    command: bundle exec puma -C config/puma.rb
+# =========ローカルと本番切り替え===========
+
+    volumes: 
+      - .:/with_nurse
+      - public-data:/with_nurse/public
+      - tmp-data:/with_nurse/tmp
+      - log-data:/with_nurse/log
+    networks: 
+      - with_nurse-network
+
+    #=========ローカル用================
+    depends_on: 
+      - db
   db:
     image: mysql:8.0
     environment:
@@ -9,23 +29,40 @@ services:
       - '3306:3306'
     command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - mysql-data:/var/lib/mysql
+      - db-data:/var/lib/mysql
+    networks: 
+      - with_nurse-network
+    #=========ローカル用================
+
   web:
-    build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    build: 
+      context: ./nginx_docker
+    # command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/with_nurse
+      - public-data:/with_nurse/public
+      - tmp-data:/with_nurse/tmp
     ports:
-      - "3000:3000"
+      - "80:80"
     depends_on:
-      - db
+      - app
       - chrome 
+    networks: 
+      - with_nurse-network
     stdin_open: true
     tty: true
   chrome:
     image: selenium/standalone-chrome:latest
     ports:
       - 4444:4444
+
 volumes:
-  mysql-data:
-    driver: local
+  public-data:
+  tmp-data:
+  log-data:
+  db-data:
+  # mysql-data:
+  #   driver: local
+
+networks:
+  with_nurse-network:
+    external: true
