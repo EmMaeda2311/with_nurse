@@ -9,6 +9,9 @@ environment.toWebpackConfig().merge({
     alias: {
       'vue': 'vue/dist/vue.esm.js'
     }
+  },
+  performance:{
+    hints: false
   }
 });
 
