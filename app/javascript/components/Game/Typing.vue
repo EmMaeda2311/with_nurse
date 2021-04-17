@@ -113,17 +113,15 @@ export default {
       if(this.trying == false && e.key == "Enter"){
         this.CountDown()
       }
-      console.log(e.key)
+
 
       //もし入力した文字と現在の正しい文字が等しくなければmissTypeを＋して以降の処理を無視 
       if(e.key !== this.currentWord.spell[this.loc]){
-        console.log("miss")
         this.missType++;
         return;
       }
 
       //入力が正しければ何文字目を入力しているか＋ 
-      console.log("good")
       this.loc++;
       this.goodType++;
       this.$refs.target.textContent = '_'.repeat(this.loc) + this.currentWord.spell.substring(this.loc)

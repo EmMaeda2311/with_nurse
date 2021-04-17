@@ -25,9 +25,11 @@
           <li><%= link_to "ヘルプ", help_path , class: "link" %></li>
           <li><%= link_to "With Nurseについて" , about_path , class: "link" %></li>
 
-          <li><%= link_to "プロフィール変更", edit_user_registration_path, class: "link" %></li>
+          <% if signed_in? %>
+            <li><%= link_to "プロフィール変更", edit_user_registration_path, class: "link" %></li>
 
-          <li><%= link_to "ログアウト", sign_out_path, class: "link" %></li>
+            <li><%= link_to "ログアウト", sign_out_path, class: "link" %></li>
+          <% end %>
         </ul>
       </div>
       
