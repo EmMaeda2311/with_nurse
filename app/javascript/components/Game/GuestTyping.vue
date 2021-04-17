@@ -103,7 +103,6 @@ export default {
         this.solvedWords.push(this.currentWord)
         }
         this.loc = 0
-        console.log(this.solvedWords.length)
 
         if(this.words.length == this.solvedWords.length){
         this.finishMessage = `正答率${this.showResult}％ タイピングスピード${this.showTypeSpeed}打鍵 / 分`
@@ -147,6 +146,7 @@ export default {
         setTimeout(() => {
           this.finishMessage = `正答率${this.showResult}％ タイピングスピード${this.showTypeSpeed}打鍵 / 分`
         }, 100)
+        this.isFinished = true
         this.loc = 0 
       }
     }
