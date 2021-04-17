@@ -1,5 +1,15 @@
-<p>Welcome <%= @email %>!</p>
+<p>こんにちわ <%= @username %>様</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>この度は「With Nurse」をご利用いただき、ありがとうございます。</p>
+<p>ご本人様確認のため、下記より「24時間以内」にアクセスし
+アカウントの本登録を完了させて下さい。</p>
+<p><%= link_to 'アカウント本登録', confirmation_url(@resource, confirmation_token: @token) %></p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p>※当メール送信後、24時間を超過しますと、セキュリティ保持のため有効期限切れとなります。</p>
+<p>その場合は再度、最初からお手続きをお願い致します。</p>
+
+<p>※当メールは送信専用メールアドレスから配信されています。<br>
+このままご返信いただいてもお答えできませんのでご了承ください。</p>
+
+<p>※当メールに心当たりの無い場合は、誠に恐れ入りますが
+<br>破棄して頂けますよう、よろしくお願い致します。</p>
