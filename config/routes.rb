@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'contacts/new'
+  post 'contacts/create'
   namespace :api do
     get 'user_typings/create'
     get 'user_typings/update'
