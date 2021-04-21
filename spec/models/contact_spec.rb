@@ -11,28 +11,21 @@ RSpec.describe Contact, type: :model do
 
 
 
-  describe "invalid contact" do
-    
-    describe 'email presence' do
-      let(:contact){
-        FactoryBot.build(:contact, email: "")
-        it {is_expected.to be_invalid}
-      }
-    end
-    
-    describe 'email format invalid' do
-      let(:contact){
-        FactoryBot.build(:contact, email: "test@example,com")
-        it {is_expected.to be_invalid}
-      }
-    end
-    
-    describe 'message presence' do
-      let(:contact){
-        FactoryBot.build(:contact, message: "")
-        it {is_expected.to be_invalid}
-      }
-    end
+  
+  describe 'email presence' do
+    let(:contact){FactoryBot.build(:contact, email: "")}
+    it {is_expected.to be_invalid}
   end
+  
+  describe 'email format invalid' do
+    let(:contact){FactoryBot.build(:contact, email: "test@example,com")}
+    it {is_expected.to be_invalid}
+  end
+  
+  describe 'message presence' do
+    let(:contact){FactoryBot.build(:contact, message: "")}
+    it {is_expected.to be_invalid}
+  end
+
 
 end
