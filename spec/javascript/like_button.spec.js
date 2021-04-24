@@ -1,0 +1,1 @@
+import LikeButton from '../../app/javascript/components/Like/LikeButton';

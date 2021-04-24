@@ -290,14 +290,15 @@ export default {
   mounted(){
     axios
       .get('/api/words.json')
-      .then(response => (this.words = response.data)),
-    axios
-      .get(`/api/user_typings/${this.typingUserId}.json`)
-      .then(response => (this.userScore = response.data))
+      .then(response => (this.words = response.data))
+
   },
 
 
   created(){
+    axios
+      .get(`/api/user_typings/${this.typingUserId}.json`)
+      .then(response => (this.userScore = response.data))
     window.addEventListener('keydown', this.inputKey);
     let typingUserId = $('#play-user').data('id')
   }   
