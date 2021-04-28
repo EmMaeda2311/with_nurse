@@ -27,6 +27,15 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def game
+    @user = current_user.as_json
+    avatar = current_user.avatar
+    if avatar.present?
+      @user['avatar'] = encode_base64(avatar)
+    end
+    render json: @user
+  end
+
   def index
     @users = User.all
   end
@@ -41,6 +50,12 @@ class UsersController < ApplicationController
   private
   def not_admin
     redirect_to root_path unless current_user.admin?
+  end
+
+  def encode_base64(image_file)
+    avatar = Base64.encode64(image_file.download) # 画像ファイルをActive Storageでダウンロードし、エンコードする
+    blob = ActiveStorage::Blob.find(image_file[:id]) # Blobを作成
+    "data:#{blob[:content_type]};base64,#{avatar}" # Vue側でそのまま画像として読み込み出来るBase64文字列にして返す
   end
 
 end

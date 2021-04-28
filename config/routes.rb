@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   # get 'users/:id', to: "users#show"
   resources :users, only: %i[show index destroy] do
     member do
-      get :following, :followers
+      get :following, :followers, :game
     end
     
     # namespace :admin do
