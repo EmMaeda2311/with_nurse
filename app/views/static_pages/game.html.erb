@@ -1,4 +1,3 @@
-<%= javascript_pack_tag 'game','data-turbolinks-track': 'reload'%>
 <% provide(:title,"Game") %>
 <div id="app"></div>
 <%= content_tag :div, '', id:"play-user" ,data:{ id: current_user.reload_user_typing.try(:id)} %>
