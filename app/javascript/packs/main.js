@@ -14,22 +14,9 @@ import GuestTyping from '../components/Game/GuestTyping.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import router from "./router"
-import App from '../app.vue'
 library.add(fas)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-
-
-document.addEventListener('turbolinks:load', () => {
-  new Vue({
-    router,
-    render: h => h(App)
-  }).$mount("#app")
-})
-
-
-
 
 document.addEventListener('turbolinks:load', () => {
   new Vue({
@@ -43,18 +30,10 @@ document.addEventListener('turbolinks:load', () => {
   new Vue({
     el: '#like',
     components: { LikeButton }
-    // render: h => h( LikeButton ,{ props: document.getElementById('like-list').dataset })
+
   })
 })
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   new Vue({
-//     el: '#modal',
-//     components: { Modal }
-//     // render: h => h( LikeButton ,{ props: document.getElementById('like-list').dataset })
-//   })
-//   console.log("test")
-// })
 
 document.addEventListener('turbolinks:load', () => {
   new Vue({
@@ -69,7 +48,7 @@ document.addEventListener('turbolinks:load', () => {
         let files = e.target.files || e.dataTransfer.files;
         this.createImage(files[0]);
       },
-      // アップロードした画像を表示
+
       createImage(file) {
         let reader = new FileReader();
         reader.onload = (e) => {
