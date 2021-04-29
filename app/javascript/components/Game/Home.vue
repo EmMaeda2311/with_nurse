@@ -51,18 +51,21 @@ export default {
   },
   computed:{
     avatarPresent() {
-      if(this.user.avatar != null){
-        this.avatarAtache = true
+      if(this.user.avatar == null){
+        this.avatarAtache = false
       }
     }
   },
   created(){
+    let userId = $('#play-user').data('id')
     axios
-      .get(`/api/user_typings/${this.typingUserId}.json`)
+      .get(`/api/user_typings/${this.userId}.json`)
       .then(response => (this.userScore = response.data))
+      .catch((response) => console.log(response));      
     axios
-      .get(`/users/${this.typingUserId}/game.json`)
-      .then(response => (this.user = response.data))    
+      .get(`/users/${this.userId}/game.json`)
+      .then(response => (this.user = response.data))  
+      .catch((response) => console.log(response));  
   }
 }
 </script>
