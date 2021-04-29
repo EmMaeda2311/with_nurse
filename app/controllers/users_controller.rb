@@ -32,6 +32,8 @@ class UsersController < ApplicationController
     avatar = current_user.avatar
     if avatar.present?
       @user['avatar'] = encode_base64(avatar)
+    else
+      @user['avatar'] = nil
     end
     render json: @user
   end

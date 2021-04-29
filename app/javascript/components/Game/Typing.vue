@@ -297,10 +297,10 @@ export default {
 
   created(){
     axios
-      .get(`/api/user_typings/${this.typingUserId}.json`)
+      .get(`/api/user_typings/${this.userId}.json`)
       .then(response => (this.userScore = response.data))
     window.addEventListener('keydown', this.inputKey);
-    let typingUserId = $('#play-user').data('id')
+    
   }   
 }
 </script>
