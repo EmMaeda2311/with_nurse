@@ -80,7 +80,7 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   config.logger = Logger.new('log/production.log', 'daily')
-
+  config.action_mailer.logger = Logger.new('log/production_mail.log', 'daily')
   if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
@@ -113,7 +113,7 @@ Rails.application.configure do
 
 
   config.action_mailer.default_url_options = { protocol: 'https', host: 'www.withnurse.net' }
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
