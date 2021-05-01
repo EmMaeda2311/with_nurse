@@ -120,7 +120,7 @@ Rails.application.configure do
     domain: 'gmail.com',
     port: 587,
     user_name: ENV['EMAIL_ADDRESS'],
-    password: ENV['EMAIL_PASSWORD'],
+    password: ENV['TEST_EMAIL_ADDRESS'],
     authentication: :plain,
     openssl_verify_mode: 'none',
     enable_starttls_auto: true
