@@ -56,7 +56,7 @@ export default {
       }
     }
   },
-  mounted(){
+  created(){
     let userId = $('#play-user').data('id')
     axios
       .get(`/api/user_typings/${this.userId}.json`)
