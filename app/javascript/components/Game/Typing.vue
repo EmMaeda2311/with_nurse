@@ -295,7 +295,7 @@ export default {
   },
 
 
-  created(){
+  mounted(){
     axios
       .get(`/api/user_typings/${this.userId}.json`)
       .then(response => (this.userScore = response.data))
