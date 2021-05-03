@@ -5,7 +5,7 @@ RSpec.feature 'omniauth test', type: :feature do
     ActionMailer::Base.deliveries.clear
   end
 
-  scenario '未ログインユーザーのグーグルログインの成功' do
+  scenario '未サインアップユーザーのグーグルログインの成功' do
     visit new_user_session_path
     expect do
       click_link 'Googleアカウントでログイン'

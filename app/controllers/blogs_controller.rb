@@ -47,16 +47,6 @@ class BlogsController < ApplicationController
   end
 
   def index
-    # @blogs = Blog.all.paginate(page: params[:page])
-    # Blog.search(params[:search]).paginate(page: params[:page])
-
-    # unless (params[:tag_id] and params[:search]).present?
-    #   Blog.all.paginate(page: params[:page])
-    # elsif params[:tag_id].present?
-    #   Tag.find(params[:tag_id]).blogs.paginate(page: params[:page])
-    # elsif params[:search].present?
-    #   Blog.search(params[:search]).blogs.paginate(page: params[:page])
-    # end
     @blogs =
       if params[:tag_id].present?
         Tag.find(params[:tag_id]).blogs.paginate(page: params[:page])
@@ -66,7 +56,6 @@ class BlogsController < ApplicationController
         Blog.all.paginate(page: params[:page])
       end
 
-    # @blogs = params[:tag_id].present? ? Tag.find(params[:tag_id]).blogs.paginate(page: params[:page]) : Blog.all.paginate(page: params[:page])
   end
 
   def destroy

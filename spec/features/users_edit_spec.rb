@@ -26,12 +26,6 @@ RSpec.feature 'edit test', type: :feature do
       expect(page).to have_content blank_error_message
     end
 
-    # fill_in "user[username]", with: tester.username
-    # fill_in "user[email]", with: tester.email
-    # fill_in "user[current_password]", with: "foo"
-    # click_button "プロフィール変更"
-
-    # expect(page).to have_content "現在のパスワードが違います。"
   end
 
   scenario 'successful edit' do

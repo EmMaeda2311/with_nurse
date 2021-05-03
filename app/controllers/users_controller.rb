@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     if @user.nil?
       redirect_to root_path
     else
-      # @user = User.find_by(username: params[:username])
       @blogs = @user.blogs.paginate(page: params[:page])
     end
   end

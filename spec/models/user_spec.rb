@@ -24,30 +24,23 @@ RSpec.describe User, type: :model do
     describe 'username validate' do
       describe 'name should be present' do
         let(:tester) { build(:tester, username: '  ') }
-        # let(:username){ "  " }
         it { is_expected.to be_invalid }
       end
 
       describe 'username should not be too long' do
         let(:tester) { build(:tester, username: 'a' * 51) }
-        # let(:username){"a" * 51}
         it { is_expected.to be_invalid }
       end
     end
 
     describe 'email validate' do
-      # let(:tester){
-      #   FactoryBot.build(:tester, username: "tester name",email: email)
-      # }
       describe 'email should be present' do
         let(:tester) { build(:tester, email: ' ') }
-        # let(:email){ "  " }
         it { is_expected.to be_invalid }
       end
 
       describe 'email should not be too long' do
         let(:tester) { build(:tester, email: 'a' * 244 + '@example.com') }
-        # let(:email){ "a" * 244 + "@example.com" }
         it { is_expected.to be_invalid }
       end
 
@@ -59,14 +52,11 @@ RSpec.describe User, type: :model do
             invalid_emails.each do |invalid_email|
               tester.email = invalid_email
               expect(tester).to be_invalid
-              # it { is_expected.to be_valid }
             end
           end
       end
 
       describe 'email addresses should be unique' do
-        # let(:tester){ build(:tester, email: valid_address ) }
-        # let(:email){ "tester@example.com" }
         it 'is uniqueness working' do
           @dupulicate_user = tester.dup
           @dupulicate_user.email = tester.email.upcase
@@ -88,11 +78,11 @@ RSpec.describe User, type: :model do
       end
     end
 
-    # describe "accepted check box" do
-    #   describe "check accepted" do
-    #   let(:tester){ build(:tester, accepted: false)}
-    #   it {is_expected.to be_invalid}
-    #   end
-    # end
+    describe "accepted check box" do
+      describe "check accepted" do
+      let(:tester){ build(:tester, accepted: false)}
+      it {is_expected.to be_invalid}
+      end
+    end
   end
 end
