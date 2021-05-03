@@ -11,8 +11,6 @@ class Api::LikesController < ActionController::API
       render json: @like, status: :created
     else
       render json: @like.errors, status: unprocessable_entity
-      # current_user.likes.create!(likes_params)
-      # head :created
     end
   end
 

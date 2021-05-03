@@ -38,9 +38,8 @@ RSpec.feature 'signup test' do
       click_button '新規登録'
     end.to change(User, :count).by(0)
 
-    blank_error_messages = %w[アカウント名 が入力されていません メールアドレス が入力されていません。 メールアドレス は有効でありません。 パスワード が入力されていません。 パスワード
-                              は6文字以上に設定して下さい。]
-    #  利用規約、及び、個人情報の取扱 に同意してください
+    blank_error_messages = %w[アカウント名 が入力されていません メールアドレス が入力されていません。 メールアドレス は有効でありません。 パスワード が入力されていません。 パスワードは6文字以上に設定して下さい。 利用規約、及び、個人情報の取扱 に同意してください]
+     
 
     blank_error_messages.each do |blank_error_message|
       expect(page).to have_content blank_error_message

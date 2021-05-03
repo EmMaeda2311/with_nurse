@@ -39,16 +39,11 @@ Rails.application.routes.draw do
   get '/privacy', to: 'static_pages#privacy'
   get '/terms', to: 'static_pages#terms'
 
-  # get 'users/show'
-  # get 'users/:id', to: "users#show"
   resources :users, only: %i[show index destroy] do
     member do
       get :following, :followers, :game
     end
-    
-    # namespace :admin do
-    #   resources :admin_user, only: %i[index destroy]
-    # end
+  
   end
 
   resources :relationships, only: %i[create destroy]
@@ -57,8 +52,4 @@ Rails.application.routes.draw do
     resources :likes, only: %i[create destroy]
   end
 
-  # get 'static_pages/home'
-  # get 'static_pages/help'
-  # get 'static_pages/about'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

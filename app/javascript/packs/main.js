@@ -25,7 +25,6 @@ document.addEventListener('turbolinks:load', () => {
   new Vue({
     el: '#guest_game',
     components: { GuestTyping }
-    // render: h => h( LikeButton ,{ props: document.getElementById('like-list').dataset })
   })
 })
 
@@ -33,7 +32,6 @@ document.addEventListener('turbolinks:load', () => {
   new Vue({
     el: '#like',
     components: { LikeButton }
-
   })
 })
 

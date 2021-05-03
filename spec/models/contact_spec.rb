@@ -8,9 +8,6 @@ RSpec.describe Contact, type: :model do
   describe 'validate contact' do
     it {is_expected.to be_valid}
   end
-
-
-
   
   describe 'email presence' do
     let(:contact){FactoryBot.build(:contact, email: "")}

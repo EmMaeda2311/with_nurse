@@ -3,18 +3,6 @@
     <div class="col-md-10 blog-index">
       <h3> <%= @blogs.count %> 件の看護が投稿されています</h3>
 
-
-   <!-- <%= form_tag(blogs_path, :method =>" get") do %>
-      <%= select_tag :tag_id,
-      options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-      {
-        prompt: 'タグで絞り込み',
-        onchange: 'submit(this.form);',
-        class: "form-control"
-      }%>
-    <% end %> -->
-
-
     <%= form_with url: blogs_path, method: :get do %>
       <%= select_tag :tag_id,
         options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
