@@ -1,12 +1,12 @@
 # With Nurse　概要
-With Nurseはナース専用ソーシャルメディア・学習サービスです
+With Nurseはナース専用の記事投稿・学習サービスです
 
 # With Nurse　機能・技術一覧
 ・ユーザー登録機能
 
-・ソーシャルログイン機能
-
 ・ユーザーログイン機能
+
+・外部サービスログイン機能
 
 ・記事投稿機能
 
@@ -28,8 +28,6 @@ With Nurseはナース専用ソーシャルメディア・学習サービスで�
 
 ・DBテーブルリレーション機能
 
-・DBトランザクション機能
-
 # With Nurse　サービス一覧
 ・ユーザー記事投稿サービス
 
@@ -37,5 +35,17 @@ With Nurseはナース専用ソーシャルメディア・学習サービスで�
 
 ・タイピングゲーム
 
-・クイズアプリ
+# 使用技術
+・HTML/CSS
+・Bootstrap
+・SASS
+・javascript
+・jQuery
+・Vue.js
+・Ruby 2.6.3
+・Ruby on Rails 6.0.3
+・Rubocop (コード解析ツール)
+・RSpec (テスト)
+・Docker/Docker-compose（ローカル開発環境からデプロイまで）
+・AWS(VPC, EC2, Route53, ELB, S3, RDS, ACM)
 
