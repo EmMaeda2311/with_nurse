@@ -37,15 +37,26 @@ With Nurseはナース専用の記事投稿・学習サービスです
 
 # 使用技術
 ・HTML/CSS
+
 ・Bootstrap
+
 ・SASS
+
 ・javascript
+
 ・jQuery
+
 ・Vue.js
+
 ・Ruby 2.6.3
+
 ・Ruby on Rails 6.0.3
+
 ・Rubocop (コード解析ツール)
+
 ・RSpec (テスト)
+
 ・Docker/Docker-compose（ローカル開発環境からデプロイまで）
+
 ・AWS(VPC, EC2, Route53, ELB, S3, RDS, ACM)
 
