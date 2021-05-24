@@ -53,7 +53,7 @@ export default {
       isFinished: false,
       missed: false,
       countDownStatus: false,
-      timeLimit: 30 * 1000,
+      timeLimit: 120 * 1000,
       nowTimerMessage:"",
       startTime: 0,
       startCountTime: 3 * 1000,
