@@ -42,6 +42,7 @@
 import axios from 'axios';
 
 export default {
+  props:['userId'],
   data(){
     return{
       userScore:{},
@@ -56,16 +57,18 @@ export default {
       }
     }
   },
-  created(){
-    let userId = $('#play-user').data('id')
+  mounted(){
+    let userId = this.userId
     axios
-      .get(`/api/user_typings/${this.userId}.json`)
+      .get(`/api/user_typings/${userId}.json`)
       .then(response => (this.userScore = response.data))
       .catch((response) => console.log(response));      
     axios
-      .get(`/users/${this.userId}/game.json`)
+      .get(`/users/${userId}/game.json`)
       .then(response => (this.user = response.data))  
-      .catch((response) => console.log(response));  
+      .catch((response) => console.log(response)); 
+      console.log(this.userId)
+       
   }
 }
 </script>

@@ -11,7 +11,7 @@
         <router-link to="/word-quiz"
                     tag="div"
                     class="game-menu menu-three-quiz">
-                    <img src="../assets/images/three-quiz.png" alt="タイピングゲーム" width= 100px>
+                    <img src="../assets/images/three-quiz.png" alt="略語クイズ" width= 100px>
                     </router-link>
       </nav>
 

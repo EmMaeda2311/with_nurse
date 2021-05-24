@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_080723) do
+ActiveRecord::Schema.define(version: 2021_05_06_133536) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -96,6 +96,17 @@ ActiveRecord::Schema.define(version: 2021_04_17_080723) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_three_quizzes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "word_id", null: false
+    t.integer "memory"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "word_id"], name: "index_user_three_quizzes_on_user_id_and_word_id", unique: true
+    t.index ["user_id"], name: "index_user_three_quizzes_on_user_id"
+    t.index ["word_id"], name: "index_user_three_quizzes_on_word_id"
+  end
+
   create_table "user_typings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.float "hi_score", default: 0.0
     t.float "hi_speed", default: 0.0
@@ -154,5 +165,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_080723) do
   add_foreign_key "likes", "users"
   add_foreign_key "tag_relationships", "blogs"
   add_foreign_key "tag_relationships", "tags"
+  add_foreign_key "user_three_quizzes", "users"
+  add_foreign_key "user_three_quizzes", "words"
   add_foreign_key "user_typings", "users"
 end
