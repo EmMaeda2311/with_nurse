@@ -5,27 +5,6 @@
           <%= link_to image_tag("logo2.png",alt: "With Nurse logo"), root_path %>
           <h1><%= link_to "With Nurse", root_path , class: "link"%></h1>
         </div>
-        <% if user_signed_in? %>
-
-          <div class= "login_user_menu flex">
-
-            <% if current_user.admin? %>
-              <p><%= link_to "管理者ページ", users_path(current_user.id) %></p>
-            <% end %>
-
-            <p class="rwd-off"><%= link_to current_user.username, user_path(id: current_user.id) %></p>
-  
-            <p class="rwd-off"><%= link_to "プロフィール変更", edit_user_registration_path %></p>
-            <p class="rwd-off"><%= link_to "ログアウト", sign_out_path %></p>
-          
-          </div>
-
-          <!--<ul>
-            <li><%= link_to "ログイン", new_user_session_path , class: "nav-link btn btn-pink" %></li>
-            <li><%= link_to '無料会員登録' , new_user_registration_path , class: "nav-link btn btn-blue" %></li>
-          </ul>--> 
-        <% else %>
-        <% end %>
         
       </nav>
     </div>
