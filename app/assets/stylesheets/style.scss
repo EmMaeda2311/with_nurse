@@ -717,10 +717,11 @@ trix-editor{
    }
  
    .spell{
-     letter-spacing: .1em;
+     letter-spacing: .2em;
    }
  
    h3{
+     font-size: 2em;
      margin:0 0 50px;
      letter-spacing: .1em;
    }
@@ -737,6 +738,13 @@ trix-editor{
          margin-bottom: 10px;
        }
      }
+   }
+
+   img{
+     width: 200px;
+     margin-bottom: 30px;
+     display: block;
+     margin: 0 auto 50px;
    }
  
  

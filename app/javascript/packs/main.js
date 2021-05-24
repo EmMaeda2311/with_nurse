@@ -17,7 +17,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 document.addEventListener('turbolinks:load', () => {
   new Vue({
     router,
-    render: h => h(App)
+    render: h => h(App, {props: $('#app').data() })
   }).$mount("#app")
 })
 

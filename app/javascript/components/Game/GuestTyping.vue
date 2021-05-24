@@ -4,6 +4,9 @@
   <!-- ゲーム中の画面 -->
   <div v-if="trying">
     <div v-if="!isFinished">
+      <img src="~happy.png" alt="" v-if="!missed">
+      <img src="~miss.png" alt="" v-if="missed">
+
       <p class="read" v-text="currentWord.read"></p>   
       <h3 v-text="currentWord.name"></h3>
       <p ref="target" class="spell" v-text="currentWord.spell"></p>
@@ -11,13 +14,14 @@
     
     <div>
       <!-- ゲーム終了後のメッセージ -->
-      <p v-text="finishMessage"></p>   
+      <img src="~typingColor.png" alt="" v-if="isFinished">
+      <p v-text="scoreMessage"></p>   
+      <p v-text="speedMessage"></p>   
       <p v-if="!isFinished" v-text="nowTimerMessage"></p>
 
 
       <div v-if="isFinished">
-        <p>会員登録するとあなたの成績がみれます</p>
-        <a href="./users/sign_up" class="btn btn-pink brn-lg">会員登録</a>
+        <p class="btn btn-pink btn-lg" @click="restart()">もう一度プレイする</p>
       </div>
 
     </div>
@@ -30,12 +34,16 @@
 
   <!-- ゲーム開始前 -->
   <div v-if="!trying">
+    <img src="~typingColor.png" alt="">
     <div class="btn btn-yellow btn-lg">Enterを押すと始まります</div>
   </div>
 </div>
 </template>
 <script>
 import axios from 'axios';
+import 'happy.png';
+import 'miss.png';
+import 'typingColor';
 
 
 export default {
@@ -43,8 +51,9 @@ export default {
     return{
       trying: false,
       isFinished: false,
+      missed: false,
       countDownStatus: false,
-      timeLimit: 120 * 1000,
+      timeLimit: 30 * 1000,
       nowTimerMessage:"",
       startTime: 0,
       startCountTime: 3 * 1000,
@@ -53,7 +62,8 @@ export default {
       goodType:0,
       missType:0,
       words:[],
-      finishMessage: "",
+      scoreMessage: "",
+      speedMessage: "",
       //回答済みの問題を入れる
       solvedWords: [],
     }
@@ -67,6 +77,7 @@ export default {
       this.solvedWords = [];
       this.startTime = Date.now();
       this.missType = 0
+      this.missed = false
       this.updateTimer();
     },
 
@@ -74,6 +85,15 @@ export default {
       this.countDownStatus = true
       this.startTime = Date.now();
       this.startCountDown()
+    },
+
+    restart(){
+      this.trying = false
+      this.isFinished = false
+      this.scoreMessage = ""
+      this.speedMessage = ""
+      this.goodType = 0
+      this.missType = 0
     },
 
 
@@ -90,10 +110,12 @@ export default {
       //もし入力した文字と現在の正しい文字が等しくなければmissTypeを＋して以降の処理を無視 
       if(e.key !== this.currentWord.spell[this.loc]){
         this.missType++;
+        this.missed = true
         return;
       }
 
       //入力が正しければ何文字目を入力しているか＋ 
+      this.missed = false
       this.loc++;
       this.goodType++;
       this.$refs.target.textContent = '_'.repeat(this.loc) + this.currentWord.spell.substring(this.loc)
@@ -105,7 +127,8 @@ export default {
         this.loc = 0
 
         if(this.words.length == this.solvedWords.length){
-        this.finishMessage = `正答率${this.showResult}％ タイピングスピード${this.showTypeSpeed}打鍵 / 分`
+          this.scoreMessage = `正答率　${this.showResult}％`
+          this.speedMessage =  `タイピングスピード　${this.showTypeSpeed}打鍵 / 分`
           this.isFinished = true
           this.loc = 0
              
@@ -144,7 +167,8 @@ export default {
         clearTimeout(timeoutId);
         this.nowTimerMessage = "0.00"
         setTimeout(() => {
-          this.finishMessage = `正答率${this.showResult}％ タイピングスピード${this.showTypeSpeed}打鍵 / 分`
+          this.scoreMessage = `正答率　${this.showResult}％`
+          this.speedMessage =  `タイピングスピード　${this.showTypeSpeed}打鍵 / 分`
         }, 100)
         this.isFinished = true
         this.loc = 0 
@@ -174,11 +198,11 @@ export default {
     },
 
     showResult(){
-      return this.goodType + this.missType === 0 ? 0 : (this.goodType / ( this.goodType + this.missType ) * 100).toFixed(1);
+      return this.goodType + this.missType === 0 ? 0 : (this.goodType / ( this.goodType + this.missType ) * 100).toFixed(0);
     },
 
     showTypeSpeed(){
-      return (this.goodType / ((Date.now() - this.startTime) / 1000)).toFixed(1) * 60;
+      return (this.goodType / ((Date.now() - this.startTime) / 1000).toFixed(0)) * 60;
     }
 
   },
@@ -196,4 +220,5 @@ export default {
   }   
 }
 </script>
+
 

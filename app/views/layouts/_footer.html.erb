@@ -14,9 +14,9 @@
       <div class="footerCenter">
         <p>メニュー</p>
         <ul>
-          <li><%= link_to "記事一覧", blogs_path, class: "link" %>TOP</li>
           <li>
             <% if signed_in?%>
+          <!--<li><%= link_to "記事一覧", blogs_path, class: "link" %>TOP</li>-->
               <%= link_to "ゲーム", game_path, class: "link" %>
             <% else %>
               <%= link_to "ゲーム", guest_game_path, class: "link" %>

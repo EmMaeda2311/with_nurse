@@ -210,7 +210,7 @@ export default {
       
       this.userScore.plays ++
       axios
-      .patch(`/api/user_typings/${this.typingUserId}.json`, {
+      .patch(`/api/user_typings/${this.userScore.id}.json`, {
         hi_score: this.userScore.hi_score,
         hi_speed: this.userScore.hi_speed,
         plays: this.userScore.plays
@@ -297,7 +297,7 @@ export default {
 
   created(){
     axios
-      .get(`/api/user_typings/${this.userId}.json`)
+      .get(`/api/user_typings/${this.$route.params.id}}.json`)
       .then(response => (this.userScore = response.data))
     window.addEventListener('keydown', this.inputKey);
     
